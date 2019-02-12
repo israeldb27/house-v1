@@ -1,0 +1,78 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+import  '../../styles.css';
+import '../includes/css/line-awesome-font-awesome.css';
+
+
+
+class Header extends Component {
+    render() {
+        return (           
+
+			<header>
+				<div className="container">
+					<div className="header-data">
+						<div className="logo">
+							<a href="index.html" title=""><img src="images/logo.png" alt="" /></a>
+						</div>
+						<div className="search-bar">
+							<form>
+								<input type="text" name="search" placeholder="Search..." />
+								<button type="submit"><i class="la la-search"></i></button>
+							</form>
+						</div>
+
+						<nav>
+							<ul>
+								<li>
+									<Link to="/imovelBuscar" title="">
+										<span class="icon"><i class="fa fa-home"></i></span>
+										Imóveis
+								</Link>
+								</li>
+
+								<li>
+									<Link to="/usuarioBuscar" title="">
+										<span class="icon"><i class="fa fa-home"></i></span>
+										Usuários
+								</Link>
+								</li>
+
+								<li>
+									<Link to="/listaContatosUsuario/10" title="">
+										<span class="icon"><i class="fa fa-home"></i></span>
+										Contatos
+								</Link>
+								</li>
+								<li>
+									<Link to="/mensagensUsuario/10" title="">
+										<span><i class="fa fa-home"></i></span>
+										Mensagens
+									</Link>								
+								</li>
+								<li>
+									<Link to="/listaNotificacoes/10" title="">
+										<span class="icon"><i class="fa fa-home"></i></span>
+										Notificações
+									</Link>
+								</li>
+								<li>
+									<Link to="/usuarioConta/10" title="">
+										<span class="icon"><i class="fa fa-home"></i></span>
+										Conta
+									</Link>
+								</li>
+
+							</ul>
+						</nav>
+
+					</div>
+				</div>
+			</header>                    
+          
+        );
+    }
+}
+
+export default Header;
