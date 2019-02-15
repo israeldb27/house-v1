@@ -1123,6 +1123,13 @@ main {
 	margin-bottom: 15px;
 	padding: 0 20px;
 }
+.epi-secright {
+	float: right;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 0 20px;
+	text-align: right
+}
 .descp {
 	float: left;
 	margin-top: 3px;
@@ -1161,6 +1168,17 @@ main {
 .bk-links li i.la-envelope {
 	background-color: #e44d3a;
 }
+
+.bk-links-label {
+	color: #fff;
+	font-size: 24px;
+	width: 30px;
+	height: 30px;
+	background-color: #53d690;
+	text-align: center;
+	line-height: 30px;
+}
+
 .bid_now {
 	color: #fff;
 	background-color: #51a5fb;
@@ -1228,6 +1246,21 @@ main {
 .job_descp > p a {
 	color: #e44d3a;
 	font-weight: 600;
+}
+
+.a-tipoimovel {
+	color: #fff;
+	background-color: #53d690;
+	text-transform: capitalize;
+	padding: 5px 13px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 30px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
 }
 
 /* ============= skill-tags =========== */

@@ -19,7 +19,7 @@ class Header extends Component {
 						<div className="search-bar">
 							<form>
 								<input type="text" name="search" placeholder="Search..." />
-								<button type="submit"><i class="la la-search"></i></button>
+								<button type="submit"><i className="la la-search"></i></button>
 							</form>
 						</div>
 
@@ -27,39 +27,33 @@ class Header extends Component {
 							<ul>
 								<li>
 									<Link to="/imovelBuscar" title="">
-										<span class="icon"><i class="fa fa-home"></i></span>
+										<span className="icon"><i className="fa fa-home"></i></span>
 										Imóveis
 								</Link>
 								</li>
 
 								<li>
 									<Link to="/usuarioBuscar" title="">
-										<span class="icon"><i class="fa fa-home"></i></span>
+										<span className="icon"><i className="fa fa-group"></i></span>
 										Usuários
 								</Link>
 								</li>
-
-								<li>
-									<Link to="/listaContatosUsuario/10" title="">
-										<span class="icon"><i class="fa fa-home"></i></span>
-										Contatos
-								</Link>
-								</li>
+							
 								<li>
 									<Link to="/mensagensUsuario/10" title="">
-										<span><i class="fa fa-home"></i></span>
+										<span><i className="fa fa-envelope-o"></i></span>
 										Mensagens
 									</Link>								
 								</li>
 								<li>
 									<Link to="/listaNotificacoes/10" title="">
-										<span class="icon"><i class="fa fa-home"></i></span>
+										<span className="icon"><i className="fa fa-bell-o"></i></span>
 										Notificações
 									</Link>
 								</li>
 								<li>
 									<Link to="/usuarioConta/10" title="">
-										<span class="icon"><i class="fa fa-home"></i></span>
+										<span className="icon"><i className="fa fa-pencil-square-o"></i></span>
 										Conta
 									</Link>
 								</li>

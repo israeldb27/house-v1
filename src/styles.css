@@ -1123,6 +1123,12 @@ main {
 	margin-bottom: 15px;
 	padding: 0 20px;
 }
+.epi-sec-right {
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 0 20px;
+}
 .descp {
 	float: left;
 	margin-top: 3px;

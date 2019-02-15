@@ -10,6 +10,8 @@ class ListaContatos extends Component {
     render() {
         return (
             <div>
+               
+
                 <section className="companies-info">
                     <div className="container">                       
 
@@ -42,7 +44,19 @@ class ListaContatos extends Component {
                                 </li>                                            
 
                             </ul>
+                            <div className="search-sec">
+                                <div className="container">
+                                    <div className="search-box">
+                                        <form>
+                                            <input type="text" name="search" placeholder="Chave Busca Usuario" />
+                                            <button type="submit">Buscar</button>
+                                        </form>
+                                    </div>{/*search-box end*/}
+                                </div>
+                            </div>{/*search-sec end*/}
                         </div> {/* tab-feed end */}
+
+                        
 
                         <div className="companies-list">
                             <div className="row">

@@ -3,11 +3,27 @@ import PropTypes from 'prop-types';
 import AnuncioImoveis from '../layout/AnuncioImoveis';
 import AnuncioImobiliaria from '../layout/AnuncioImobiliaria';
 
-class ImovelBuscar extends Component {
-    constructor(props) {
-        super(props);
+import TipoImovelEnum from '../common/TipoImovelEnum';
+import AcaoImovelEnum from '../common/AcaoImovelEnum';
+import StatusImovelEnum from '../common/StatusImovelEnum';
 
-    }   
+class ImovelBuscar extends Component {
+    constructor() {
+        super()  
+     
+        this.state = {
+           tipoImovel: [],
+           acaoImovel: [],
+           statusImovel: []
+        }
+      } 
+      
+    componentDidMount() {
+        console.log('chamou o didmount');
+        this.setState({ tipoImovel: TipoImovelEnum.enumValues });
+        this.setState({ acaoImovel: AcaoImovelEnum.enumValues })
+        this.setState({ statusImovel: StatusImovelEnum.enumValues })
+    }
 
     render() {
         return (
@@ -37,60 +53,52 @@ class ImovelBuscar extends Component {
                                             <div className="paddy">
                                                 <div className="filter-dd">
                                                     <div className="filter-ttl">
-                                                        <h3>Skills</h3>
+                                                        <h3>Localização</h3>
                                                         <a href="#" title="">Clear</a>
                                                     </div>
                                                     <form>
-                                                        <input type="text" name="search-skills" placeholder="Search skills" />
+                                                        <input type="text" name="search-skills" placeholder="Digite uma localização" />
                                                     </form>
                                                 </div>
                                                 <div className="filter-dd">
                                                     <div className="filter-ttl">
-                                                        <h3>Availabilty</h3>
-                                                        <a href="#" title="">Clear</a>
-                                                    </div>
-                                                    <ul className="avail-checks">
-                                                        <li>
-                                                            <input type="radio" name="cc" id="c1" />
-                                                            <label for="c1">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Hourly</small>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="cc" id="c2" />
-                                                            <label for="c2">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Part Time</small>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="cc" id="c3" />
-                                                            <label for="c3">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Full Time</small>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="filter-dd">
-                                                    <div className="filter-ttl">
-                                                        <h3>Job Type</h3>
+                                                        <h3>Ação</h3>
                                                         <a href="#" title="">Clear</a>
                                                     </div>
                                                     <form className="job-tp">
                                                         <select>
-                                                            <option>Select a job type</option>
-                                                            <option>Select a job type</option>
-                                                            <option>Select a job type</option>
-                                                            <option>Select a job type</option>
+                                                            {
+                                                                this.state.acaoImovel.map(acao=> {
+                                                                    return (
+                                                                        <option key={acao.id} value={acao.id}>{acao.description}</option>
+                                                                    );                                           
+                                                                })
+                                                            }                       
                                                         </select>
                                                         <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </form>
                                                 </div>
                                                 <div className="filter-dd">
                                                     <div className="filter-ttl">
-                                                        <h3>Pay Rate / Hr ($)</h3>
+                                                        <h3>Tipo Imóvel</h3>
+                                                        <a href="#" title="">Clear</a>
+                                                    </div>
+                                                    <form className="job-tp">
+                                                    <select>
+                                                        {
+                                                            this.state.tipoImovel.map(tipo=> {
+                                                                return (
+                                                                    <option key={tipo.id} value={tipo.id}>{tipo.description}</option>
+                                                                );                                           
+                                                            })
+                                                        }                       
+                                                    </select>
+                                                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </form>
+                                                </div>
+                                                <div className="filter-dd">
+                                                    <div className="filter-ttl">
+                                                        <h3>Valor ($)</h3>
                                                         <a href="#" title="">Clear</a>
                                                     </div>
                                                     <div className="rg-slider">
@@ -103,18 +111,28 @@ class ImovelBuscar extends Component {
                                                 </div>
                                                 <div className="filter-dd">
                                                     <div className="filter-ttl">
-                                                        <h3>Experience Level</h3>
+                                                        <h3>Status</h3>
                                                         <a href="#" title="">Clear</a>
                                                     </div>
-                                                    <form className="job-tp">
-                                                        <select>
-                                                            <option>Select a experience level</option>
-                                                            <option>3 years</option>
-                                                            <option>4 years</option>
-                                                            <option>5 years</option>
-                                                        </select>
-                                                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                                    </form>
+                                                    <ul className="avail-checks">
+                                                        {
+                                                            this.state.statusImovel.map(status=> {
+                                                                return (                                                                    
+                                                                    <li>
+                                                                        <input type="radio" name={status.id} id={status.id} key={status.id} />
+                                                                        <label for="c1">
+                                                                            <span></span>
+                                                                        </label>
+                                                                        <small>{status.description}</small>
+                                                                    </li>    
+
+                                                                );                                           
+                                                            })
+                                                        } 
+                                                       
+                                                    </ul>
+
+                                                    
                                                 </div>
                                                 <div className="filter-dd">
                                                     <div className="filter-ttl">

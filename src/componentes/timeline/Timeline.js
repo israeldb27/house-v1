@@ -22,11 +22,20 @@ class Timeline extends Component {
                     </div>{/*--post-topbar end*/}
                     <div className="posts-section">
                         <div className="post-bar">
-                            <div className="post_topbar">
-                                <p>
+                            
+                            <div className="suggestion-usd">
+                                <img src="http://via.placeholder.com/35x35" alt="" />
+                                <div className="sgt-text">
+                                    <h4>John Doe</h4>
+                                    <span>PHP Developer</span>
+                                </div>
+                            </div>
+
+                            <div className="post_topbar">                               
+                                
                                 <img src={imovel} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
                                 <br />
-                                </p>
+                               
                                <div className="ed-opts">
                                     <a href="#" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
                                     <ul className="ed-options">
@@ -82,14 +91,23 @@ class Timeline extends Component {
                         </div>{/*--post-bar end*/}
 
                         <div className="post-bar">
+
+                            <div className="suggestion-usd">
+                                <img src="http://via.placeholder.com/35x35" alt="" />
+                                <div className="sgt-text">
+                                    <h4>John Doe</h4>
+                                    <span>PHP Developer</span>
+                                </div>
+                            </div>
+
                             <div className="post_topbar">
-                                <p>
+                               
                                 <Link to="/visualizarImovelDetalhes/10">
                                     <img src={imovel2} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
                                 </Link>    
                                 
                                 <br />
-                                </p>
+                              
                                <div className="ed-opts">
                                     <a href="#" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
                                     <ul className="ed-options">

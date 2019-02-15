@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ImovelUsuarioResponsavel from './ImovelUsuarioResponsavel';
 import OutrosImoveisUsuario from './OutrosImoveisUsuario';
 import israel from '../israel.jpg'
+import imovel2 from '../imovel2.jpg';
 
 class ImovelDetalhes extends Component {
     render() {
@@ -24,10 +25,35 @@ class ImovelDetalhes extends Component {
                                 <div className="col-lg-6">
                                     <div className="main-ws-sec">
                                         <div className="user-tab-sec">
-
                                             <h3>Luxo Residence Palace</h3> <br />
+                                                <div class="star-descp">
+                                                    <table> 
+                                                          <tr> 
+                                                            <td> $ 300.000,00</td>   
+                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                                            <td> <label className="a-tipoimovel">Venda</label> </td>
+                                                           </tr>  
+                                                           <tr>
+                                                           <br />     
+                                                                <h5 class="text-bold"><i className="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;&nbsp; Boa Viagem, Niteroi - RJ </h5>
+                                                                
+                                                           </tr>    
+                                                    </table> 
+                                                    
+                                                </div>
 
+                                                <ul className="skill-tags">
+                                                            <li><a href="#" title="">100 m²</a></li>
+                                                            <li><a href="#" title="">2 Quarto(s)</a></li>
+                                                            <li><a href="#" title="">1 Banheiro(s)</a></li>
+                                                            <li><a href="#" title="">1 Vaga(s)</a></li>
+                                                            <li><a href="#" title="">2 Suíte(s)</a></li>
+                                                </ul> 
+
+                                                
                                             <div className="tab-feed st2">
+                                            <br /> <br /> <br /> <br />
                                                 <ul>
                                                     <li data-tab="info-dd" className="active">
                                                         <a href="#" title="">
@@ -38,43 +64,29 @@ class ImovelDetalhes extends Component {
                                                     <li data-tab="feed-dd" >
                                                         <a href="#" title="">
                                                             <img src="images/ic1.png" alt="" />
-                                                            <span>Fotos</span>
+                                                            <span>Galeria de Fotos</span>
                                                         </a>
-                                                    </li>
-                                              
-                                                    <li data-tab="my-bids">
-                                                        <a href="#" title="">
-                                                            <img src="images/ic5.png" alt="" />
-                                                            <span>Ofertas</span>
-                                                        </a>
-                                                    </li>                                            
+                                                    </li>                                                                                          
 
                                                 </ul>
                                             </div> {/* tab-feed end */}
 
-                                            <div className="user-profile-ov">
-                                                <h4>Apartamento  &nbsp;&nbsp; - &nbsp;&nbsp;  Aluguel &nbsp;&nbsp; - &nbsp;&nbsp; Usado</h4> <br />
-                                                <div className="star-descp">
-                                                    <h1 style={{ fontSize: '24px' }}> $ 198.000,00 </h1>
-                                                    <br />
-                                                    <span>Boa Viagem, Niteroi, RJ</span>
-                                                    <br />
-                                                    <br />
-                                                    <span>Última Atualização: </span> 11/11/2018 
-                                                    <br />
-                                                    <br />
-                                                    <span>Data Cadastro: </span> 11/9/2018 
-                                                </div> {/*star-descp end */}
 
-                                                <div >
-                                                    <ul className="flw-hr">
-                                                        <li><a href="#" title="Favorito" ><i className="fa fa-bookmark-o"></i></a></li>
-                                                        <li><a href="#" title="Interessado" className="hre"><i className="fa fa-hand-pointer-o"></i></a></li>                        
-                                                        <li><a href="#" title="Compartilhar" ><i className="fa fa-share"></i></a></li> 
-                                                    </ul>
-                                                </div>
-                                            </div> {/*user-profile-ov end */}   
+                                            <div className="user-profile-ov">
+
+                                            <div class="epi-secright">
+                                                <ul class="bk-links" >
+                                                    <li><button style={{ border: 'none' }}><i class="fa fa-bookmark-o"></i></button></li>
+                                                    <li><button style={{ border: 'none' }}><i class="fa fa-hand-pointer-o"></i></button></li>
+                                                </ul>
+                                            </div>
+                      
+                                            <p>
+                                                <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
+                                                <br />
+                                            </p>                                            
                                            
+                                            </div>  
 
                                             <div className="product-feed-tab current" id="info-dd">
                                                 <div className="user-profile-ov">
@@ -86,86 +98,82 @@ class ImovelDetalhes extends Component {
                                                     <h3><a href="#" title="" className="lct-box-open">Mapa</a> </h3>
                                                    
                                                     <p>Inserir google maps aqui </p>
-                                                </div> {/*user-profile-ov end */}    
-                                           
+                                                </div> {/*user-profile-ov end */}   
+                                        
+
                                                 <div className="user-profile-ov st2">
-                                                    <h3><a href="#" title="" className="exp-bx-open">Características </a></h3>
+                                                    <h3><a href="#" title="" className="exp-bx-open">Taxas </a></h3>
                                                         <br />
-
-                                                        <table style={{fontSize: '14px'}}>
-                                                            <tr> 
-                                                                <td> <strong>Área (m²): </strong> </td> <td> &nbsp;&nbsp; </td> <td> 100</td> 
-                                                            </tr>
-                                                            
-                                                            <br />
-                                                     
-                                                            <br />
-
-                                                            <tr>    
-                                                                <td> <strong>Banheiro: </strong> </td> <td> &nbsp;&nbsp; </td> <td> 1</td>
-                                                            </tr>
-                                                            <br />
-                                                     
-                                                            <br />
-                                                            <tr> 
-                                                                <td> <strong>Garagem: </strong> </td> <td> &nbsp;&nbsp; </td> <td> 1</td> 
-                                                            </tr>
-                                                            <br />
-                                                     
-                                                            <br />
-                                                            <tr>    
-                                                                <td> <strong>Suíte: </strong> </td> <td> &nbsp;&nbsp; </td> <td> 1</td>
-                                                            </tr>
-                                                            <br />
-                                                         
-                                                    </table> 
+                                                         <ul className="skill-tags">                                                      
+                                                            <li><a href="#a" title="">IPTU: &nbsp;&nbsp; &nbsp;&nbsp; $ 12000,00</a></li>     
+                                                            <li><a href="#a" title="">Valor Condomínio: &nbsp;&nbsp; &nbsp;&nbsp; $ 700,00 </a></li> 
+                                                        </ul>  
 
                                                 </div> {/*user-profile-ov end */}
 
                                                 <div className="user-profile-ov st2">
                                                     <h3><a href="#" title="" className="exp-bx-open">Estatísticas </a></h3>
                                                     <br />
-                                                    <table style={{fontSize: '14px'}}>
-                                                            <tr> 
-                                                                <td > <strong>Total de Visualizações: </strong> </td> <td> &nbsp;&nbsp; &nbsp;&nbsp; </td> <td> 1</td>
-                                                            </tr>
-                                                            <br />
-                                                            <br />
-                                                            <tr> 
-                                                                <td> <strong>Total de Ofertas: </strong> </td> <td> &nbsp;&nbsp; &nbsp;&nbsp; </td> <td> 1</td>
-                                                            </tr>
-                                                            <br />
-                                                            <br />
-                                                            <tr> 
-                                                                <td> <strong>Total de Likes: </strong> </td> <td> &nbsp;&nbsp; &nbsp;&nbsp;</td> <td> 1</td>
-                                                            </tr>
-                                                            <br />
-                                                            <br />
-                                                            <tr> 
-                                                                <td> <strong>Total de Interessados: </strong> </td> <td> &nbsp;&nbsp; &nbsp;&nbsp; </td> <td> 1</td>
-                                                            </tr>
-                                                    </table>                                      
+
+                                                    <ul className="skill-tags">                                                      
+                                                        <li><a href="#a" title="">Total Visualizações: &nbsp;&nbsp; &nbsp;&nbsp; 10</a></li>     
+                                                        <li><a href="#a" title="">Total de Ofertas: &nbsp;&nbsp; &nbsp;&nbsp; 15 </a></li>  
+                                                        <li><a href="#a" title="">Total de Favoritos: &nbsp;&nbsp; &nbsp;&nbsp; 11 </a></li>   
+                                                        <li><a href="#a" title="">Total de Interessados: &nbsp;&nbsp; &nbsp;&nbsp; 23 </a></li>                                                         
+                                                    </ul> 
+                                     
                                                 </div> {/*user-profile-ov end */}
 
-                                                 <div className="user-profile-ov st2">
-                                                    <h3><a href="#" title="" className="exp-bx-open">Oferta </a></h3>                                                    
-                                                        <div className="notifications-list">
+                                                <div className="user-profile-ov st2">
+                                                    <h3><a href="#" title="" className="exp-bx-open">Oferta </a></h3>
+                                                    <div className="notifications-list">
 
-                                                         <div className="post-comment">                                                           
+                                                        <div className="post-comment">
                                                             <div className="comment_box">
                                                                 <br />
                                                                 <form>
-                                                                    <input type="text" placeholder="envie oferta em R$" maxLength="5"  />
+                                                                    <input type="text" placeholder="envie oferta em R$" maxLength="5" style={{backgroundColor: '#f8f9fa'}}/>
                                                                     <br /> <br />
-                                                                    <input type="textarea" placeholder="envie uma observação" />
+                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}} />
                                                                     <br /> <br />
                                                                     <button type="submit">Enviar</button>
                                                                 </form>
                                                             </div>
-                                                        </div>{/*--post-comment end*/}     
+                                                        </div>{/*--post-comment end*/}
 
+                                                    </div>
+                                                </div>
 
-                                                        </div>
+                                                <div className="user-profile-ov st2">
+                                                    <h3><a href="#" title="" className="exp-bx-open">Parceria </a></h3>
+                                                    <div className="notifications-list">
+                                                        <div className="post-comment">
+                                                            <div className="comment_box">
+                                                                <br />
+                                                                <form>                                                                  
+                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}} />
+                                                                    <br /> <br />
+                                                                    <button type="submit">Enviar</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>{/*--post-comment end*/}
+                                                    </div>
+                                                </div>
+
+                                                <div className="user-profile-ov st2">
+                                                    <h3><a href="#" title="" className="exp-bx-open">Intermediação </a></h3>
+                                                    <div className="notifications-list">
+                                                        <div className="post-comment">
+                                                            <div className="comment_box">
+                                                                <br />
+                                                                <form>                                                                  
+                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}}/>
+                                                                    <br /> <br />
+                                                                    <button type="submit">Enviar</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>{/*--post-comment end*/}
+                                                    </div>
                                                 </div>
 
                                                 <div className="user-profile-ov st2">
@@ -228,7 +236,7 @@ class ImovelDetalhes extends Component {
                                                             <div className="comment_box">
                                                                 <br />
                                                                 <form>
-                                                                    <input type="text" placeholder="Post a comment" />
+                                                                    <input type="text" placeholder="Post a comment" style={{backgroundColor: '#f8f9fa'}}/>
                                                                     <br /> <br />
                                                                     <button type="submit">Send</button>
                                                                 </form>
