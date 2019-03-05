@@ -4405,8 +4405,18 @@ a:hover {
 	height: 40px;
 	padding: 0 40px;
 }
+
+.cp-field select {
+	height: 40px;
+	padding: 0 40px;
+	width: 100%;
+	margin-top: 29.4px;
+}
+
 .cp-field input,
-.cp-field textarea {
+.cp-field textarea,
+.cp-field select,
+ {
 	width: 100%;
 	border: 1px solid #e5e5e5;
 }

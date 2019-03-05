@@ -22,38 +22,14 @@ class ImovelDetalhes extends Component {
 
                                     </div> {/*main-left-sidebar end */}
                                 </div>
+
+
                                 <div className="col-lg-6">
                                     <div className="main-ws-sec">
                                         <div className="user-tab-sec">
-                                            <h3>Luxo Residence Palace</h3> <br />
-                                                <div class="star-descp">
-                                                    <table> 
-                                                          <tr> 
-                                                            <td> $ 300.000,00</td>   
-                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                                                            <td> <label className="a-tipoimovel">Venda</label> </td>
-                                                           </tr>  
-                                                           <tr>
-                                                           <br />     
-                                                                <h5 class="text-bold"><i className="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;&nbsp; Boa Viagem, Niteroi - RJ </h5>
-                                                                
-                                                           </tr>    
-                                                    </table> 
-                                                    
-                                                </div>
 
-                                                <ul className="skill-tags">
-                                                            <li><a href="#" title="">100 m²</a></li>
-                                                            <li><a href="#" title="">2 Quarto(s)</a></li>
-                                                            <li><a href="#" title="">1 Banheiro(s)</a></li>
-                                                            <li><a href="#" title="">1 Vaga(s)</a></li>
-                                                            <li><a href="#" title="">2 Suíte(s)</a></li>
-                                                </ul> 
-
-                                                
-                                            <div className="tab-feed st2">
-                                            <br /> <br /> <br /> <br />
+                                           <div className="tab-feed st2">
+                                            
                                                 <ul>
                                                     <li data-tab="info-dd" className="active">
                                                         <a href="#" title="">
@@ -72,21 +48,68 @@ class ImovelDetalhes extends Component {
                                             </div> {/* tab-feed end */}
 
 
-                                            <div className="user-profile-ov">
+                                            <div className="posts-section">
+                                                <div className="post-bar">
+
+                                                    <div className="post_topbar">
+
+                                                        <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
+                                                        <br />
+
+                                                        <div className="ed-opts">
+                                                            <a href="#" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
+                                                            <ul className="ed-options">
+                                                                <li><a href="#" title="">Edit Post</a></li>
+                                                                <li><a href="#" title="">Unsaved</a></li>
+                                                                <li><a href="#" title="">Unbid</a></li>
+                                                                <li><a href="#" title="">Close</a></li>
+                                                                <li><a href="#" title="">Hide</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div className="epi-sec">
+
+                                                        <ul className="descp">
+                                                            <li><img src="images/icon8.png" alt="" /><span>Boa Viagem, Niteroi - RJ</span></li>
+                                                        </ul>
+                                                        <ul className="bk-links">
+                                                            <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
+                                                            <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="job_descp">
+                                                        <h3>Luxo Residence Palace</h3>
+                                                        <ul className="job-dt">
+                                                            <li><a href="#" title="">Venda</a></li>
+                                                            <li><span>$ 30.000,00</span></li>
+                                                        </ul>
+                                                        <ul className="job-dt" style={{ fontSize: '12px' }}>
+                                                            <li><p>IPTU </p> $ 1200000,00 </li>
+                                                            <li> </li>
+                                                            <li><p>Condomínio </p> $ 700,00 </li>
+                                                        </ul>
+                                                      
+                                                        <ul className="skill-tags">
+                                                            <li><a href="#" title="">100 m²</a></li>
+                                                            <li><a href="#" title="">2 Quarto(s)</a></li>
+                                                            <li><a href="#" title="">1 Banheiro(s)</a></li>
+                                                            <li><a href="#" title="">1 Vaga(s)</a></li>
+                                                            <li><a href="#" title="">2 Suíte(s)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="job-status-bar">
+                                                        <ul class="bk-links" >
+                                                            <li><button style={{ border: 'none' }}><i class="fa fa-bookmark-o"></i></button></li>
+                                                             <li><button style={{ border: 'none' }}><i class="fa fa-hand-pointer-o"></i></button></li>
+                                                        </ul>
+                                                      
+                                                    </div>
+                                                </div>{/*--post-bar end*/}
+                                            </div>
 
                                             <div class="epi-secright">
-                                                <ul class="bk-links" >
-                                                    <li><button style={{ border: 'none' }}><i class="fa fa-bookmark-o"></i></button></li>
-                                                    <li><button style={{ border: 'none' }}><i class="fa fa-hand-pointer-o"></i></button></li>
-                                                </ul>
+                                               
                                             </div>
-                      
-                                            <p>
-                                                <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
-                                                <br />
-                                            </p>                                            
-                                           
-                                            </div>  
 
                                             <div className="product-feed-tab current" id="info-dd">
                                                 <div className="user-profile-ov">

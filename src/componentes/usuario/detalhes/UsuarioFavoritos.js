@@ -3,10 +3,11 @@ import UsuarioResumoDetalhes from '../UsuarioResumoDetalhes';
 import UsuarioResumoContatos from '../UsuarioResumoContatos';
 import ImovelDestaqueUsuario from '../../imovel/ImovelDestaqueUsuario';
 import { Link } from 'react-router-dom';
-import imovel from '../../imovel.jpg';
+import imovel from '../../imovel2.jpg';
 
 
-class UsuarioImoveis extends Component {
+
+class UsuarioFavoritos extends Component {
   render() {
     return (
         <main>
@@ -54,13 +55,13 @@ class UsuarioImoveis extends Component {
                                                 </Link>
                                             </li>
 
-                                            <li data-tab="saved-jobs" className="active">
+                                            <li data-tab="saved-jobs" >
                                                 <Link to="/usuarioImoveis/10" title="">
                                                     <img src="images/ic4.png" alt="" />
                                                     <span>Imóveis</span>
                                                 </Link>
                                             </li>
-                                            <li data-tab="my-bids">
+                                            <li data-tab="my-bids" className="active">
                                                 <Link to="/usuarioFavoritos/10" title="">
                                                     <img src="images/ic5.png" alt="" />
                                                     <span>Favoritos</span>
@@ -206,8 +207,10 @@ class UsuarioImoveis extends Component {
                 </div>
             </div>
         </main>     
-      )
+
+        
+    )
   }
 }
 
-export default UsuarioImoveis
+export default UsuarioFavoritos

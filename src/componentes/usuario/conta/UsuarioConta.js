@@ -12,7 +12,7 @@ class UsuarioConta extends Component {
                         <div class="acc-leftbar">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <Link class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" to="/usuarioConta/10" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Conta</Link>
-                                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
+                                <Link class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" to="/usuarioFotoPrincipal/10" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-file-image-o"></i>Foto Principal</Link>
                                 <Link class="nav-item nav-link " id="nav-password-tab" data-toggle="tab" to="/usuarioPassword/10" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Mudar Senha</Link>                                
                                 <Link class="nav-item nav-link" id="privacy" data-toggle="tab" to="/usuarioPrivacidade/10" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacidade</Link>                                
                                 <Link class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" to="/usuarioDesativarConta/10" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Desativar Conta</Link>
@@ -28,29 +28,26 @@ class UsuarioConta extends Component {
                                         <div class="cp-field">
                                             <h5>Nome</h5>
                                             <div class="cpp-fiel">
-                                                <input type="text" name="old-password" placeholder="Nome" />                                                
+                                                <input type="text" name="old-password" placeholder="Informe seu nome" />                                                
                                             </div>
                                         </div>
                                         <div class="cp-field">
                                             <h5>Email</h5>
                                             <div class="cpp-fiel">
-                                                <input type="text" name="new-password" placeholder="Email" />
+                                                <input type="text" name="new-password" placeholder="Informe seu email" />
                                             </div>
                                         </div>
                                         <div class="cp-field">
-                                            <h5>Repeat Password</h5>
+                                            <h5>Localização</h5>
                                             <div class="cpp-fiel">
-                                                <input type="text" name="repeat-password" placeholder="Repeat Password" />
-                                                <i class="fa fa-lock"></i>
+                                                <input type="text" name="repeat-password" placeholder="Informe sua localização" />
+                                                <i class="fa fa-map-marker"></i>
                                             </div>
                                         </div>
-                                        <div class="cp-field">
-                                            <h5><a href="#" title="">Forgot Password?</a></h5>
-                                        </div>
+                                     
                                         <div class="save-stngs pd2">
                                             <ul>
-                                                <li><button type="submit">Save Setting</button></li>
-                                                <li><button type="submit">Restore Setting</button></li>
+                                                <li><button type="submit">Salvar</button></li>                                                
                                             </ul>
                                         </div>{/*save-stngs end*/}
                                     </form>

@@ -36,6 +36,28 @@ class UsuarioInfoGerais extends Component {
                 
             </div> {/*user-profile-ov end */}
 
+            {/* Esta aba sera usada para informar quantos e quais imoveis o usuario corretor ou imobiliaria vendeu ou conseguiu alugar por exemplo */}
+           <div className="user-profile-ov">
+                <h3><a href="#" title="" className="ed-box-open">Trabalhos realizados</a> </h3>
+
+                <div className="suggestions-list">
+                    <div className="suggestion-usd">
+                        <img src="http://via.placeholder.com/35x35" alt="" />
+                        <div className="sgt-text">
+                            <h4>Pousada Sal e Sol</h4>
+                            <span>Venda</span>
+                        </div>                  
+                    </div>
+
+                    <div className="suggestion-usd">
+                        <img src="http://via.placeholder.com/35x35" alt="" />
+                        <div className="sgt-text">
+                            <h4>Hotel Plaza</h4>
+                            <span>Aluguel</span>
+                        </div>                
+                    </div>
+                </div>
+            </div> {/*user-profile-ov end */}
 
             <div className="user-profile-ov">
                 <h3><a href="#" title="" className="ed-box-open">Recomendações</a> </h3>
@@ -53,7 +75,6 @@ class UsuarioInfoGerais extends Component {
                         </span>
                     </div>
 
-
                     <div className="suggestion-usd">
                         <img src="http://via.placeholder.com/35x35" alt="" />
                         <div className="sgt-text">
@@ -65,10 +86,7 @@ class UsuarioInfoGerais extends Component {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
                         </span>
                     </div>
-
                 </div>
-
-
             </div> {/*user-profile-ov end */}
 
             <div className="user-profile-ov">

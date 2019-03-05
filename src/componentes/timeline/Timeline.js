@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import TopProfiles from './TopProfiles';
 import { Link } from 'react-router-dom';
 import imovel from '../imovel.jpg';
 import imovel2 from '../imovel2.jpg';
 
 class Timeline extends Component {
     render() {
-        return (
-            
+        return (            
                 <div className="main-ws-sec">
                     <div className="post-topbar">
                         <div className="user-picy">

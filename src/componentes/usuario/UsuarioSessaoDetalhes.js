@@ -3,9 +3,7 @@ import UsuarioResumoDetalhes from './UsuarioResumoDetalhes';
 import UsuarioResumoContatos from './UsuarioResumoContatos';
 import ImovelDestaqueUsuario from '../imovel/ImovelDestaqueUsuario';
 import UsuarioInfoGerais from './detalhes/UsuarioInfoGerais';
-import UsuarioFeed from './detalhes/UsuarioFeed';
-import UsuarioImoveis from './detalhes/UsuarioImoveis';
-import UsuarioInteresses from './detalhes/UsuarioInteresses';
+import { Link } from 'react-router-dom';
 
 class UsuarioSessaoDetalhes extends Component {
     render() {
@@ -38,58 +36,41 @@ class UsuarioSessaoDetalhes extends Component {
 												<li><i className="fa fa-star-half-o"></i></li>
 											</ul>
 											<a href="#" title="">Status</a>
-										</div> {/*star-descp end */}										
-
-									</div> {/*user-tab-sec end */}
-									
+										</div> {/*star-descp end */}
+									</div> {/*user-tab-sec end */}									
 
 									<div className="tab-feed st2">
 											<ul>
-                                            <li data-tab="info-dd" className="active">
-													<a href="#" title="">
+												<li data-tab="info-dd" className="active">
+													<Link to="/usuarioSessaoDetalhes/10" title="">
 														<img src="images/ic2.png" alt="" />
 														<span>Info</span>
-													</a>
+													</Link>
 												</li>
-                                                <li data-tab="feed-dd" >
-													<a href="#" title="">
+												<li data-tab="feed-dd" >
+													<Link to="/usuarioFeed/10" title="">
 														<img src="images/ic1.png" alt="" />
 														<span>Feed</span>
-													</a>
+													</Link>
 												</li>
-												
+
 												<li data-tab="saved-jobs">
-													<a href="#" title="">
+													<Link to="/usuarioImoveis/10" title="">
 														<img src="images/ic4.png" alt="" />
 														<span>Imóveis</span>
-													</a>
+													</Link>
 												</li>
 												<li data-tab="my-bids">
-													<a href="#" title="">
+													<Link to="/" title="">
 														<img src="images/ic5.png" alt="" />
-														<span>Interesses</span>
-													</a>
+														<span>Favoritos</span>
+													</Link>
 												</li>
-												<li data-tab="portfolio-dd">
-													<a href="#" title="">
-														<img src="images/ic3.png" alt="" />
-														<span>Portfolio</span>
-													</a>
-												</li>
-											
 											</ul>
-									</div> {/* tab-feed end */}
-                                    
+									</div> {/* tab-feed end */}                                    
                                   
 									<UsuarioInfoGerais />
-
-									<UsuarioFeed />									                                
-									
-									<UsuarioImoveis />
-
-									<UsuarioInteresses />
-
-									
+								
 									
 								</div> {/*main-ws-sec end */}
 							</div>
@@ -101,16 +82,13 @@ class UsuarioSessaoDetalhes extends Component {
 								
 									<ImovelDestaqueUsuario /> 
 
-
 								</div> {/*right-sidebar end */}
 							</div>
 						</div>
 					</div> {/* main-section-data end */}
 				</div> 
 			</div>
-		</main>
-  
-          
+		</main>  
         );
     }
 }
