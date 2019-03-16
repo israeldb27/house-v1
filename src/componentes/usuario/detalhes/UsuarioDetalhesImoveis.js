@@ -3,10 +3,10 @@ import UsuarioResumoDetalhes from '../UsuarioResumoDetalhes';
 import UsuarioResumoContatos from '../UsuarioResumoContatos';
 import ImovelDestaqueUsuario from '../../imovel/ImovelDestaqueUsuario';
 import { Link } from 'react-router-dom';
-import imovel from '../../imovel.jpg';
+import imovel from '../../fotos/imovel.jpg';
 
 
-class UsuarioImoveis extends Component {
+class UsuarioDetalhesImoveis extends Component {
   render() {
     return (
         <main>
@@ -40,33 +40,27 @@ class UsuarioImoveis extends Component {
                                     </div> {/*user-tab-sec end */}
 
                                     <div className="tab-feed st2">
-                                        <ul>
-                                            <li data-tab="info-dd" >
-                                                <Link to="/usuarioSessaoDetalhes/10" title="">
-                                                    <img src="images/ic2.png" alt="" />
-                                                    <span>Info</span>
-                                                </Link>
-                                            </li>
-                                            <li data-tab="feed-dd" >
-                                                <Link to="/usuarioFeed/10" title="">
-                                                    <img src="images/ic1.png" alt="" />
-                                                    <span>Feed</span>
-                                                </Link>
-                                            </li>
+                                    <ul>
+                                        <li data-tab="info-dd" >
+                                            <Link to="/usuarioDetalhes/10" title="">
+                                                <img src="images/ic2.png" alt="" />
+                                                <span>Info</span>
+                                            </Link>
+                                        </li>
+                                        <li data-tab="feed-dd" >
+                                            <Link to="/usuarioDetalhesFeed/10" title="">
+                                                <img src="images/ic1.png" alt="" />
+                                                <span>Feed</span>
+                                            </Link>
+                                        </li>
 
-                                            <li data-tab="saved-jobs" className="active">
-                                                <Link to="/usuarioImoveis/10" title="">
-                                                    <img src="images/ic4.png" alt="" />
-                                                    <span>Imóveis</span>
-                                                </Link>
-                                            </li>
-                                            <li data-tab="my-bids">
-                                                <Link to="/usuarioFavoritos/10" title="">
-                                                    <img src="images/ic5.png" alt="" />
-                                                    <span>Favoritos</span>
-                                                </Link>
-                                            </li>
-                                        </ul>
+                                        <li data-tab="saved-jobs" className="active">
+                                            <Link to="/usuarioDetalhesImoveis/10" title="">
+                                                <img src="images/ic4.png" alt="" />
+                                                <span>Imóveis</span>
+                                            </Link>
+                                        </li>											
+                                    </ul>
                                     </div> {/* tab-feed end */}
 
                                     <div className="post-bar">
@@ -210,4 +204,4 @@ class UsuarioImoveis extends Component {
   }
 }
 
-export default UsuarioImoveis
+export default UsuarioDetalhesImoveis

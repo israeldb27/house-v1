@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import marina from '../marina.jpg';
+import marli from '../fotos/marli.jpg';
+import { Link } from 'react-router-dom';
 
 class Sugestoes extends Component {
     render() {
@@ -11,10 +12,16 @@ class Sugestoes extends Component {
                 </div>{/*--sd-title end*/}
                 <div className="suggestions-list">
                     <div className="suggestion-usd">
-                        <img src={marina} alt="" style={{width: '35px', height: '35px;'}} />
+                        <Link to="/usuarioDetalhes/10">
+                            <img src={marli} alt="" style={{width: '35px', height: '35px;'}} />
+                        </Link>                        
                         <div className="sgt-text">
-                            <h4>Marina Niemeyer </h4>
-                            <span>Graphic Designer</span>
+                            <h4>
+                                <Link to="/usuarioDetalhes/10">
+                                    Marli Barreto
+                                </Link> 
+                            </h4>
+                            <span>Corretor</span>
                         </div>
                         <span><i className="la la-plus"></i></span>
                     </div>
@@ -59,7 +66,7 @@ class Sugestoes extends Component {
                         <span><i className="la la-plus"></i></span>
                     </div>
                     <div className="view-more">
-                        <a href="#" title="">View More</a>
+                        <a href="#" title="">Ver Mais</a>
                     </div>
                 </div>
             </div>

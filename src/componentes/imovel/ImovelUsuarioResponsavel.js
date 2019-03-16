@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import israel from '../israel.jpg'
+import israel from '../fotos/israel.jpg'
 
 class ImovelUsuarioResponsavel extends Component {
     render() {

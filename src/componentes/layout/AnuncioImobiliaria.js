@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import imobiliaria from '../zirtaeb.png';
-import imobiliaria2 from '../carvas.png';
+import imobiliaria from '../fotos/zirtaeb.png';
+import imobiliaria2 from '../fotos/carvas.png';
 
 class AnuncioImobiliaria extends Component {
     render() {

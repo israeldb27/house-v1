@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import UsuarioResumoDetalhes from './UsuarioResumoDetalhes';
-import UsuarioResumoContatos from './UsuarioResumoContatos';
-import ImovelDestaqueUsuario from '../imovel/ImovelDestaqueUsuario';
-import UsuarioInfoGerais from './sessao/UsuarioInfoGerais';
+import UsuarioResumoDetalhes from '../UsuarioResumoDetalhes';
+import UsuarioResumoContatos from '../UsuarioResumoContatos';
+import ImovelDestaqueUsuario from '../../imovel/ImovelDestaqueUsuario';
+import UsuarioInfoGerais from '../sessao/UsuarioInfoGerais';
 import { Link } from 'react-router-dom';
-import UsuarioSessaoMenuFuncionalidades from './UsuarioSessaoMenuFuncionalidades';
 
-class UsuarioSessaoDetalhes extends Component {
+class UsuarioDetalhes extends Component {
     render() {
         return (
             <main>
@@ -43,30 +42,24 @@ class UsuarioSessaoDetalhes extends Component {
 									<div className="tab-feed st2">
 											<ul>
 												<li data-tab="info-dd" className="active">
-													<Link to="/usuarioSessaoDetalhes/10" title="">
+													<Link to="/usuarioDetalhes/10" title="">
 														<img src="images/ic2.png" alt="" />
 														<span>Info</span>
 													</Link>
 												</li>
 												<li data-tab="feed-dd" >
-													<Link to="/usuarioFeed/10" title="">
+													<Link to="/usuarioDetalhesFeed/10" title="">
 														<img src="images/ic1.png" alt="" />
 														<span>Feed</span>
 													</Link>
 												</li>
 
 												<li data-tab="saved-jobs">
-													<Link to="/usuarioImoveis/10" title="">
+													<Link to="/usuarioDetalhesImoveis/10" title="">
 														<img src="images/ic4.png" alt="" />
 														<span>Imóveis</span>
 													</Link>
-												</li>
-												<li data-tab="my-bids">
-													<Link to="/" title="">
-														<img src="images/ic5.png" alt="" />
-														<span>Favoritos</span>
-													</Link>
-												</li>
+												</li>											
 											</ul>
 									</div> {/* tab-feed end */}                                    
                                   
@@ -79,8 +72,6 @@ class UsuarioSessaoDetalhes extends Component {
 									<div className="message-btn">
 										<a href="#" title=""><i className="fa fa-envelope"></i> Message</a>
 									</div>
-
-									<UsuarioSessaoMenuFuncionalidades /> 
 								
 									<ImovelDestaqueUsuario /> 
 
@@ -95,4 +86,4 @@ class UsuarioSessaoDetalhes extends Component {
     }
 }
 
-export default UsuarioSessaoDetalhes;
+export default UsuarioDetalhes;

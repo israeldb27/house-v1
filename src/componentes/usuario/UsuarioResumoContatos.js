@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 class UsuarioResumoContatos extends Component {
     render() {
@@ -51,7 +53,7 @@ class UsuarioResumoContatos extends Component {
                         <span><i class="la la-plus"></i></span>
                     </div>
                     <div class="view-more">
-                        <a href="#" title="">Ver Todos</a>
+                        <Link to="/listaContatosUsuario/10" title="">Ver Todos</Link>
                     </div>
                 </div> {/*suggestions-list end */}
             </div> 

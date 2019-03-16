@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import  '../../styles.css';
 import '../includes/css/line-awesome-font-awesome.css';
+import logo from '../fotos/logo.png'
 
 
 
@@ -14,7 +15,7 @@ class Header extends Component {
 				<div className="container">
 					<div className="header-data">
 						<div className="logo">
-							<a href="index.html" title=""><img src="images/logo.png" alt="" /></a>
+							<Link to="/" title=""><img src={logo} alt="" /></Link>
 						</div>
 						<div className="search-bar">
 							<form>

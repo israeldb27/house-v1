@@ -8,8 +8,8 @@ import AcaoImovelEnum from '../common/AcaoImovelEnum';
 import StatusImovelEnum from '../common/StatusImovelEnum';
 
 import { Link } from 'react-router-dom';
-import imovel from '../imovel.jpg';
-import imovel2 from '../imovel2.jpg';
+import imovel from '../fotos/imovel.jpg';
+import imovel2 from '../fotos/imovel2.jpg';
 
 class ImovelBuscar extends Component {
     constructor() {

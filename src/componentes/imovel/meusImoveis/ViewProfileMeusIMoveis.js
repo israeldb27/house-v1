@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import israel from '../../israel.jpg'
+import israel from '../../fotos/israel.jpg'
 
 class ViewProfileMeusIMoveis extends Component {
     render() {

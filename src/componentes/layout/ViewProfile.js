@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import israel from '../israel.jpg'
+import israel from '../fotos/israel.jpg'
 
 class ViewProfile extends Component {
     render() {
@@ -15,7 +15,11 @@ class ViewProfile extends Component {
                         </div>
                     </div>{/*--username-dt end*/}
                     <div className="user-specs">
-                        <h3>Israel Barreto</h3>
+                        <h3>
+                            <Link to="/usuarioSessaoDetalhes/10">
+                                Israel Barreto
+                            </Link>    
+                        </h3>
                         <span>Corretor</span>
                     </div>
                 </div>{/*--user-profile end*/}
@@ -29,23 +33,25 @@ class ViewProfile extends Component {
                         <span>15</span>
                     </li>
                     <li>
-                    <h4>
-                            <Link to="">
-                                Seguindo
+                        <h4>
+                            <Link to="/listaContatosUsuario/:id">
+                                Contatos
                             </Link>
                         </h4>
                         <span>34</span>
                     </li>
                     <li>   
                         <h4>
-                            <Link to="">
+                            <Link to="/listarSeguidores/20">
                                 Seguidores
                             </Link>
                         </h4>
                         <span>300</span>
                     </li>
                     <li>
-                        <a href="#" title="">View Profile</a>
+                        <Link to="/usuarioSessaoDetalhes/10">
+                            View Profile 
+                        </Link>                        
                     </li>
                 </ul>
             </div>

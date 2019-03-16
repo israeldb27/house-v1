@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ImovelUsuarioResponsavel from './ImovelUsuarioResponsavel';
 import OutrosImoveisUsuario from './OutrosImoveisUsuario';
-import israel from '../israel.jpg'
-import imovel2 from '../imovel2.jpg';
+import israel from '../fotos/israel.jpg'
+import imovel2 from '../fotos/imovel2.jpg';
+import AnuncioImobiliaria from '../layout/AnuncioImobiliaria';
+import AnuncioImoveis from '../layout/AnuncioImoveis';
 
 class ImovelDetalhes extends Component {
     render() {
@@ -78,7 +80,7 @@ class ImovelDetalhes extends Component {
                                                         </ul>
                                                     </div>
                                                     <div className="job_descp">
-                                                        <h3>Luxo Residence Palace</h3>
+                                                        <h3 style={{fontSize: '26px'}}>Luxo Residence Palace</h3>
                                                         <ul className="job-dt">
                                                             <li><a href="#" title="">Venda</a></li>
                                                             <li><span>$ 30.000,00</span></li>
@@ -1070,9 +1072,18 @@ class ImovelDetalhes extends Component {
                                                     </div> {/*gallery_pf end */}
                                                 </div> {/*portfolio-gallery-sec end */}
                                             </div> {/*product-feed-tab end */}
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
+
+                                <div className="col-lg-3 pd-right-none no-pd">
+                                        <div className="right-sidebar"> 
+                                            <AnuncioImobiliaria />
+
+                                            <AnuncioImoveis />
+                                        </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -26,10 +26,25 @@ import ImovelAdicionarPasso2 from './componentes/imovel/adicionar/ImovelAdiciona
 import ImovelAdicionarPasso3 from './componentes/imovel/adicionar/ImovelAdicionarPasso3';
 import ImovelAdicionarPasso4 from './componentes/imovel/adicionar/ImovelAdicionarPasso4';
 import UsuarioFotoPrincipal from './componentes/usuario/conta/UsuarioFotoPrincipal';
-import UsuarioFeed from './componentes/usuario/detalhes/UsuarioFeed';
-import UsuarioInfoGerais from './componentes/usuario/detalhes/UsuarioInfoGerais';
-import UsuarioImoveis from './componentes/usuario/detalhes/UsuarioImoveis';
-import UsuarioFavoritos from './componentes/usuario/detalhes/UsuarioFavoritos';
+import UsuarioFeed from './componentes/usuario/sessao/UsuarioFeed';
+import UsuarioInfoGerais from './componentes/usuario/sessao/UsuarioInfoGerais';
+import UsuarioImoveis from './componentes/usuario/sessao/UsuarioImoveis';
+import UsuarioFavoritos from './componentes/usuario/sessao/UsuarioFavoritos';
+import UsuarioDetalhes from './componentes/usuario/detalhes/UsuarioDetalhes';
+import UsuarioDetalhesImoveis from './componentes/usuario/detalhes/UsuarioDetalhesImoveis';
+import UsuarioDetalhesFeed from './componentes/usuario/detalhes/UsuarioDetalhesFeed';
+import OfertasRecebidas from './componentes/usuario/sessao/ofertas/OfertasRecebidas';
+import OfertasEnviadas from './componentes/usuario/sessao/ofertas/OfertasEnviadas';
+import VisualizacoesRecebidas from './componentes/usuario/sessao/visualizacoes/VisualizacoesRecebidas';
+import VisualizacoesEnviadas from './componentes/usuario/sessao/visualizacoes/VisualizacoesEnviadas';
+import ParceriasRecebidas from './componentes/usuario/sessao/parcerias/ParceriasRecebidas';
+import ParceriasEnviadas from './componentes/usuario/sessao/parcerias/ParceriasEnviadas';
+import ParceriasFechadas from './componentes/usuario/sessao/parcerias/ParceriasFechadas';
+import IntermediacoesRecebidas from './componentes/usuario/sessao/intermediacoes/IntermediacoesRecebidas';
+import IntermediacoesEnviadas from './componentes/usuario/sessao/intermediacoes/IntermediacoesEnviadas';
+import IntermediacoesFechadas from './componentes/usuario/sessao/intermediacoes/IntermediacoesFechadas';
+import IndicacoesRecebidas from './componentes/usuario/sessao/indicacoes/IndicacoesRecebidas';
+import IndicacoesEnviadas from './componentes/usuario/sessao/indicacoes/IndicacoesEnviadas';
 
 ReactDOM.render(
     
@@ -60,11 +75,40 @@ ReactDOM.render(
                         <Route path="/imovelAdicionarPasso3"  component={ImovelAdicionarPasso3}/> 
                         <Route path="/imovelAdicionarPasso4"  component={ImovelAdicionarPasso4}/>
 
+                        {/*INICIO -Links para o Usuario Sessao Detalhes  */}
                         <Route path="/usuarioInfoGerais/:id"  component={UsuarioInfoGerais}/>
                         <Route path="/usuarioFeed/:id"  component={UsuarioFeed}/>
                         <Route path="/usuarioImoveis/:id"  component={UsuarioImoveis}/>
-                        <Route path="/usuarioFavoritos/:id"  component={UsuarioFavoritos}/>                        
+                        <Route path="/usuarioFavoritos/:id"  component={UsuarioFavoritos}/>   
+                        {/*FIM -Links para o Usuario Sessao Detalhes  */}
+
+                         {/*INICIO -Links para o Usuario  Detalhes  */}
+                         <Route path="/usuarioDetalhes/:id"  component={UsuarioDetalhes}/>  
+                         <Route path="/usuarioDetalhesFeed/:id"  component={UsuarioDetalhesFeed}/> 
+                         <Route path="/usuarioDetalhesImoveis/:id"  component={UsuarioDetalhesImoveis}/> 
+                         {/*FIM -Links para o Usuario  Detalhes  */}
+
+                         {/*INICIO -Links para o Menu Usuario  */}
+                         <Route path="/ofertasRecebidas/:id"  component={OfertasRecebidas}/>
+                         <Route path="/ofertasEnviadas/:id"  component={OfertasEnviadas}/>
+
+                         <Route path="/visualizacoesRecebidas/:id"  component={VisualizacoesRecebidas}/>
+                         <Route path="/visualizacoesEnviadas/:id"  component={VisualizacoesEnviadas}/>
+                         
+                         <Route path="/parceriasRecebidas/:id"  component={ParceriasRecebidas}/>
+                         <Route path="/parceriasEnviadas/:id"  component={ParceriasEnviadas}/>
+                         <Route path="/parceriasFechadas/:id"  component={ParceriasFechadas}/>                         
+                         
+                         <Route path="/intermediacoesRecebidas/:id"  component={IntermediacoesRecebidas}/>
+                         <Route path="/intermediacoesEnviadas/:id"  component={IntermediacoesEnviadas}/>
+                         <Route path="/intermediacoesFechadas/:id"  component={IntermediacoesFechadas}/>   
+
+                         <Route path="/indicacoesRecebidas/:id"  component={IndicacoesRecebidas}/>   
+                         <Route path="/indicacoesEnviadas/:id"  component={IndicacoesEnviadas}/>   
+
+                         {/*FIM - Links para o Menu Usuario    */}
                         
+
                     </Switch>                   
                 </div>
             </Router>

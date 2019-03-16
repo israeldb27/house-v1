@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import casa from '../casa.jpg';
+import casa from '../fotos/casa.jpg';
 
 class ImovelDestaqueUsuario extends Component {
     render() {

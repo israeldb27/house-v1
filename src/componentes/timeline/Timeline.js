@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import imovel from '../imovel.jpg';
-import imovel2 from '../imovel2.jpg';
+import imovel from '../fotos/imovel.jpg';
+import imovel2 from '../fotos/imovel2.jpg';
 
 class Timeline extends Component {
     render() {
@@ -31,7 +31,9 @@ class Timeline extends Component {
 
                             <div className="post_topbar">                               
                                 
-                                <img src={imovel} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
+                                <Link to="/visualizarImovelDetalhes/10">
+                                    <img src={imovel} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
+                                </Link>  
                                 <br />
                                
                                <div className="ed-opts">
@@ -102,7 +104,7 @@ class Timeline extends Component {
                                
                                 <Link to="/visualizarImovelDetalhes/10">
                                     <img src={imovel2} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
-                                </Link>    
+                                </Link>  
                                 
                                 <br />
                               
@@ -346,8 +348,7 @@ class Timeline extends Component {
                             </div>
                         </div>{/*--process-comm end*/}
                     </div>{/*--posts-section end*/}
-                </div>
-            
+                </div>            
         );
     }
 }

@@ -8,33 +8,27 @@ class ImoveisVisualizadosResumo extends Component {
                     <h3>Imóveis Visualizados</h3>
                     <i className="la la-ellipsis-v"></i>
                 </div>
-                <div className="jobs-list">
-                    <div className="job-info">
-                        <div className="job-details">
-                            <h3>Senior Product Designer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                
+                <div className="suggestions-list">                  
+                    <div className="suggestion-usd">
+                        <img src="http://via.placeholder.com/35x35" alt="" />
+                        <div className="sgt-text">
+                            <h4>Copacabana Palace</h4>
+                            <span>Condomínio</span>
                         </div>
-                        <div className="hr-rate">
-                            <span>$25/hr</span>
+                        <span><i className="la la-plus"></i></span>
+                    </div>
+                    <div className="suggestion-usd">
+                        <img src="http://via.placeholder.com/35x35" alt="" />
+                        <div className="sgt-text">
+                            <h4>Plaza Center </h4>
+                            <span>Edificio Comercial</span>
                         </div>
-                    </div>{/*--job-info end*/}
-                    <div className="job-info">
-                        <div className="job-details">
-                            <h3>Senior UI / UX Designer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                        </div>
-                        <div className="hr-rate">
-                            <span>$25/hr</span>
-                        </div>
-                    </div>{/*--job-info end*/}
-                    <div className="job-info">
-                        <div className="job-details">
-                            <h3>Junior Seo Designer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                        </div>
-                        <div className="hr-rate">
-                            <span>$25/hr</span>
-                        </div>
+                        <span><i className="la la-plus"></i></span>
+                    </div>
+                    
+                    <div className="view-more">
+                        <a href="#" title="">Ver Mais</a>
                     </div>
                 </div>
             </div>
