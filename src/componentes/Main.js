@@ -7,6 +7,8 @@ import ImoveisVisualizadosResumo from './layout/ImoveisVisualizadosResumo';
 import ImoveisFavoritosResumo from './layout/ImoveisFavoritosResumo';
 import AnuncioImoveis from './layout/AnuncioImoveis';
 import AnuncioImobiliaria from './layout/AnuncioImobiliaria';
+import ImovelIndicacoesResumo from './layout/ImovelIndicacoesResumo';
+import ImoveisOfertasResumo from './layout/ImoveisOfertasResumo';
 
 class Main extends Component {
     render() {
@@ -38,9 +40,11 @@ class Main extends Component {
 
                                        <AnuncioImoveis /> 
 
-                                       <ImoveisVisualizadosResumo />                                        
+                                       <ImoveisVisualizadosResumo />  
+
+                                       <ImoveisOfertasResumo />                                      
                                         
-                                        <ImoveisFavoritosResumo />
+                                       <ImovelIndicacoesResumo />
 
                                     </div>
                                 </div>

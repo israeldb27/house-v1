@@ -106,11 +106,10 @@ class OfertasRecebidas extends Component {
                                             <div className="job-status-bar">
                                                 <ul className="like-com">
                                                     <li>
-                                                        <a href="#"><i className="la la-heart"></i> Like</a>
-                                                        <img src="images/liked-img.png" alt="" />
+                                                        <a href="#"><i className="la la-heart"></i> &nbsp;&nbsp;&nbsp;&nbsp;  </a>                                                      
                                                         <span>25</span>
                                                     </li>
-                                                    <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment 15</a></li>
+                                                    <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Ofertas</a></li>
                                                 </ul>
                                                 <a><i className="la la-eye"></i>Views 50</a>
                                             </div>

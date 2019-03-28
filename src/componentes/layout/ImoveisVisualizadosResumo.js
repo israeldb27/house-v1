@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ImoveisVisualizadosResumo extends Component {
     render() {
@@ -8,7 +9,7 @@ class ImoveisVisualizadosResumo extends Component {
                     <h3>Imóveis Visualizados</h3>
                     <i className="la la-ellipsis-v"></i>
                 </div>
-                
+
                 <div className="suggestions-list">                  
                     <div className="suggestion-usd">
                         <img src="http://via.placeholder.com/35x35" alt="" />
@@ -28,7 +29,10 @@ class ImoveisVisualizadosResumo extends Component {
                     </div>
                     
                     <div className="view-more">
-                        <a href="#" title="">Ver Mais</a>
+                        <Link to="/visualizacoesRecebidas/10">
+                            Ver Mais
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
