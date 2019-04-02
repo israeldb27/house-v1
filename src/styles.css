@@ -2751,6 +2751,7 @@ footer {
 	float: left;
 	width: 100%;
 	margin-bottom: 47px;
+	background-color: #ffffff;
 }
 .tab-feed ul {
 	float: left;
@@ -2762,7 +2763,13 @@ footer {
 	text-align: center;
 }
 .tab-feed.st2 ul li {
-	margin-right: 30px;
+	margin:0;
+	padding: 15px;
+	border-top: #5f5f5f solid 3px;
+	cursor: pointer;
+}
+.tab-feed.st2 ul li:hover, .tab-feed.st2 ul li.active {
+	border-top: #e44d3a solid 3px;
 }
 .tab-feed ul li:last-child {
 	margin-right: 0;
