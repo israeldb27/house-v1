@@ -2,18 +2,42 @@ import React, { Component } from 'react';
 import PerfilUsuarioEnum from '../../common/PerfilUsuarioEnum';
 
 
+let id = 0;
+function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
+  id += 1;
+  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
+}
+
+const rows = [
+  createData(1, 'Lagoa Imoveis', 'Imobiliaria', '/img1.jpg' ),
+
+  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg'),
+
+  createData(3, 'Pamela Alves', 'Corretor', '/img1.jpg'),
+
+  createData(4, 'Israel Barreto', 'Normal', '/img1.jpg'),
+
+  createData(5, 'Marli Barreto', 'Normal', '/img1.jpg')
+];
+
 class UsuarioBuscar extends Component {
     constructor() {
         super()  
      
         this.state = {
-           perfilUsuario: []
+           perfilUsuario: [],
+           listaUsuarios: [] 
         }
       } 
 
      componentDidMount() {
-        console.log('chamou o didmount');
         this.setState({ perfilUsuario: PerfilUsuarioEnum.enumValues });  
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaUsuarios;
+            list.push(rows[i]);
+            this.setState({listaUsuarios: list});            
+        }
     }
 
     render() {
@@ -69,7 +93,6 @@ class UsuarioBuscar extends Component {
                                                         <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </form>
                                              </div>
-
                                            
                                             <div className="filter-dd">
                                                 <div className="filter-ttl">
@@ -124,84 +147,30 @@ class UsuarioBuscar extends Component {
                                     <div className="col-lg-9">
                                         <div className="companies-list">
                                             <div className="row">
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                    <div className="company_profile_info">
-                                                        <div className="company-up-info">
-                                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                                            <h3>Facebook Inc.</h3>
-                                                            <h4>Establish Feb, 2004</h4>
-                                                            <ul>
-                                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                                    </div>{/*-company_profile_info end*/}
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                    <div className="company_profile_info">
-                                                        <div className="company-up-info">
-                                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                                            <h3>Google Inc.</h3>
-                                                            <h4>Establish Feb, 2004</h4>
-                                                            <ul>
-                                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                                    </div>{/*-company_profile_info end*/}
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                    <div className="company_profile_info">
-                                                        <div className="company-up-info">
-                                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                                            <h3>Pinterest</h3>
-                                                            <h4>Establish Feb, 2004</h4>
-                                                            <ul>
-                                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                                    </div>{/*-company_profile_info end*/}
-                                                </div>
-
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                    <div className="company_profile_info">
-                                                        <div className="company-up-info">
-                                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                                            <h3>Pinterest</h3>
-                                                            <h4>Establish Feb, 2004</h4>
-                                                            <ul>
-                                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                                    </div>{/*-company_profile_info end*/}
-                                                </div>
-
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                    <div className="company_profile_info">
-                                                        <div className="company-up-info">
-                                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                                            <h3>Pinterest</h3>
-                                                            <h4>Establish Feb, 2004</h4>
-                                                            <ul>
-                                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                                    </div>{/*-company_profile_info end*/}
-                                                </div>
-
+                                                
+                                                    {
+                                                        this.state.listaUsuarios.map(usuario=> {
+                                                            return (
+                                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                                                    <div className="company_profile_info">
+                                                                        <div className="company-up-info">
+                                                                            <img src="http://via.placeholder.com/90x90" alt="" />
+                                                                            <h3>{usuario.nomeUsuario}</h3>
+                                                                            <h4>{usuario.perfilUsuario}</h4>
+                                                                            <ul>
+                                                                                <li><a href="#" title="" className="follow">Seguir</a></li>
+                                                                                <li><a href="#" title="" className="message-us">Convite</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <a href="#" title="" className="view-more-pro">View Profile</a>
+                                                                    </div>
+                                                                </div>
+                                                            );                                           
+                                                        })
+                                                    }
                                             </div>
                                         </div>{/*-companies-list end*/}
                                     </div>
-                              
-
                             </div>
                         </div>{/* main-section-data end*/}
                     </div>
