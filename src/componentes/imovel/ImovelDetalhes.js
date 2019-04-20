@@ -54,7 +54,7 @@ class ImovelDetalhes extends Component {
                                                 <div className="post-bar">
 
                                                     <div className="post_topbar">
-
+                                                        <h3 style={{fontSize: '26px'}}>Luxo Residence Palace</h3>
                                                         <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
                                                         <br />
 
@@ -80,7 +80,6 @@ class ImovelDetalhes extends Component {
                                                         </ul>
                                                     </div>
                                                     <div className="job_descp">
-                                                        <h3 style={{fontSize: '26px'}}>Luxo Residence Palace</h3>
                                                         <ul className="job-dt">
                                                             <li><a href="#" title="">Venda</a></li>
                                                             <li><span>$ 30.000,00</span></li>
