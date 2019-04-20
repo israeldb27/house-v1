@@ -3,7 +3,53 @@ import { Link } from 'react-router-dom';
 import imovel from '../fotos/imovel.jpg';
 import imovel2 from '../fotos/imovel2.jpg';
 
+let id = 0;
+function createData(id, nomeUsuario, perfilUsuario, urlFoto, 
+                    localizacao, titulo, acao, valorImovel, 
+                    valorIptu, valorCondominio, descricao, 
+                    area, quartos, banheiros, garagens, suites, likes, comments, views) {
+  id += 1;
+  return {id, nomeUsuario, perfilUsuario, urlFoto, 
+          localizacao, titulo, acao, valorImovel, 
+          valorIptu, valorCondominio, descricao, 
+          area, quartos, banheiros, garagens, suites, likes, comments, views} ;
+}
+
+const rows = [
+  createData(1, 'Luciana Souza', 'Corretor', '/img1.jpg',
+             'Boa Viagem, Niteroi - RJ', 'Luxo Place', 'Aluguel', '1320',
+             550, 1560, 'Excelente espaço e bem localizado',
+             210, 2, 2, 1, 1, 15, 12, 20),
+
+  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg',
+             'Centro, Niteroi - RJ', 'Flat Centro', 'Venda', '700',
+             211, 800, 'Localizado no centro da cidade',
+             80, 1, 0, 0, 0, 22, 12, 33)
+];
+
+
+
+
 class Timeline extends Component {
+
+
+    constructor(props) {
+        super(props)
+      
+        this.state = {
+          listaTimeline : [] 
+  
+        }
+      }
+
+    componentDidMount(){     
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaTimeline;
+            list.push(rows[i]);
+            this.setState({listaTimeline: list});            
+        }
+    }
+
     render() {
         return (            
                 <div className="main-ws-sec">
@@ -19,147 +65,74 @@ class Timeline extends Component {
                         </div>{/*--post-st end*/}
                     </div>{/*--post-topbar end*/}
                     <div className="posts-section">
-                        <div className="post-bar">
+
+                    {
+                        this.state.listaTimeline.map(imovel => {
+                            console.log('imovel selecionado: ' + imovel);
+                            return (
+                                <div className="post-bar">
                             
-                            <div className="suggestion-usd">
-                                <img src="http://via.placeholder.com/35x35" alt="" />
-                                <div className="sgt-text">
-                                    <h4>John Doe</h4>
-                                    <span>PHP Developer</span>
-                                </div>
-                            </div>
+                                    <div className="suggestion-usd">
+                                        <img src="http://via.placeholder.com/35x35" alt="" />
+                                        <div className="sgt-text">
+                                            <h4>{imovel.nomeUsuario}</h4>
+                                            <span>{imovel.perfilUsuario}</span>
+                                        </div>
+                                    </div>
 
-                            <div className="post_topbar">                               
+                                    <div className="post_topbar">                               
+                                        
+                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
+                                            <img src={imovel2} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
+                                        </Link>  
+                                        <br />
+                                    </div>
+                                    <div className="epi-sec">
                                 
-                                <Link to="/visualizarImovelDetalhes/10">
-                                    <img src={imovel} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
-                                </Link>  
-                                <br />
-                               
-                               <div className="ed-opts">
-                                    <a href="#" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
-                                    <ul className="ed-options">
-                                        <li><a href="#" title="">Edit Post</a></li>
-                                        <li><a href="#" title="">Unsaved</a></li>
-                                        <li><a href="#" title="">Unbid</a></li>
-                                        <li><a href="#" title="">Close</a></li>
-                                        <li><a href="#" title="">Hide</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="epi-sec">
-                           
-                                <ul className="descp">
-                                    <li><img src="images/icon8.png" alt="" /><span>Boa Viagem, Niteroi - RJ</span></li>                                    
-                                </ul>
-                                <ul className="bk-links">
-                                    <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
-                                    <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                            <div className="job_descp">
-                                <h3>Luxo Residence Palace</h3>
-                                <ul className="job-dt">
-                                    <li><a href="#" title="">Venda</a></li>
-                                    <li><span>$ 30.000,00</span></li>                                  
-                                </ul>  
-                                <ul className="job-dt" style={{fontSize:'12px'}}>
-                                    <li><p>IPTU </p> $ 1200000,00 </li>
-                                    <li> </li>
-                                    <li><p>Condomínio </p> $ 700,00 </li>           
-                                </ul>                          
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                <ul className="skill-tags">
-                                    <li><a href="#" title="">100 m²</a></li>
-                                    <li><a href="#" title="">2 Quarto(s)</a></li>
-                                    <li><a href="#" title="">1 Banheiro(s)</a></li>
-                                    <li><a href="#" title="">1 Vaga(s)</a></li>
-                                    <li><a href="#" title="">2 Suíte(s)</a></li>
-                                </ul>
-                            </div>
-                            <div className="job-status-bar">
-                                <ul className="like-com">
-                                    <li>
-                                        <a href="#"><i className="la la-heart"></i> Like</a>
-                                        <img src="images/liked-img.png" alt="" />
-                                        <span>25</span>
-                                    </li>
-                                    <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment 15</a></li>
-                                </ul>
-                                <a><i className="la la-eye"></i>Views 50</a>
-                            </div>
-                        </div>{/*--post-bar end*/}
-
-                        <div className="post-bar">
-
-                            <div className="suggestion-usd">
-                                <img src="http://via.placeholder.com/35x35" alt="" />
-                                <div className="sgt-text">
-                                    <h4>John Doe</h4>
-                                    <span>PHP Developer</span>
-                                </div>
-                            </div>
-
-                            <div className="post_topbar">
-                               
-                                <Link to="/visualizarImovelDetalhes/10">
-                                    <img src={imovel2} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
-                                </Link>  
-                                
-                                <br />
-                              
-                               <div className="ed-opts">
-                                    <a href="#" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
-                                    <ul className="ed-options">
-                                        <li><a href="#" title="">Edit Post</a></li>
-                                        <li><a href="#" title="">Unsaved</a></li>
-                                        <li><a href="#" title="">Unbid</a></li>
-                                        <li><a href="#" title="">Close</a></li>
-                                        <li><a href="#" title="">Hide</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="epi-sec">                           
-                                <ul className="descp">
-                                    <li><img src="images/icon8.png" alt="" /><span>Icarai, Niteroi - RJ</span></li>                                    
-                                </ul>
-                                <ul className="bk-links">
-                                    <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
-                                    <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                            <div className="job_descp">
-                                <h3>Pousada Sal e Sol</h3>
-                                <ul className="job-dt">
-                                    <li><a href="#" title="">Aluguel</a></li>
-                                    <li><span>$ 1500,00</span></li>                                  
-                                </ul>  
-                                <ul className="job-dt" style={{fontSize:'12px'}}>
-                                    <li><p>IPTU </p> $ 500 </li>
-                                    <li> </li>
-                                    <li><p>Condomínio </p> $ 300,00 </li>           
-                                </ul>                         
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                <ul className="skill-tags">
-                                    <li><a href="#" title="">100 m²</a></li>
-                                    <li><a href="#" title="">2 Quarto(s)</a></li>
-                                    <li><a href="#" title="">1 Banheiro(s)</a></li>
-                                    <li><a href="#" title="">1 Vaga(s)</a></li>
-                                    <li><a href="#" title="">2 Suíte(s)</a></li>
-                                </ul>
-                            </div>
-                            <div className="job-status-bar">
-                                <ul className="like-com">
-                                    <li>
-                                        <a href="#"><i className="la la-heart"></i> Like</a>
-                                        <img src="images/liked-img.png" alt="" />
-                                        <span>25</span>
-                                    </li>
-                                    <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment 15</a></li>
-                                </ul>
-                                <a><i className="la la-eye"></i>Views 50</a>
-                            </div>
-                        </div>{/*--post-bar end*/}
+                                        <ul className="descp">
+                                            <li><img src="images/icon8.png" alt="" /><span>{imovel.localizacao }</span></li>                                    
+                                        </ul>
+                                        <ul className="bk-links">
+                                            <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
+                                            <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="job_descp">
+                                        <h3>{imovel.titulo}</h3>
+                                        <ul className="job-dt">
+                                            <li><a href="#" title="">{imovel.acao}</a></li>
+                                            <li><span>$ {imovel.valorImovel}</span></li>                                  
+                                        </ul>  
+                                        <ul className="job-dt" style={{fontSize:'12px'}}>
+                                            <li><p>IPTU </p> $ {imovel.valorIptu} </li>
+                                            <li> </li>
+                                            <li><p>Condomínio </p> $ {imovel.valorCondominio} </li>           
+                                        </ul>                          
+                                        <p>{imovel.descricao}}... <a href="#" title="">view more</a></p>
+                                        <ul className="skill-tags">
+                                            <li><a href="#" title="">{imovel.area} m²</a></li>
+                                            <li><a href="#" title="">{imovel.quartos} Quartos(s)</a></li>
+                                            <li><a href="#" title="">{imovel.banheiros} Banheiro(s)</a></li>
+                                            <li><a href="#" title="">{imovel.garagens} Vaga(s)</a></li>
+                                            <li><a href="#" title="">{imovel.suites} Suíte(s)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="job-status-bar">
+                                        <ul className="like-com">
+                                            <li>
+                                                <a href="#"><i className="la la-heart"></i> Like</a>
+                                                <img src="images/liked-img.png" alt="" />
+                                                <span>{imovel.likes}</span>
+                                            </li>
+                                            <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment {imovel.comments}</a></li>
+                                        </ul>
+                                        <a><i className="la la-eye"></i>Views {imovel.views}</a>
+                                    </div>
+                                </div>                             
+                            )
+                        })
+                    }                      
+                  
                        
                         <div className="process-comm">
                             <div className="spinner">
