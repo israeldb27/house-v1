@@ -5,6 +5,8 @@ import israel from '../fotos/israel.jpg'
 import imovel2 from '../fotos/imovel2.jpg';
 import AnuncioImobiliaria from '../layout/AnuncioImobiliaria';
 import AnuncioImoveis from '../layout/AnuncioImoveis';
+import '../includes/css/line-awesome-font-awesome.css';
+
 
 class ImovelDetalhes extends Component {
     render() {
@@ -35,13 +37,13 @@ class ImovelDetalhes extends Component {
                                                 <ul>
                                                     <li data-tab="info-dd" className="active">
                                                         <a href="#" title="">
-                                                            <img src="images/ic2.png" alt="" />
+                                                            <span className="icon"><i class="fa fa-info-circle"></i></span>
                                                             <span>Informações</span>
                                                         </a>
                                                     </li>
                                                     <li data-tab="feed-dd" >
                                                         <a href="#" title="">
-                                                            <img src="images/ic1.png" alt="" />
+                                                            <span className="icon"><i class="fa fa-image"></i></span>
                                                             <span>Galeria de Fotos</span>
                                                         </a>
                                                     </li>                                                                                          
