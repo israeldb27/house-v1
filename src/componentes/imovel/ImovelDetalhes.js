@@ -74,7 +74,7 @@ class ImovelDetalhes extends Component {
                                                     <div className="epi-sec">
 
                                                         <ul className="descp">
-                                                            <li><img src="images/icon8.png" alt="" /><span>Boa Viagem, Niteroi - RJ</span></li>
+                                                            <li><span className="icon"><i class="fa fa-map-marker"></i></span><span>Boa Viagem, Niteroi - RJ</span></li>
                                                         </ul>
                                                         <ul className="bk-links">
                                                             <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
