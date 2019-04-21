@@ -154,14 +154,12 @@ class ImovelDetalhes extends Component {
                                                     <h3><a href="#" title="" className="exp-bx-open">Oferta </a></h3>
                                                     <div className="notifications-list">
 
-                                                        <div className="post-comment">
-                                                            <div className="comment_box">
+                                                        <div className="post-comment d-block">
+                                                            <div className="comment_box d-block w-100">
                                                                 <br />
                                                                 <form>
-                                                                    <input type="text" placeholder="envie oferta em R$" maxLength="5" style={{backgroundColor: '#f8f9fa'}}/>
-                                                                    <br /> <br />
-                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}} />
-                                                                    <br /> <br />
+                                                                    <input type="text" placeholder="envie oferta em R$" maxLength="5" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
+                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
                                                                     <button type="submit">Enviar</button>
                                                                 </form>
                                                             </div>
