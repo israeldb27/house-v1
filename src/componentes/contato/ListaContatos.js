@@ -1,28 +1,55 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class ListaContatos extends Component {
-    constructor(props) {
-        super(props);
+let id = 0;
+function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
+  id += 1;
+  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
+}
 
-    }    
+const rows = [
+  createData(1, 'Lagoa Imoveis', 'Imobiliaria', '/img1.jpg' ),
+  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg'),
+  createData(3, 'Pamela Alves', 'Corretor', '/img1.jpg'),
+  createData(4, 'Israel Barreto', 'Normal', '/img1.jpg'),
+  createData(5, 'Marli Barreto', 'Normal', '/img1.jpg')
+];
+
+class ListaContatos extends Component {
+    
+    constructor() {
+        super()  
+     
+        this.state = {       
+           listaContatos: [] 
+        }
+      } 
+
+    componentDidMount() {        
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaContatos;
+            list.push(rows[i]);
+            this.setState({listaContatos: list});            
+        }
+    }
+
+    buscarContatos(event) {
+        event.preventDefault();
+        console.log('old  selecionado: ' + this.chaveBusca.value);
+        
+    }
 
     render() {
         return (
-            <div>
-               
+            <div>               
 
                 <section className="companies-info">
                     <div className="container">                       
 
                         <div className="tab-feed st2">
                             <ul>
-                                <li data-tab="info-dd">
-                                    <a href="#" title="">
-                                        <img src="images/ic2.png" alt="" />
-                                
-                                    </a>
-                                </li>
+                               
                                 <li data-tab="info-dd" className="active">
                                     <Link to="/listaContatosUsuario/10" title="">
                                         <img src="images/ic2.png" alt="" />
@@ -41,109 +68,58 @@ class ListaContatos extends Component {
                                         <img src="images/ic5.png" alt="" />
                                         <span>Seguindo</span>
                                     </Link>
-                                </li>                                            
-
+                                </li>  
                             </ul>
-                            <div className="search-sec">
-                                <div className="container">
-                                    <div className="search-box">
-                                        <form>
-                                            <input type="text" name="search" placeholder="Chave Busca Usuario" />
-                                            <button type="submit">Buscar</button>
-                                        </form>
-                                    </div>{/*search-box end*/}
+                        </div> 
+
+                        <div className="search-sec">
+                            <div className="container">
+                                <div className="search-box">
+                                <form onSubmit={this.buscarContatos.bind(this)}>
+                                        <input type="text" name="search" placeholder="Chave Busca Usuario" ref={(input) => this.chaveBusca = input}  />
+                                        <button type="submit">Buscar</button>
+                                    </form>
+                                    <br /> <br /><br /> <br /> 
                                 </div>
-                            </div>{/*search-sec end*/}
-                        </div> {/* tab-feed end */}
+                            </div>
+                        </div>
 
                         
-
                         <div className="companies-list">
                             <div className="row">
-                                <div className="col-lg-3 col-md-4 col-sm-6">
-                                    <div className="company_profile_info">
-                                        <div className="company-up-info">
-                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                            <h3>Facebook Inc.</h3>
-                                            <h4>Establish Feb, 2004</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                    </div>{/*-company_profile_info end*/}
-                                </div>
-                                <div className="col-lg-3 col-md-4 col-sm-6">
-                                    <div className="company_profile_info">
-                                        <div className="company-up-info">
-                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                            <h3>Google Inc.</h3>
-                                            <h4>Establish Feb, 2004</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                    </div>{/*-company_profile_info end*/}
-                                </div>
-                                <div className="col-lg-3 col-md-4 col-sm-6">
-                                    <div className="company_profile_info">
-                                        <div className="company-up-info">
-                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                            <h3>Pinterest</h3>
-                                            <h4>Establish Feb, 2004</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                    </div>{/*-company_profile_info end*/}
-                                </div>
-
-                                <div className="col-lg-3 col-md-4 col-sm-6">
-                                    <div className="company_profile_info">
-                                        <div className="company-up-info">
-                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                            <h3>Pinterest</h3>
-                                            <h4>Establish Feb, 2004</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                    </div>{/*-company_profile_info end*/}
-                                </div>
-
-                                <div className="col-lg-3 col-md-4 col-sm-6">
-                                    <div className="company_profile_info">
-                                        <div className="company-up-info">
-                                            <img src="http://via.placeholder.com/90x90" alt="" />
-                                            <h3>Pinterest</h3>
-                                            <h4>Establish Feb, 2004</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="follow">Follow</a></li>
-                                                <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" title="" className="view-more-pro">View Profile</a>
-                                    </div>{/*-company_profile_info end*/}
-                                </div>
+                                {
+                                    this.state.listaContatos.map(contato => {
+                                        return (
+                                            <div className="col-lg-3 col-md-4 col-sm-6">
+                                                <div className="company_profile_info">
+                                                    <div className="company-up-info">
+                                                        <img src="http://via.placeholder.com/90x90" alt="" />
+                                                        <h3>{contato.nomeUsuario}</h3>
+                                                        <h4>{contato.perfilUsuario}</h4>
+                                                        <ul>
+                                                            <li><a href="#" title="" className="follow">Seguir</a></li>
+                                                            <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <a href="#" title="" className="view-more-pro">View Profile</a>
+                                                </div>{/*-company_profile_info end*/}
+                                            </div>  
+                                        );
+                                    })
+                                }
                                
                             </div>
-                        </div>{/*-companies-list end*/}
+                        </div>
+                        
                         <div className="process-comm">
                             <div className="spinner">
                                 <div className="bounce1"></div>
                                 <div className="bounce2"></div>
                                 <div className="bounce3"></div>
                             </div>
-                        </div>{/*-process-comm end*/}
+                        </div>
                     </div>
-                </section>{/*-companies-info end*/}
+                </section>
 
             </div>
         );

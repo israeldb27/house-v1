@@ -56,7 +56,7 @@ class ImovelDetalhes extends Component {
                                                 <div className="post-bar">
 
                                                     <div className="post_topbar">
-                                                        <h3 style={{fontSize: '26px'}}>Luxo Residence Palace</h3>
+                                                        <h3 style={{fontSize: '24px'}}>Luxo Residence Palace</h3>
                                                         <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
                                                         <br />
 
@@ -90,6 +90,8 @@ class ImovelDetalhes extends Component {
                                                             <li><p>IPTU </p> $ 1200000,00 </li>
                                                             <li> </li>
                                                             <li><p>Condomínio </p> $ 700,00 </li>
+                                                            <li> </li>
+                                                            <li><p>Outras Taxas </p> $ 1500,00 </li>
                                                         </ul>
                                                       
                                                         <ul className="skill-tags">
@@ -131,8 +133,8 @@ class ImovelDetalhes extends Component {
                                                     <h3><a href="#" title="" className="exp-bx-open">Taxas </a></h3>
                                                         <br />
                                                          <ul className="skill-tags">                                                      
-                                                            <li><a href="#a" title="">IPTU: &nbsp;&nbsp; &nbsp;&nbsp; $ 12000,00</a></li>     
-                                                            <li><a href="#a" title="">Valor Condomínio: &nbsp;&nbsp; &nbsp;&nbsp; $ 700,00 </a></li> 
+                                                            <li><a href="#a" title="" style={{color: '#3F3F3F'}}>IPTU: &nbsp;&nbsp; &nbsp;&nbsp; $ 12000,00</a></li>     
+                                                            <li><a href="#a" title="" style={{color: '#3F3F3F'}}> Valor Condomínio: &nbsp;&nbsp; &nbsp;&nbsp; $ 700,00 </a></li> 
                                                         </ul>  
 
                                                 </div> {/*user-profile-ov end */}
@@ -142,10 +144,10 @@ class ImovelDetalhes extends Component {
                                                     <br />
 
                                                     <ul className="skill-tags">                                                      
-                                                        <li><a href="#a" title="">Total Visualizações: &nbsp;&nbsp; &nbsp;&nbsp; 10</a></li>     
-                                                        <li><a href="#a" title="">Total de Ofertas: &nbsp;&nbsp; &nbsp;&nbsp; 15 </a></li>  
-                                                        <li><a href="#a" title="">Total de Favoritos: &nbsp;&nbsp; &nbsp;&nbsp; 11 </a></li>   
-                                                        <li><a href="#a" title="">Total de Interessados: &nbsp;&nbsp; &nbsp;&nbsp; 23 </a></li>                                                         
+                                                        <li><a href="#a" title="" style={{color: '#3F3F3F'}}>Total Visualizações: &nbsp;&nbsp; &nbsp;&nbsp; 10</a></li>     
+                                                        <li><a href="#a" title="" style={{color: '#3F3F3F'}}>Total de Ofertas: &nbsp;&nbsp; &nbsp;&nbsp; 15 </a></li>  
+                                                        <li><a href="#a" title=""style={{color: '#3F3F3F'}} >Total de Favoritos: &nbsp;&nbsp; &nbsp;&nbsp; 11 </a></li>   
+                                                        <li><a href="#a" title="" style={{color: '#3F3F3F'}}>Total de Interessados: &nbsp;&nbsp; &nbsp;&nbsp; 23 </a></li>                                                         
                                                     </ul> 
                                      
                                                 </div> {/*user-profile-ov end */}
@@ -159,7 +161,7 @@ class ImovelDetalhes extends Component {
                                                                 <br />
                                                                 <form>
                                                                     <input type="text" placeholder="envie oferta em R$" maxLength="5" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
-                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
+                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}}  />
                                                                     <button type="submit">Enviar</button>
                                                                 </form>
                                                             </div>
@@ -172,10 +174,10 @@ class ImovelDetalhes extends Component {
                                                     <h3><a href="#" title="" className="exp-bx-open">Parceria </a></h3>
                                                     <div className="notifications-list">
                                                         <div className="post-comment">
-                                                            <div className="comment_box">
+                                                            <div className="comment_box d-block w-100">
                                                                 <br />
                                                                 <form>                                                                  
-                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}} />
+                                                                    <input type="textarea" placeholder="envie uma observação"  class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />                                                                    
                                                                     <br /> <br />
                                                                     <button type="submit">Enviar</button>
                                                                 </form>
@@ -188,10 +190,10 @@ class ImovelDetalhes extends Component {
                                                     <h3><a href="#" title="" className="exp-bx-open">Intermediação </a></h3>
                                                     <div className="notifications-list">
                                                         <div className="post-comment">
-                                                            <div className="comment_box">
+                                                        <div className="comment_box d-block w-100">
                                                                 <br />
                                                                 <form>                                                                  
-                                                                    <input type="textarea" placeholder="envie uma observação" style={{backgroundColor: '#f8f9fa'}}/>
+                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3"  style={{backgroundColor: '#f8f9fa'}}/>
                                                                     <br /> <br />
                                                                     <button type="submit">Enviar</button>
                                                                 </form>

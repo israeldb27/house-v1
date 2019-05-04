@@ -9,7 +9,7 @@ import history from './componentes/History';
 import UsuarioSessaoDetalhes from './componentes/usuario/UsuarioSessaoDetalhes';
 import ImovelDetalhes from './componentes/imovel/ImovelDetalhes';
 import ListaContatos from './componentes/contato/ListaContatos';
-import ImovelBuscar from './componentes/imovel/ImovelBuscar';
+import ImovelBuscar from './componentes/imovel/buscar/ImovelBuscar';
 import ListaSeguidores from './componentes/contato/ListaSeguidores';
 import ListaSeguindo from './componentes/contato/ListaSeguindo';
 import Mensagens from './componentes/mensagem/Mensagens';

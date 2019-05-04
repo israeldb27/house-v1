@@ -50,20 +50,32 @@ class Timeline extends Component {
         }
     }
 
+    inserirPost(event){
+        event.preventDefault();
+        console.log('post usuario: ' + this.post.value)
+    }
+
     render() {
         return (            
                 <div className="main-ws-sec">
                     <div className="post-topbar">
-                        <div className="user-picy">
-                            <img src="http://via.placeholder.com/100x100" alt="" />
-                        </div>
-                        <div className="post-st">
-                            <ul>
-                                <li><a className="post_project" href="#" title="">Post a Project</a></li>
-                                <li><a className="post-jb active" href="#" title="">Post a Job</a></li>
-                            </ul>
-                        </div>{/*--post-st end*/}
-                    </div>{/*--post-topbar end*/}
+                        <form >
+                            <div class="message-send-area">                                
+                                    <div className="post-st">
+                                        <ul>
+                                            <li><textarea rows="5" cols="60" ref={(textarea) => this.post = textarea} placeholder="Digite algo aqui">  </textarea></li>                                                   
+                                        </ul>
+                                    </div>                            
+                            </div>
+
+                            <div className="post-st">
+                                <ul>
+                                    <br /> 
+                                    <li ><a className="post-jb active" href="#" title="" onClick={this.inserirPost.bind(this)}>Postar</a></li>
+                                </ul>    
+                            </div>
+                        </form>
+                    </div>
                     <div className="posts-section">
 
                     {
@@ -81,7 +93,7 @@ class Timeline extends Component {
                                     </div>
 
                                     <div className="post_topbar">                               
-                                        
+                                        <h3 style={{fontSize: '20px'}}><strong>{imovel.titulo} </strong></h3> <br />
                                         <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
                                             <img src={imovel2} alt="" style={{position: 'relative', float:'center', width: '100%'}} />
                                         </Link>  
@@ -97,8 +109,7 @@ class Timeline extends Component {
                                             <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
                                         </ul>
                                     </div>
-                                    <div className="job_descp">
-                                        <h3>{imovel.titulo}</h3>
+                                    <div className="job_descp">                              
                                         <ul className="job-dt">
                                             <li><a href="#" title="">{imovel.acao}</a></li>
                                             <li><span>$ {imovel.valorImovel}</span></li>                                  
@@ -131,8 +142,7 @@ class Timeline extends Component {
                                 </div>                             
                             )
                         })
-                    }                      
-                  
+                    } 
                        
                         <div className="process-comm">
                             <div className="spinner">

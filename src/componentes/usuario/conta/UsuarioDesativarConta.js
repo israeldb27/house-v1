@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 class UsuarioDesativarConta extends Component {
+
+  desativarConta(event){
+
+    event.preventDefault();
+    console.log('email  selecionado: ' + this.email.value);
+    console.log('password  selecionado: ' + this.password.value);
+    console.log('explicacao  selecionado: ' + this.explicacao.value);    
+  }  
+
   render() {
     return (
 
@@ -25,39 +34,29 @@ class UsuarioDesativarConta extends Component {
                                 <div class="tab-pane fade show active" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
                                     <div class="acc-setting">
                                         <h3>Desativar Conta</h3>
-                                        <form>
+                                           <form onSubmit={this.desativarConta.bind(this)}>
                                             <div class="cp-field">
                                                 <h5>Email</h5>
                                                 <div class="cpp-fiel">
-                                                    <input type="text" name="email" placeholder="Email" />
+                                                    <input type="text" name="email" ref={(input) => this.email = input}  placeholder="Email" />
                                                     <i class="fa fa-envelope"></i>
                                                 </div>
                                             </div>
                                             <div class="cp-field">
                                                 <h5>Password</h5>
                                                 <div class="cpp-fiel">
-                                                    <input type="password" name="password" placeholder="Password" />
+                                                    <input type="password" name="password" ref={(input) => this.password = input}  placeholder="Password" />
                                                     <i class="fa fa-lock"></i>
                                                 </div>
                                             </div>
                                             <div class="cp-field">
-                                                <h5>Please Explain Further</h5>
-                                                <textarea></textarea>
+                                                <h5>Explicação </h5>
+                                                <textarea ref={(textarea) => this.explicacao = textarea} ></textarea>
                                             </div>
-                                            <div class="cp-field">
-                                                <div class="fgt-sec">
-                                                    <input type="checkbox" name="cc" id="c4" />
-                                                    <label for="c4">
-                                                        <span></span>
-                                                    </label>
-                                                    <small>Email option out</small>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id,</p>
-                                            </div>
+                                        
                                             <div class="save-stngs pd3">
                                                 <ul>
-                                                    <li><button type="submit">Save Setting</button></li>
-                                                    <li><button type="submit">Restore Setting</button></li>
+                                                    <li><button type="submit">Desativar</button></li>                                                   
                                                 </ul>
                                             </div>{/*save-stngs end*/}
                                         </form>

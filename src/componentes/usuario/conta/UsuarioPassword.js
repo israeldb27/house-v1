@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 class UsuarioPassword extends Component {
+
+  salvarSenha(event) {
+    event.preventDefault();
+    console.log('old  selecionado: ' + this.oldPassword.value);
+    console.log('new  selecionado: ' + this.newPassword.value);
+    console.log('repeat  selecionado: ' + this.repeatPassword.value);
+  } 
+
+
   render() {
     return (
         <section className="profile-account-setting">
@@ -24,25 +33,25 @@ class UsuarioPassword extends Component {
                                 <div className="tab-pane fade show active" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
                                     <div className="acc-setting">
                                         <h3>Account Setting</h3>
-                                        <form>
+                                        <form onSubmit={this.salvarSenha.bind(this)}>
                                             <div className="cp-field">
                                                 <h5>Old Password</h5>
                                                 <div className="cpp-fiel">
-                                                    <input type="text" name="old-password" placeholder="Old Password" />
+                                                    <input type="text" name="old-password" ref={(input) => this.oldPassword = input}  placeholder="Old Password" />
                                                     <i className="fa fa-lock"></i>
                                                 </div>
                                             </div>
                                             <div className="cp-field">
                                                 <h5>New Password</h5>
                                                 <div className="cpp-fiel">
-                                                    <input type="text" name="new-password" placeholder="New Password" />
+                                                    <input type="text" name="new-password" ref={(input) => this.newPassword = input}  placeholder="New Password" />
                                                     <i className="fa fa-lock"></i>
                                                 </div>
                                             </div>
                                             <div className="cp-field">
                                                 <h5>Repeat Password</h5>
                                                 <div className="cpp-fiel">
-                                                    <input type="text" name="repeat-password" placeholder="Repeat Password" />
+                                                    <input type="text" name="repeat-password" ref={(input) => this.repeatPassword = input}  placeholder="Repeat Password" />
                                                     <i className="fa fa-lock"></i>
                                                 </div>
                                             </div>
@@ -51,8 +60,7 @@ class UsuarioPassword extends Component {
                                             </div>
                                             <div className="save-stngs pd2">
                                                 <ul>
-                                                    <li><button type="submit">Save Setting</button></li>
-                                                    <li><button type="submit">Restore Setting</button></li>
+                                                    <li><button type="submit">Salvar</button></li>                                                    
                                                 </ul>
                                             </div>{/*save-stngs end*/}
                                         </form>

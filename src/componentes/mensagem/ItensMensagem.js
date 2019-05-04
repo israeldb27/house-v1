@@ -45,6 +45,11 @@ class ItensMensagem extends Component {
         }
     }
 
+    enviarMensagem(event){
+        event.preventDefault();
+        console.log('mensagem selecionado: ' + this.mensagem.value);
+    }
+
   render() {
     return (
      <div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
@@ -98,10 +103,10 @@ class ItensMensagem extends Component {
 
             </div>{/*messages-line end*/}
             <div class="message-send-area">
-                <form>
+                <form onSubmit={this.enviarMensagem.bind(this)}>
                     <div class="mf-field">
-                        <input type="text" name="message" placeholder="Type a message here" />
-                        <button type="submit">Send</button>
+                        <input type="text" name="message" ref={(input) => this.mensagem = input}  placeholder="Type a message here" />
+                        <button type="submit">Enviar</button>
                     </div>
                     <ul>
                         <li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>
