@@ -8,7 +8,55 @@ import AnuncioImoveis from '../layout/AnuncioImoveis';
 import '../includes/css/line-awesome-font-awesome.css';
 
 
+let id = 0;
+function createData(id, nomeUsuario, comentario, urlFoto, dataComentario) {
+  id += 1;
+  return {id, nomeUsuario, comentario, urlFoto, dataComentario} ;
+}
+
+const rows = [
+  createData(1, 'Lagoa Imoveis', 'excelente imovel', '/img1.jpg', '01/01/2019' ),
+  createData(2, 'Zirtaeb', 'bem localizado', '/img1.jpg', '01/01/2019'),
+  createData(3, 'Pamela Alves', 'excelente preço', '/img1.jpg', '01/01/2019'),
+  createData(4, 'Israel Barreto', 'eu gostei', '/img1.jpg', '01/01/2019'),
+  createData(5, 'Marli Barreto', 'muito bom', '/img1.jpg', '01/01/2019')
+];
+
+
 class ImovelDetalhes extends Component {
+
+    constructor() {
+        super()  
+     
+        this.state = {        
+           listaComentarios: [] 
+        }
+      } 
+
+     componentDidMount(){
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaComentarios;
+            list.push(rows[i]);
+            this.setState({listaComentarios: list});            
+        }
+     } 
+
+    enviarOfertaImovel(event){
+        event.preventDefault();
+        console.log('valor oferta selecionado: ' + this.valorOferta.value);
+        console.log('obs selecionado: ' + this.observacaoOferta.value);
+    }
+
+    enviarSolicitacaoParceria(event){
+        event.preventDefault();
+        console.log('Descricao Sol. Parceria selecionado: ' + this.descSolParceria.value);
+    }
+
+    enviarSolicitacaoIntermediacao(event){
+        event.preventDefault();
+        console.log('Descricao Sol. Intermediacao selecionada: ' + this.descSolIntermediacao.value);
+    }
+
     render() {
         return (
             <main>
@@ -46,11 +94,9 @@ class ImovelDetalhes extends Component {
                                                             <span className="icon"><i class="fa fa-image"></i></span>
                                                             <span>Galeria de Fotos</span>
                                                         </a>
-                                                    </li>                                                                                          
-
+                                                    </li>   
                                                 </ul>
-                                            </div> {/* tab-feed end */}
-
+                                            </div> 
 
                                             <div className="posts-section">
                                                 <div className="post-bar">
@@ -109,7 +155,7 @@ class ImovelDetalhes extends Component {
                                                         </ul>
                                                       
                                                     </div>
-                                                </div>{/*--post-bar end*/}
+                                                </div>
                                             </div>
 
                                             <div class="epi-secright">
@@ -160,9 +206,9 @@ class ImovelDetalhes extends Component {
                                                             <div className="comment_box d-block w-100">
                                                                 <br />
                                                                 <form>
-                                                                    <input type="text" placeholder="envie oferta em R$" maxLength="5" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
-                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}}  />
-                                                                    <button type="submit">Enviar</button>
+                                                                    <input type="text" ref={(input) => this.valorOferta = input}  placeholder="envie oferta em R$" maxLength="5" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />
+                                                                    <input type="textarea" ref={(input) => this.observacaoOferta = input}  placeholder="envie uma observação" class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}}  />
+                                                                    <button type="submit" onClick={this.enviarOfertaImovel.bind(this)} >Enviar</button>
                                                                 </form>
                                                             </div>
                                                         </div>{/*--post-comment end*/}
@@ -175,11 +221,11 @@ class ImovelDetalhes extends Component {
                                                     <div className="notifications-list">
                                                         <div className="post-comment">
                                                             <div className="comment_box d-block w-100">
-                                                                <br />
+                                                                <br /> 
                                                                 <form>                                                                  
-                                                                    <input type="textarea" placeholder="envie uma observação"  class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />                                                                    
+                                                                    <input type="textarea" ref={(input) => this.descSolParceria = input}  placeholder="envie uma observação"  class="d-block w-100 mb-3" style={{backgroundColor: '#f8f9fa'}} />                                                                    
                                                                     <br /> <br />
-                                                                    <button type="submit">Enviar</button>
+                                                                    <button type="submit" onClick={this.enviarSolicitacaoParceria.bind(this)}>Enviar</button>
                                                                 </form>
                                                             </div>
                                                         </div>{/*--post-comment end*/}
@@ -193,9 +239,9 @@ class ImovelDetalhes extends Component {
                                                         <div className="comment_box d-block w-100">
                                                                 <br />
                                                                 <form>                                                                  
-                                                                    <input type="textarea" placeholder="envie uma observação" class="d-block w-100 mb-3"  style={{backgroundColor: '#f8f9fa'}}/>
+                                                                    <input type="textarea" ref={(input) => this.descSolIntermediacao = input} placeholder="envie uma observação" class="d-block w-100 mb-3"  style={{backgroundColor: '#f8f9fa'}}/>
                                                                     <br /> <br />
-                                                                    <button type="submit">Enviar</button>
+                                                                    <button type="submit" onClick={this.enviarSolicitacaoIntermediacao.bind(this)}>Enviar</button>
                                                                 </form>
                                                             </div>
                                                         </div>{/*--post-comment end*/}
@@ -205,56 +251,26 @@ class ImovelDetalhes extends Component {
                                                 <div className="user-profile-ov st2">
                                                     <h3><a href="#" title="" className="exp-bx-open">Comentários </a></h3>                                                    
                                                         <div className="notifications-list">
-                                                            <div className="notfication-details">
-                                                                <div className="noty-user-img">
-                                                                    <img src="http://via.placeholder.com/35x35" alt="" />
-                                                                </div>
-                                                                <div className="notification-info">
-                                                                    <h3><a href="#" title="">Jassica William</a></h3>
-                                                                    <p> 
-                                                                        Comment on your project. 
-                                                                    </p>
-                                                                    <span>2 min ago</span>
-                                                                </div>{/*notification-info */}
-                                                            </div>{/*notfication-details end*/}
-                                                            <div className="notfication-details">
-                                                                <div className="noty-user-img">
-                                                                    <img src="http://via.placeholder.com/35x35" alt="" />
-                                                                </div>
-                                                                <div className="notification-info">
-                                                                    <h3><a href="#" title="">Poonam Verma</a> </h3>
-                                                                    <p> 
-                                                                        Comment on your project. 
-                                                                    </p>
-                                                                    <span>2 min ago</span>
-                                                                </div>{/*notification-info */}
-                                                            </div>{/*notfication-details end*/}
-                                                            <div className="notfication-details">
-                                                                <div className="noty-user-img">
-                                                                    <img src="http://via.placeholder.com/35x35" alt="" />
-                                                                </div>
-                                                                <div className="notification-info">
-                                                                    <h3><a href="#" title="">Tonney Dhman</a> </h3>
-                                                                    <p> 
-                                                                        Comment on your project. 
-                                                                    </p>
-                                                                    <span>2 min ago</span>
-                                                                </div>{/*notification-info */}
-                                                            </div>{/*notfication-details end*/}
-                                                            <div className="notfication-details">
-                                                                <div className="noty-user-img">
-                                                                    <img src="http://via.placeholder.com/35x35" alt="" />
-                                                                </div>
-                                                                <div className="notification-info">
-                                                                    <h3><a href="#" title="">Jassica William</a> </h3>
-                                                                    <p> 
-                                                                        Comment on your project. 
-                                                                    </p>
-                                                                    <span>2 min ago</span>
-                                                                </div>{/*notification-info */}
-                                                            </div>{/*notfication-details end*/}
-                                                           
-                                                        </div>{/*notifications-list end*/}      
+                                                            {
+                                                                this.state.listaComentarios.map(comment => {
+                                                                    return (
+                                                                        <div className="notfication-details">
+                                                                            <div className="noty-user-img">
+                                                                                <img src={israel} alt="" />
+                                                                            </div>
+                                                                            <div className="notification-info">
+                                                                                <h3><a href="#" title="">{comment.nomeUsuario}</a></h3>
+                                                                                <p> 
+                                                                                    {comment.comentario}
+                                                                                </p>
+                                                                                <span>  {comment.dataComentario}</span>
+                                                                            </div>
+                                                                        </div>                   
+                                                                    )
+                                                                })
+                                                            }                                                           
+                                                        </div>    
+
                                                         <div className="post-comment">
                                                             <div className="cm_img">
                                                                 <img src={israel} alt="" style={{width: '40px', height:'40px'}}/>
@@ -267,7 +283,7 @@ class ImovelDetalhes extends Component {
                                                                     <button type="submit">Send</button>
                                                                 </form>
                                                             </div>
-                                                        </div>{/*--post-comment end*/}                                              
+                                                        </div>                                          
                                                    
                                                 </div> {/*user-profile-ov end */}
 

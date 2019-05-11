@@ -47,8 +47,6 @@ class UsuarioBuscar extends Component {
         console.log('invocou metodo buscarUsuario');
         console.log('localizacao selecionado: ' + this.localizacao.value);
         console.log('perfil selecionado: ' + this.perfil.value);
-        
-     
     }
 
 

@@ -1,6 +1,39 @@
 import React, { Component } from 'react';
+import mansao from '../fotos/mansao3.jpg';
+import { Link } from 'react-router-dom';
+
+let id = 0;
+function createData(id, titulo, tipoImovel, urlFoto) {
+  id += 1;
+  return {id, titulo, tipoImovel, urlFoto};
+}
+
+const rows = [
+  createData(1, 'Vintage Center', 'Prédio', '/img1.jpg'),
+  createData(2, 'Casinha da Sogra', 'Casa de Vila', '/img1.jpg'),
+  createData(3, 'Nova América', 'Edificio Comercial', '/img1.jpg'),
+];
 
 class OutrosImoveisUsuario extends Component {
+
+    constructor() {
+        super()  
+     
+        this.state = {    
+           listaImoveis: [] 
+        }
+    } 
+
+    
+    componentDidMount() {
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaImoveis;
+            list.push(rows[i]);
+            this.setState({listaImoveis: list});            
+        }
+    }
+
     render() {
         return (
             <div class="suggestions full-width">
@@ -9,47 +42,27 @@ class OutrosImoveisUsuario extends Component {
                     <i class="la la-ellipsis-v"></i>
                 </div> {/*sd-title end */}
                 <div class="suggestions-list">
-                    <div class="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div class="sgt-text">
-                            <h4>Jessica William</h4>
-                            <span>Graphic Designer</span>
-                        </div>
-                        <span><i class="la la-plus"></i></span>
-                    </div>
-                    <div class="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div class="sgt-text">
-                            <h4>John Doe</h4>
-                            <span>PHP Developer</span>
-                        </div>
-                        <span><i class="la la-plus"></i></span>
-                    </div>
+                    {
+                        this.state.listaImoveis.map (imovel => {
+                            return (
+                                <div className="suggestion-usd">
+                                    <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
+                                        <img src={mansao} alt="" style={{ width: '60px', height: '60px;' }} />
+                                    </Link>  
+                                    
+                                    <div className="sgt-text">
+                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
+                                            <h4>{imovel.titulo}</h4>
+                                        </Link> 
+                                        
+                                        <span>{imovel.tipoImovel}</span>
+                                    </div>
+                                    <span><i className="la la-plus"></i></span>
+                                </div>
+                            )
+                        })   
+                    }
 
-                    <div class="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div class="sgt-text">
-                            <h4>Bill Gates</h4>
-                            <span>C & C++ Developer</span>
-                        </div>
-                        <span><i class="la la-plus"></i></span>
-                    </div>
-                    <div class="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div class="sgt-text">
-                            <h4>Jessica William</h4>
-                            <span>Graphic Designer</span>
-                        </div>
-                        <span><i class="la la-plus"></i></span>
-                    </div>
-                    <div class="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div class="sgt-text">
-                            <h4>John Doe</h4>
-                            <span>PHP Developer</span>
-                        </div>
-                        <span><i class="la la-plus"></i></span>
-                    </div>
                     <div class="view-more">
                         <a href="#" title="">Ver Todos</a>
                     </div>
