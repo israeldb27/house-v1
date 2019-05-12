@@ -25,19 +25,34 @@ class UsuarioSessaoDetalhes extends Component {
 							</div>
 							<div className="col-lg-6">
 								<div className="main-ws-sec">
-									<div className="user-tab-sec">
+									<div className="user-tab-sec mb-3 p-3 bg-white">
 										<h3>Israel Barreto</h3>
-										<div className="star-descp">
-											<span>Normal</span>
-											<ul>
-												<li><i className="fa fa-star"></i></li>
-												<li><i className="fa fa-star"></i></li>
-												<li><i className="fa fa-star"></i></li>
-												<li><i className="fa fa-star"></i></li>
-												<li><i className="fa fa-star-half-o"></i></li>
-											</ul>
-											<a href="#" title="">Status</a>
-										</div> {/*star-descp end */}
+										<div className="row mb-2">
+											<div className="col-6 p-0 mb-1">
+												<span>Normal </span>
+											</div>
+											<div className="col-6 p-0 mb-1">
+												<div className="star-descp m-0 d-inline-block float-none">
+													<ul>
+														<li><i className="fa fa-star"></i></li>
+														<li><i className="fa fa-star"></i></li>
+														<li><i className="fa fa-star"></i></li>
+														<li><i className="fa fa-star"></i></li>
+														<li><i className="fa fa-star-half-o"></i></li>
+													</ul>
+												</div> {/*star-descp end */}
+											</div>
+											<div className="col-6 p-0 mb-1">
+												<span>Membro desde 01/01/2019</span>
+											</div>
+											<div className="col-6 p-0 mb-1">
+												<span>Niterói, RJ - Brasil</span>
+											</div>
+											<dvi className="col-6 p-0 mb-1">
+												<span>Total de Imóveis: 999</span>
+											</dvi>
+										</div>
+
 									</div> {/*user-tab-sec end */}									
 
 									<div className="tab-feed st2">
