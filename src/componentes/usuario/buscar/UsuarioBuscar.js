@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PerfilUsuarioEnum from '../../common/PerfilUsuarioEnum';
 import UsuarioResultadoBuscar from './UsuarioResultadoBuscar';
+import Header from '../../layout/Header';
 
 
 let id = 0;
@@ -53,6 +54,9 @@ class UsuarioBuscar extends Component {
     render() {
         return (
             <div>
+             <Header />
+             <br />   
+             
             <div className="search-sec">
                 <div className="container">
                     <div className="search-box">

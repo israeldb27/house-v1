@@ -3,11 +3,12 @@ import ViewProfileMeusIMoveis from '../meusImoveis/ViewProfileMeusIMoveis';
 import { Link } from 'react-router-dom';
 import Header from '../../layout/Header';
 
-class ImovelAdicionarPasso2 extends Component {
+
+class ImovelEditarPasso4  extends Component {
 
     constructor() {
-        super()  
-     
+        super() 
+    
     }
 
     render() {
@@ -32,41 +33,20 @@ class ImovelAdicionarPasso2 extends Component {
                                         <div className="tab-content" id="nav-tabContent">
                                             <div className="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
                                                 <div className="acc-setting">
-                                                    <h3>Novo Imóvel Passo 2</h3>
+                                                    <h3>Editar Imóvel Passo 3</h3>
                                                     <form>
                                                         <div className="cp-field">
-                                                            <h5>Área m²</h5>
+                                                            <h5>Galeria de Fotos </h5>
                                                             <div className="cpp-fiel">
-                                                                <input type="text" name="old-password" placeholder="Área do imóvel  (se houver)" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="cp-field">
-                                                            <h5>Quarto</h5>
-                                                            <div className="cpp-fiel">
-                                                                <input type="text" name="old-password" placeholder="Quantidade de quartos  (se houver) " />
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="cp-field">
-                                                            <h5>Vaga</h5>
-                                                            <div className="cpp-fiel">
-                                                                <input type="text" name="old-password" placeholder="Quantidade de vagas de garagem  (se houver)" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="cp-field">
-                                                            <h5>Suíte</h5>
-                                                            <div className="cpp-fiel">
-                                                                <input type="text" name="old-password" placeholder="Quantidade de suites  (se houver)" />
+                                                                <input type="text" name="old-password" placeholder="Selecione um arquivo" />
                                                             </div>
                                                         </div>
 
                                                         <div className="save-stngs pd2">
                                                             <ul>
                                                                 <li><button type="submit">Avançar Cadastro</button></li>
-                                                                <li><Link to="/imovelAdicionar" className="button" >Retornar Cadastro</Link></li>
-                                                                <li><Link to="/imovelAdicionarPasso3" className="button" >Avançar Cadastro</Link></li>
+                                                                <li><Link to="/imovelEditarPasso3/10" className="button" >Retornar Cadastro</Link></li>
+                                                                <li><Link to="/imovelEditarPasso4/10" className="button" >Finalizar Cadastro</Link></li>
                                                             </ul>
                                                         </div>{/*save-stngs end*/}
 
@@ -81,11 +61,9 @@ class ImovelAdicionarPasso2 extends Component {
                         </div>
                     </div>
                 </main>
-
             </div>
-           
         );
     }
 }
 
-export default ImovelAdicionarPasso2;
+export default ImovelEditarPasso4;

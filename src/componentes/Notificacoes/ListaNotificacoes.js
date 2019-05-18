@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from '../layout/Header';
 
 
 let id = 0;
@@ -36,6 +37,9 @@ class ListaNotificacoes extends Component {
   render() {
     return (
         <div>
+            <Header />
+            <br />
+            
             <section className="companies-info">
                 <div className="container">
 

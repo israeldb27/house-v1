@@ -9,6 +9,7 @@ import StatusImovelEnum from '../../common/StatusImovelEnum';
 
 
 import ImovelResultadoBusca from './ImovelResultadoBusca';
+import Header from '../../layout/Header';
 
 let id = 0;
 function createData(id, nomeUsuario, perfilUsuario, urlFoto, 
@@ -77,6 +78,8 @@ class ImovelBuscar extends Component {
     render() {
         return (
             <div>
+                <Header />
+                <br />
                 <div className="search-sec">
                     <div className="container">
                         <div className="search-box">

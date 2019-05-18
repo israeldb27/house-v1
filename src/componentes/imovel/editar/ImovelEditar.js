@@ -7,7 +7,7 @@ import AcaoImovelEnum from '../../common/AcaoImovelEnum';
 import StatusImovelEnum from '../../common/StatusImovelEnum';
 import Header from '../../layout/Header';
 
-class ImovelAdicionar extends Component {
+class ImovelEditar extends Component {
 
     constructor() {
         super()  
@@ -31,7 +31,6 @@ class ImovelAdicionar extends Component {
             <div>
                 <Header />
                 <br />
-
                 <main>
                     <div className="main-section">
                         <div className="container">
@@ -49,7 +48,7 @@ class ImovelAdicionar extends Component {
                                         <div className="tab-content" id="nav-tabContent">
                                             <div className="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
                                                 <div className="acc-setting">
-                                                    <h3>Novo Imóvel</h3>
+                                                    <h3>Editar Imóvel</h3>
                                                     <form>
                                                         <div className="cp-field">
                                                             <h5>Titulo</h5>
@@ -124,7 +123,7 @@ class ImovelAdicionar extends Component {
                                                         <div className="save-stngs pd2">
                                                             <ul>
                                                                 <li><button type="submit">Avançar Cadastro</button></li>
-                                                                <li><Link to="/imovelAdicionarPasso2" className="button" >Avançar Cadastro</Link></li>
+                                                                <li><Link to="/imovelEditarPasso2/10" className="button" >Avançar Cadastro</Link></li>
                                                             </ul>
                                                         </div>{/*save-stngs end*/}
                                                     </form>
@@ -138,11 +137,9 @@ class ImovelAdicionar extends Component {
                         </div>
                     </div>
                 </main>
-
             </div>
-            
         );
     }
 }
 
-export default ImovelAdicionar;
+export default ImovelEditar;

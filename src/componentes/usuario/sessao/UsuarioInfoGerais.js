@@ -1,113 +1,163 @@
 import React, { Component } from 'react'
 
+
+
+
 class UsuarioInfoGerais extends Component {
+   
+    constructor(props) {
+        super(props)
+      
+        this.state = {
+           descricaoUsuario: '',
+           listaUltimasUsuario: [],
+           listaTrabalhosRealizados: [],
+           listaRecomendacoes: []        
+        }
+    }
+
+    componentDidMount(){
+        this.setState({descricaoUsuario: '10 anos de experiência no mercado imobiliário, muita confiabilidade e muitos clientes satisfeitos com o meu trabalho'});
+        this.carregaListaUltimasUsuario();
+        this.carregaListaTrabalhosRealizados();
+        this.carregarListaRecomendacoes();      
+    }
+
+    carregaListaUltimasUsuario(){
+        let id = 0;
+        function createData(id, desc, data) {
+            id += 1;
+            return {id, desc, data} ;
+        }
+
+        const rows = [
+            createData(1, 'Atualizou sua informações pessoais do usuário', '25/11/2018' ),
+            createData(2, 'Cadastrou novo imóvel', '10/05/2017'),
+            createData(3, 'Estabeleceu nova conexão com', '02/03/2018'),
+            createData(4, 'Registrou-se na plataforma em', '01/09/2016')  
+        ];
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaUltimasUsuario;
+            list.push(rows[i]);
+            this.setState({listaUltimasUsuario: list});            
+        }
+    }
+
+    carregaListaTrabalhosRealizados(){
+        let id = 0;
+        function createData(id, tituloImovel, acaoImovel) {
+            id += 1;
+            return {id, tituloImovel, acaoImovel} ;
+        }
+
+        const rows = [
+            createData(1, 'Copacabana Palace', 'Venda' ),
+            createData(2, 'Luxo Place', 'Aluguel'),
+            createData(3, 'Hotel Sal e Sol', 'Aluguel'),
+            createData(4, 'Pousada Forte Praia', 'Temporada')  
+        ];
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaTrabalhosRealizados;
+            list.push(rows[i]);
+            this.setState({listaTrabalhosRealizados: list});            
+        }
+    }
+
+    carregarListaRecomendacoes() {
+        let id = 0;
+        function createData(id, usuario, perfil, descricao) {
+            id += 1;
+            return {id, usuario, perfil, descricao} ;
+        }
+
+        const rows = [
+            createData(1, 'Jessica Palmer', 'Normal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.' ),
+            createData(2, 'Jon Snow', 'Corretor', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.'),
+            createData(3, 'Imobiliaria Luz', 'imobiliaria', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.'),
+            createData(4, 'Arya Stark', 'Normal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.')  
+        ];
+
+        for (let i = 0; i < rows.length; i++){
+            let list = this.state.listaRecomendacoes;
+            list.push(rows[i]);
+            this.setState({listaRecomendacoes: list});            
+        }
+    }
+
   render() {
     return (
         <div className="product-feed-tab current" id="info-dd">
             <div className="user-profile-ov">
-                <h3><a href="#" title="" className="overview-open">Descrição</a> <a href="#" title="" className="overview-open"> </a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
-            </div> {/*user-profile-ov end */}
-            <div className="user-profile-ov">
-                <h3><a href="#" title="" className="lct-box-open">Localização</a> </h3>
-                <h4>Brasil</h4>
-                <p>Niteroi, RJ </p>
-            </div> {/*user-profile-ov end */}
-            <div className="user-profile-ov st2">
-                <h3><a href="#" title="" className="exp-bx-open">Informações Gerais </a></h3>
-                <h4>Cadastrado desde <a href="#" title=""></a></h4>
-                <p> 11/11/2018 </p>               
-            </div> {/*user-profile-ov end */}   
+                <h3><a href="#" title="" className="overview-open">Descrição  </a> <a href="#" title="" className="overview-open"> </a></h3>
+                <p> {this.state.descricaoUsuario} </p>
+            </div>       
 
             <div className="user-profile-ov">
                 <h3><a href="#" title="" className="ed-box-open">Últimas do Usuário</a> </h3>
 
                 <div className="suggestions-list">
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Atualizou sua informações pessoais em:</h4>
-                            <span>25/11/2018</span>
-                        </div>                  
-                    </div>
 
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Cadastrou novo imóvel:</h4>
-                            <span><a href="#" title="">Pousada Sal e Sol </a></span>
-                        </div>                
-                    </div>
+                    {
+                        this.state.listaUltimasUsuario.map(ultima => {
+                            return (
+                                <div className="suggestion-usd">
+                                    <img src="http://via.placeholder.com/35x35" alt="" />
+                                    <div className="sgt-text">
+                                        <h4>{ultima.desc}</h4>
+                                        <span>{ultima.data}</span>
+                                    </div>                  
+                                </div>
+                            );
+                        })
+                    }
 
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Estabeleceu nova conexão com: </h4>
-                            <span><a href="#" title="">Peterson Krause </a></span>
-                        </div>                
-                    </div>
-
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Registrou-se na plataforma em: </h4>
-                            <span>11/11/2018</span>
-                        </div>                
-                    </div>
                 </div>
-            </div> {/*user-profile-ov end */}
-
+            </div> 
 
             {/* Esta aba sera usada para informar quantos e quais imoveis o usuario corretor ou imobiliaria vendeu ou conseguiu alugar por exemplo */}
            <div className="user-profile-ov">
                 <h3><a href="#" title="" className="ed-box-open">Trabalhos realizados</a> </h3>
 
                 <div className="suggestions-list">
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Pousada Sal e Sol</h4>
-                            <span>Venda</span>
-                        </div>                  
-                    </div>
-
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Hotel Plaza</h4>
-                            <span>Aluguel</span>
-                        </div>                
-                    </div>
+                    {
+                        this.state.listaTrabalhosRealizados.map(trabalho => {
+                            return (
+                                <div className="suggestion-usd">
+                                    <img src="http://via.placeholder.com/35x35" alt="" />
+                                    <div className="sgt-text">
+                                        <h4>{trabalho.tituloImovel}</h4>
+                                        <span>{trabalho.acaoImovel}</span>
+                                    </div>                  
+                                </div>  
+                            );
+                        })
+                    }                    
                 </div>
-            </div> {/*user-profile-ov end */}
+            </div> 
 
             <div className="user-profile-ov">
                 <h3><a href="#" title="" className="ed-box-open">Recomendações</a> </h3>
 
                 <div className="suggestions-list">
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Jessica William</h4>
-                            <span>Graphic Designer</span>
-                        </div>
-                        <span>
-                            <i className="la la-plus"></i>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                        </span>
-                    </div>
-
-                    <div className="suggestion-usd">
-                        <img src="http://via.placeholder.com/35x35" alt="" />
-                        <div className="sgt-text">
-                            <h4>Jenifer Jones</h4>
-                            <span>Corretor</span>
-                        </div>
-                        <span>
-                            <i className="la la-plus"></i>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                        </span>
-                    </div>
+                    {
+                        this.state.listaRecomendacoes.map( recomendacao => {
+                            return (
+                                <div className="suggestion-usd">
+                                    <img src="http://via.placeholder.com/35x35" alt="" />
+                                    <div className="sgt-text">
+                                        <h4>{recomendacao.usuario}</h4>
+                                        <span>{recomendacao.perfil}</span>
+                                    </div>
+                                    <span>
+                                        <i className="la la-plus"></i>
+                                        <p>{recomendacao.descricao} </p>
+                                    </span>
+                                </div>  
+                            );
+                        })
+                    }
                 </div>
             </div> {/*user-profile-ov end */}
 

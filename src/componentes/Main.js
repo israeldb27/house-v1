@@ -9,51 +9,57 @@ import AnuncioImoveis from './layout/AnuncioImoveis';
 import AnuncioImobiliaria from './layout/AnuncioImobiliaria';
 import ImovelIndicacoesResumo from './layout/ImovelIndicacoesResumo';
 import ImoveisOfertasResumo from './layout/ImoveisOfertasResumo';
+import Header from './layout/Header';
 
 class Main extends Component {
     render() {
         return (
-         
-            <main>
-                <div className="main-section">
-                    <div className="container">
-                        <div className="main-section-data">
-                            <div className="row">
-                                <div className="col-lg-3 col-md-4 pd-left-none no-pd">
-                                    <div className="main-left-sidebar no-margin">                                      
+            
+            <div>
+                <Header />
 
-                                        <ViewProfile />
+                <main>
 
-                                        <Sugestoes />              
+                    <div className="main-section">
+                        <div className="container">
+                            <div className="main-section-data">
+                                <div className="row">
+                                    <div className="col-lg-3 col-md-4 pd-left-none no-pd">
+                                        <div className="main-left-sidebar no-margin">
 
-                                    </div>{/*--main-left-sidebar end*/}
-                                </div>
+                                            <ViewProfile />
 
-                                <div className="col-lg-6 col-md-8 no-pd">
-                                    <Timeline />
-                                </div> 
+                                            <Sugestoes />
 
-                                <div className="col-lg-3 pd-right-none no-pd">
-                                    <div className="right-sidebar"> 
+                                        </div>{/*--main-left-sidebar end*/}
+                                    </div>
 
-                                       <AnuncioImobiliaria />
+                                    <div className="col-lg-6 col-md-8 no-pd">
+                                        <Timeline />
+                                    </div>
 
-                                       <AnuncioImoveis /> 
+                                    <div className="col-lg-3 pd-right-none no-pd">
+                                        <div className="right-sidebar">
 
-                                       <ImoveisVisualizadosResumo />  
+                                            <AnuncioImobiliaria />
 
-                                       <ImoveisOfertasResumo />                                      
-                                        
-                                       <ImovelIndicacoesResumo />
+                                            <AnuncioImoveis />
 
+                                            <ImoveisVisualizadosResumo />
+
+                                            <ImoveisOfertasResumo />
+
+                                            <ImovelIndicacoesResumo />
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
-           
+                </main>
+                
+            </div>
         );
     }
 }

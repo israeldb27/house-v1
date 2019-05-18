@@ -5,11 +5,21 @@ import ImovelDestaqueUsuario from '../imovel/ImovelDestaqueUsuario';
 import UsuarioInfoGerais from './sessao/UsuarioInfoGerais';
 import { Link } from 'react-router-dom';
 import UsuarioSessaoMenuFuncionalidades from './UsuarioSessaoMenuFuncionalidades';
+import UsuarioSessaoDetalhesHeader from './sessao/UsuarioSessaoDetalhesHeader';
+import Header from '../layout/Header';
 
 class UsuarioSessaoDetalhes extends Component {
     render() {
         return (
+			
+			<div>
+			<Header />			
+
+			<br /> <br />
             <main>
+
+			
+
             <br /> <br />  <br /> <br /> <br /> <br /> <br />  
 			<div className="main-section">
 				<div className="container">
@@ -25,36 +35,9 @@ class UsuarioSessaoDetalhes extends Component {
 							</div>
 							<div className="col-lg-6">
 								<div className="main-ws-sec">
-									<div className="user-tab-sec mb-3 p-3 bg-white">
-										<h3>Israel Barreto</h3>
-										<div className="row mb-2">
-											<div className="col-6 p-0 mb-1">
-												<span>Normal </span>
-											</div>
-											<div className="col-6 p-0 mb-1">
-												<div className="star-descp m-0 d-inline-block float-none">
-													<ul>
-														<li><i className="fa fa-star"></i></li>
-														<li><i className="fa fa-star"></i></li>
-														<li><i className="fa fa-star"></i></li>
-														<li><i className="fa fa-star"></i></li>
-														<li><i className="fa fa-star-half-o"></i></li>
-													</ul>
-												</div> {/*star-descp end */}
-											</div>
-											<div className="col-6 p-0 mb-1">
-												<span>Membro desde 01/01/2019</span>
-											</div>
-											<div className="col-6 p-0 mb-1">
-												<span>Niterói, RJ - Brasil</span>
-											</div>
-											<dvi className="col-6 p-0 mb-1">
-												<span>Total de Imóveis: 999</span>
-											</dvi>
-										</div>
-
-									</div> {/*user-tab-sec end */}									
-
+																
+									<UsuarioSessaoDetalhesHeader />
+									
 									<div className="tab-feed st2">
 											<ul>
 												<li data-tab="info-dd" className="active">
@@ -83,29 +66,36 @@ class UsuarioSessaoDetalhes extends Component {
 													</Link>
 												</li>
 											</ul>
-									</div> {/* tab-feed end */}                                    
+									</div>                                 
                                   
 									<UsuarioInfoGerais />								
 									
 								</div> {/*main-ws-sec end */}
 							</div>
+
 							<div className="col-lg-3">
-								<div className="right-sidebar">
+								<div className="left-sidebar">
 									<div className="message-btn">
-										<a href="#" title=""><i className="fa fa-envelope"></i> Message</a>
+										<Link to="/imovelAdicionar" title=""><i className="fa fa-plus"></i> Imóvel </Link>  {/*  este link eh usado apenas pelo usuario da sessao*/}
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<Link to="/mensagensUsuario/10" title=""><i className="fa fa-envelope"></i> Mensagem</Link>
 									</div>
 
 									<UsuarioSessaoMenuFuncionalidades /> 
 								
 									<ImovelDestaqueUsuario /> 
 
-								</div> {/*right-sidebar end */}
+								</div> 
 							</div>
+
+
 						</div>
-					</div> {/* main-section-data end */}
+					</div> 
 				</div> 
 			</div>
 		</main>  
+
+		</div>
         );
     }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../layout/Header';
 
 let id = 0;
 function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
@@ -43,7 +44,8 @@ class ListaContatos extends Component {
     render() {
         return (
             <div>               
-
+                <Header />    
+                <br />
                 <section className="companies-info">
                     <div className="container">                       
 
@@ -69,6 +71,14 @@ class ListaContatos extends Component {
                                         <span>Seguindo</span>
                                     </Link>
                                 </li>  
+
+                                <li data-tab="my-bids" >
+                                    <Link to="/listarConvites/10">
+                                        <img src="images/ic5.png" alt="" />
+                                        <span>Convites</span>
+                                    </Link>
+                                </li>
+                                
                             </ul>
                         </div> 
 

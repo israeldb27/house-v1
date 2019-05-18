@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import Header from './componentes/layout/Header';
 
-import { BrowserRouter, Link, Route, Switch, Router } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch, Router, Redirect } from 'react-router-dom';
 import history from './componentes/History';
 import UsuarioSessaoDetalhes from './componentes/usuario/UsuarioSessaoDetalhes';
 import ImovelDetalhes from './componentes/imovel/ImovelDetalhes';
@@ -45,14 +45,23 @@ import IntermediacoesEnviadas from './componentes/usuario/sessao/intermediacoes/
 import IntermediacoesFechadas from './componentes/usuario/sessao/intermediacoes/IntermediacoesFechadas';
 import IndicacoesRecebidas from './componentes/usuario/sessao/indicacoes/IndicacoesRecebidas';
 import IndicacoesEnviadas from './componentes/usuario/sessao/indicacoes/IndicacoesEnviadas';
+import ImovelEditar from './componentes/imovel/editar/ImovelEditar';
+import ImovelEditarPasso2 from './componentes/imovel/editar/ImovelEditarPasso2';
+import ImovelEditarPasso3 from './componentes/imovel/editar/ImovelEditarPasso3';
+import ImovelEditarPasso4 from './componentes/imovel/editar/ImovelEditarPasso4';
+import ListaConvites from './componentes/contato/ListaConvites';
+import UsuarioCadastrar from './componentes/usuario/cadastrar/UsuarioCadastrar';
+import UsuarioCadastrarPasso2 from './componentes/usuario/cadastrar/UsuarioCadastrarPasso2';
+import UsuarioCadastrarPasso3 from './componentes/usuario/cadastrar/UsuarioCadastrarPasso3';
+
+{/*   <Route path='/usuarioCadastrar' component={UsuarioCadastrar} />  */}
 
 ReactDOM.render(
-    
+   
             <Router history={history}>
-                <div className="wrapper">
-                    <Header />
-
-                    <Switch>
+                <div className="wrapper"> 
+                        
+                    <Switch>                                                               
                         <Route path="/" exact={true} component={App}/> 
                         <Route path="/usuarioSessaoDetalhes/:id"  component={UsuarioSessaoDetalhes}/> 
                         <Route path="/visualizarImovelDetalhes/:id"  component={ImovelDetalhes}/> 
@@ -60,6 +69,7 @@ ReactDOM.render(
                         <Route path="/imovelBuscar" component={ImovelBuscar}/>                
                         <Route path="/listarSeguidores/:id" component={ListaSeguidores}/> 
                         <Route path="/listarSeguindo/:id" component={ListaSeguindo}/> 
+                        <Route path="/listarConvites/:id" component={ListaConvites}/> 
                         <Route path="/mensagensUsuario/:id" component={Mensagens}/>
                         <Route path="/usuarioConta/:id" component={UsuarioConta}/> 
                         <Route path="/usuarioFotoPrincipal/:id" component={UsuarioFotoPrincipal}/> 
@@ -105,13 +115,24 @@ ReactDOM.render(
 
                          <Route path="/indicacoesRecebidas/:id"  component={IndicacoesRecebidas}/>   
                          <Route path="/indicacoesEnviadas/:id"  component={IndicacoesEnviadas}/>   
-
                          {/*FIM - Links para o Menu Usuario    */}
-                        
 
+                        {/*INICIO - Links para o editar imóvel    */}
+                        <Route path="/imovelEditar/:id"  component={ImovelEditar}/> 
+                        <Route path="/imovelEditarPasso2/:id"  component={ImovelEditarPasso2}/> 
+                        <Route path="/imovelEditarPasso3/:id"  component={ImovelEditarPasso3}/> 
+                        <Route path="/imovelEditarPasso4/:id"  component={ImovelEditarPasso4}/>
+                        {/*FIM - Links para o editar imóvel    */}
+
+                        {/*INICIO - Links para o cadastrar usuario    */}
+                        <Route exact path="/usuarioCadastrar"  component={UsuarioCadastrar}/>     
+                        <Route exact path="/usuarioCadastrarPasso2"  component={UsuarioCadastrarPasso2}/>     
+                        <Route exact path="/usuarioCadastrarPasso3"  component={UsuarioCadastrarPasso3}/>     
+
+                        {/*FIM - Links para o cadastrar usuario   */}
                     </Switch>                   
                 </div>
-            </Router>
+            </Router>   
             , document.getElementById('root'));
 
 /*
