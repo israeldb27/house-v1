@@ -1,20 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../layout/Header';
+import NotificacaoService from '../../services/NotificacaoService';
 
-
-let id = 0;
-function createData(id, nomeUsuario, descricao, urlFoto, dataNotificacao) {
-  id += 1;
-  return {id, nomeUsuario, descricao, urlFoto, dataNotificacao} ;
-}
-
-const rows = [
-  createData(1, 'Lagoa Imoveis', 'comentou post', '/img1.jpg', '11/12/2018 11:15:00' ),
-  createData(2, 'Zirtaeb', 'iniciou nova conexão', '/img1.jpg', '22/12/2018 10:15:00' ),
-  createData(3, 'Pamela Alves', 'enviou convite para nova conexão', '/img1.jpg' , '15/12/2018 11:15:00' ),
-  createData(4, 'Israel Barreto', 'enviou uma nova oferta para seu imovel', '/img1.jpg', '18/12/2018 11:15:00' ),
-  createData(5, 'Marli Barreto', 'aceitou parceria sobre imovel', '/img1.jpg', '16/12/2018 11:15:00' ),
-];
 
 class ListaNotificacoes extends Component {
 
@@ -27,11 +14,10 @@ class ListaNotificacoes extends Component {
       } 
 
      componentDidMount() {
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaNotificacoes;
-            list.push(rows[i]);
-            this.setState({listaNotificacoes: list});            
-        }
+        let idUsuario = 1;
+        NotificacaoService.listarNotificacoesPorUsuario(idUsuario).then(listaNotificacoes => {
+            this.setState({listaNotificacoes: listaNotificacoes});            
+        })
     }
 
   render() {

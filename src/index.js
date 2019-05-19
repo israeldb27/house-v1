@@ -63,6 +63,7 @@ ReactDOM.render(
                         
                     <Switch>                                                               
                         <Route path="/" exact={true} component={App}/> 
+                        <Route path="/loginUsuario"  component={LoginUsuario}/> 
                         <Route path="/usuarioSessaoDetalhes/:id"  component={UsuarioSessaoDetalhes}/> 
                         <Route path="/visualizarImovelDetalhes/:id"  component={ImovelDetalhes}/> 
                         <Route path="/listaContatosUsuario/:id"  component={ListaContatos}/> 
@@ -78,7 +79,7 @@ ReactDOM.render(
                         <Route path="/usuarioPrivacidade/:id" component={UsuarioPrivacidade}/> 
                         <Route path="/usuarioDesativarConta/:id" component={UsuarioDesativarConta}/> 
                         <Route path="/listaNotificacoes/:id" component={ListaNotificacoes}/> 
-                        <Route path="/loginUsuario"  component={LoginUsuario}/> 
+                        
                         <Route path="/listaMeusImoveis/:id"  component={ListaMeusImoveis}/> 
                         <Route path="/imovelAdicionar"  component={ImovelAdicionar}/> 
                         <Route path="/imovelAdicionarPasso2"  component={ImovelAdicionarPasso2}/> 

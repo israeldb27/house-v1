@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao2.jpg';
+import VisualizacaoService from '../../services/VisualizacaoService';
 
-let id = 0;
-function createData(id, titulo, tipoImovel, urlFoto) {
-  id += 1;
-  return {id, titulo, tipoImovel, urlFoto};
-}
 
-const rows = [
-  createData(1, 'Copacabana', 'Condominio', '/img1.jpg'),
-  createData(2, 'Plaza Center', 'Edificio Comercial', '/img1.jpg'),
-  createData(3, 'Condominio da Paz', 'Condominio', '/img1.jpg'),
-];
 
 class ImoveisVisualizadosResumo extends Component {
 
@@ -20,18 +11,15 @@ class ImoveisVisualizadosResumo extends Component {
         super(props)
       
         this.state = {
-          listaVisualizadosImoveis : [] 
-  
+          listaVisualizadosImoveis : []   
         }
       }
 
     componentDidMount(){
-        for (let i = 0; i < rows.length; i++){
-            console.log(rows[i]);
-            let list = this.state.listaVisualizadosImoveis;
-            list.push(rows[i]);
-            this.setState({listaVisualizadosImoveis: list});
-        }
+        let idUsuario = 1;
+        VisualizacaoService.listarImoveisVisualizadosResumoPorUsuario(idUsuario).then(listaImoveisVisualizados => {
+            this.setState({listaVisualizadosImoveis: listaImoveisVisualizados});
+        })
     }
 
 

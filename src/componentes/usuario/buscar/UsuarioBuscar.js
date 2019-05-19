@@ -2,21 +2,8 @@ import React, { Component } from 'react';
 import PerfilUsuarioEnum from '../../common/PerfilUsuarioEnum';
 import UsuarioResultadoBuscar from './UsuarioResultadoBuscar';
 import Header from '../../layout/Header';
+import UsuarioService from '../../../services/UsuarioService'
 
-
-let id = 0;
-function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
-  id += 1;
-  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
-}
-
-const rows = [
-  createData(1, 'Lagoa Imoveis', 'Imobiliaria', '/img1.jpg' ),
-  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg'),
-  createData(3, 'Pamela Alves', 'Corretor', '/img1.jpg'),
-  createData(4, 'Israel Barreto', 'Normal', '/img1.jpg'),
-  createData(5, 'Marli Barreto', 'Normal', '/img1.jpg')
-];
 
 class UsuarioBuscar extends Component {
     constructor() {
@@ -29,25 +16,25 @@ class UsuarioBuscar extends Component {
       } 
 
      componentDidMount() {
-        this.setState({ perfilUsuario: PerfilUsuarioEnum.enumValues });  
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaUsuarios;
-            list.push(rows[i]);
-            this.setState({listaUsuarios: list});            
-        }
+        this.setState({ perfilUsuario: PerfilUsuarioEnum.enumValues });             
     }
 
     buscarChaveUsuario(event){
         event.preventDefault();
         console.log('Chave busca: ' + this.chave.value);
+
+        UsuarioService.buscarUsuarioPorChave(this.chave.value).then(listaUsuarios => {
+            this.setState({listaUsuarios: listaUsuarios})
+        })  
     }
 
     buscarUsuario(event){
         event.preventDefault();
         console.log('invocou metodo buscarUsuario');
-        console.log('localizacao selecionado: ' + this.localizacao.value);
-        console.log('perfil selecionado: ' + this.perfil.value);
+        
+        UsuarioService.buscarUsuario(this.localizacao.value, this.perfil.value).then(listaUsuarios => {
+            this.setState({listaUsuarios: listaUsuarios})
+        })  
     }
 
 

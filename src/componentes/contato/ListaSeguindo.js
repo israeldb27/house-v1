@@ -1,21 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import Header from '../layout/Header';
-
-let id = 0;
-function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
-  id += 1;
-  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
-}
-
-const rows = [
-  createData(1, 'CEntro Imoveis', 'Imobiliaria', '/img1.jpg' ),
-  createData(2, 'Spin Imobiliaria', 'Imobiliaria', '/img1.jpg'),
-  createData(3, 'Jon Jones', 'Corretor', '/img1.jpg'),
-  createData(4, 'Patricia Dias', 'Normal', '/img1.jpg'),
-  createData(5, 'Amanda Carla', 'Normal', '/img1.jpg')
-];
-
+import ContatoService from '../../services/ContatoService';
+import SeguidoresService from '../../services/SeguidoresService';
 
 class ListaSeguindo extends Component {
 
@@ -28,17 +15,19 @@ class ListaSeguindo extends Component {
       } 
 
     componentDidMount() {        
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaSeguindo;
-            list.push(rows[i]);
-            this.setState({listaSeguindo: list});            
-        }
+        let idUsuario = 1;
+        SeguidoresService.listarSeguindoPorUsuario(idUsuario).then(lista => {
+            this.setState({listaSeguindo: lista});            
+        })
     }
 
     buscarSeguindo(event) {
         event.preventDefault();
-        console.log('old  selecionado: ' + this.chaveBusca.value);        
+        console.log('old  selecionado: ' + this.chaveBusca.value);  
+        let idUsuario = 1;
+        SeguidoresService.listarSeguindoPorUsuarioPorChave(this.chaveBusca.value, idUsuario).then(lista => {
+            this.setState({listaSeguindo: lista});            
+        })      
    } 
   
 

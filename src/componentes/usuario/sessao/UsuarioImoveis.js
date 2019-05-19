@@ -8,6 +8,7 @@ import UsuarioSessaoMenuFuncionalidades from '../UsuarioSessaoMenuFuncionalidade
 import UsuarioSessaoDetalhesHeader from './UsuarioSessaoDetalhesHeader';
 import imovel2 from '../../fotos/imovel2.jpg';
 import Header from '../../layout/Header';
+import ImovelService from '../../../services/ImovelService';
 
 
 class UsuarioImoveis extends Component {
@@ -20,29 +21,13 @@ class UsuarioImoveis extends Component {
     }
   }
 
-  componentDidMount(){
-        let id = 0;
-        function createData(id, localizacao, titulo, valorImovel, acao, valorIptu, valorCondominio, 
-                            descricao, area, quantQuartos, quantBanheiros, quantVagas, quantSuites,
-                            quantLikes, quantComments, quantViews, nomeUsuario, perfilUsuario) {
-            id += 1;
-            return {id, localizacao, titulo, valorImovel, acao, valorIptu, valorCondominio, 
-                descricao, area, quantQuartos, quantBanheiros, quantVagas, quantSuites,
-                quantLikes, quantComments, quantViews, nomeUsuario, perfilUsuario} ;
-        }
+  componentDidMount(){       
 
-        const rows = [
-            createData(1, 'Rua Miguel de Frias, 112, Niteroi, RJ - Brasil', 'Luxo Palace Residence', 120000, 'Venda', 250, 100, 
-                        'Excelente espaço, bem localizado e ambiente tranquilo', 90, 3, 2, 1, 1,
-                        15, 23, 300, 'Arya Stark', 'Corretor' )    
-          
-        ];
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaImoveis;
-            list.push(rows[i]);
-            this.setState({listaImoveis: list});            
-        }
+    // carregando lista de imoveis do usuario
+    let idUsuario = 1;
+    ImovelService.listarImoveisPorUsuario(idUsuario).then( listaImoveis => {
+        this.setState({listaImoveis: listaImoveis})
+    })
   }
      
   render() {

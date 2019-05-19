@@ -10,30 +10,7 @@ import StatusImovelEnum from '../../common/StatusImovelEnum';
 
 import ImovelResultadoBusca from './ImovelResultadoBusca';
 import Header from '../../layout/Header';
-
-let id = 0;
-function createData(id, nomeUsuario, perfilUsuario, urlFoto, 
-                    localizacao, titulo, acao, valorImovel, 
-                    valorIptu, valorCondominio, descricao, 
-                    area, quartos, banheiros, garagens, suites, likes, comments, views) {
-  id += 1;
-  return {id, nomeUsuario, perfilUsuario, urlFoto, 
-          localizacao, titulo, acao, valorImovel, 
-          valorIptu, valorCondominio, descricao, 
-          area, quartos, banheiros, garagens, suites, likes, comments, views} ;
-}
-
-const rows = [
-  createData(1, 'Gisele Kremer', 'Corretor', '/img1.jpg',
-             'Boa Viagem, Niteroi - RJ', 'Luxo Place', 'Aluguel', '1320',
-             550, 1560, 'Excelente espaço e bem localizado',
-             210, 2, 2, 1, 1, 15, 12, 20),
-
-  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg',
-             'Centro, Niteroi - RJ', 'Flat Centro', 'Venda', '700',
-             211, 800, 'Localizado no centro da cidade',
-             80, 1, 0, 0, 0, 22, 12, 33)
-];
+import ImovelService from '../../../services/ImovelService';
 
 
 class ImovelBuscar extends Component {
@@ -51,28 +28,27 @@ class ImovelBuscar extends Component {
     componentDidMount() {
         console.log('chamou o didmount');
         this.setState({ tipoImovel: TipoImovelEnum.enumValues });
-        this.setState({ acaoImovel: AcaoImovelEnum.enumValues })
-        this.setState({ statusImovel: StatusImovelEnum.enumValues })
+        this.setState({ acaoImovel: AcaoImovelEnum.enumValues });
+        this.setState({ statusImovel: StatusImovelEnum.enumValues });
 
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaImoveis;
-            list.push(rows[i]);
-            this.setState({listaImoveis: list});            
-        }
     }
 
     buscarChaveImovel(event){
         event.preventDefault();
         console.log('Chave busca: ' + this.chave.value);
+        ImovelService.buscarImoveisPorChave(this.chave.value).then(listaImoveis => {
+            this.setState({listaImoveis: listaImoveis});   
+        })
+        
     }
 
     buscarImovel(event){
         event.preventDefault();
-        console.log('invocou metodo buscarImovel');
-        console.log('acao imovel selecionado: ' + this.acaoImovel.value);
-        console.log('tipoImovel selecionado: ' + this.tipoImovel.value);
-        console.log('localizacao selecionado: ' + this.localizacao.value);
-        console.log('status selecionado: ' + this.statusImovel.value);        
+        console.log('invocou metodo buscarImovel');             
+
+        ImovelService.buscarImoveis(this.acaoImovel.value, this.tipoImovel.value, this.localizacao.value, this.statusImovel.value).then(listaImoveis => {
+            this.setState({listaImoveis: listaImoveis});   
+        })
     }
 
     render() {

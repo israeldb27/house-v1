@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import UsuarioService from '../../../services/UsuarioService';
+import RecomendacaoService from '../../../services/RecomendacaoService';
 
 
 
@@ -23,67 +25,25 @@ class UsuarioInfoGerais extends Component {
         this.carregarListaRecomendacoes();      
     }
 
-    carregaListaUltimasUsuario(){
-        let id = 0;
-        function createData(id, desc, data) {
-            id += 1;
-            return {id, desc, data} ;
-        }
-
-        const rows = [
-            createData(1, 'Atualizou sua informações pessoais do usuário', '25/11/2018' ),
-            createData(2, 'Cadastrou novo imóvel', '10/05/2017'),
-            createData(3, 'Estabeleceu nova conexão com', '02/03/2018'),
-            createData(4, 'Registrou-se na plataforma em', '01/09/2016')  
-        ];
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaUltimasUsuario;
-            list.push(rows[i]);
-            this.setState({listaUltimasUsuario: list});            
-        }
+    carregaListaUltimasUsuario(){       
+        let idUsuario = 1;
+        UsuarioService.listarUltimasUsuario(idUsuario).then(listaUltimas => {
+            this.setState({listaUltimasUsuario: listaUltimas});            
+        })
     }
 
     carregaListaTrabalhosRealizados(){
-        let id = 0;
-        function createData(id, tituloImovel, acaoImovel) {
-            id += 1;
-            return {id, tituloImovel, acaoImovel} ;
-        }
-
-        const rows = [
-            createData(1, 'Copacabana Palace', 'Venda' ),
-            createData(2, 'Luxo Place', 'Aluguel'),
-            createData(3, 'Hotel Sal e Sol', 'Aluguel'),
-            createData(4, 'Pousada Forte Praia', 'Temporada')  
-        ];
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaTrabalhosRealizados;
-            list.push(rows[i]);
-            this.setState({listaTrabalhosRealizados: list});            
-        }
+        let idUsuario = 1;
+        UsuarioService.listaTrabalhosRealizadosPorUsuario(idUsuario).then(listaTrabalhos => {
+            this.setState({listaTrabalhosRealizados: listaTrabalhos});            
+        })
     }
 
     carregarListaRecomendacoes() {
-        let id = 0;
-        function createData(id, usuario, perfil, descricao) {
-            id += 1;
-            return {id, usuario, perfil, descricao} ;
-        }
-
-        const rows = [
-            createData(1, 'Jessica Palmer', 'Normal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.' ),
-            createData(2, 'Jon Snow', 'Corretor', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.'),
-            createData(3, 'Imobiliaria Luz', 'imobiliaria', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.'),
-            createData(4, 'Arya Stark', 'Normal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra.')  
-        ];
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaRecomendacoes;
-            list.push(rows[i]);
-            this.setState({listaRecomendacoes: list});            
-        }
+        let idUsuario = 1;
+        RecomendacaoService.listarRecomendacoesPorUsuario(idUsuario).then(listaRecomendacoes => {
+            this.setState({listaRecomendacoes: listaRecomendacoes});            
+        })
     }
 
   render() {

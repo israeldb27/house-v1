@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import marli from '../fotos/marli.jpg';
 import { Link } from 'react-router-dom';
+import ContatoService from '../../services/ContatoService';
 
 
 let id = 0;
@@ -23,7 +24,6 @@ class Sugestoes extends Component {
     
       this.state = {
         listaSugestoesContatos : [] 
-
       }
     }
     
@@ -34,6 +34,11 @@ class Sugestoes extends Component {
            list.push(rows[i]);
            this.setState({listaSugestoesContatos: list});
        }
+
+       let idUsuario = 1;
+       ContatoService.listaSugestoesContatos(idUsuario).then(listaContatos => {
+            this.setState({listaSugestoesContatos: listaContatos});
+        })
     }
 
     render() {

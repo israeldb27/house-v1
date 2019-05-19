@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao.jpg';
-
-let id = 0;
-function createData(id, titulo, tipoImovel, urlFoto) {
-  id += 1;
-  return {id, titulo, tipoImovel, urlFoto};
-}
-
-const rows = [
-  createData(1, 'Barra Center', 'Edificio Comercial', '/img1.jpg'),
-  createData(2, 'Espaço Cultural', 'Galpão', '/img1.jpg'),
-  createData(3, 'Luxo Residence', 'Hotel', '/img1.jpg'),
-];
+import IndicacaoService from '../../services/IndicacaoService';
 
 class ImovelIndicacoesResumo extends Component {
 
@@ -26,11 +15,10 @@ class ImovelIndicacoesResumo extends Component {
       }
 
     componentDidMount(){
-        for (let i = 0; i < rows.length; i++){    
-            let list = this.state.listaIndicacoesImoveis;
-            list.push(rows[i]);
-            this.setState({listaIndicacoesImoveis: list});
-        }
+        let idUsuario = 1;
+        IndicacaoService.listarIndicacoesPorUsuarioResumo(idUsuario).then(listaIndicacoes => {
+            this.setState({listaIndicacoesImoveis: listaIndicacoes});
+        })
     }
 
 

@@ -8,7 +8,6 @@ class UsuarioCadastrar extends Component {
   cadastrarPrimeiroPasso(e){
         e.preventDefault();
         console.log('Nome usuario: ' + this.nome.value);
-        console.log('Login usuario: ' + this.login.value);
         console.log('Email usuario: ' + this.email.value);
         console.log('Perfil usuario: ' + this.perfilUsuario.value);
         history.push('/usuarioCadastrarPasso2');
@@ -41,14 +40,7 @@ class UsuarioCadastrar extends Component {
                                                             <div className="cpp-fiel">
                                                                 <input type="text" ref={(input) => this.nome = input} name="nome" placeholder="Nome" />
                                                             </div>
-                                                        </div>                                                       
-
-                                                        <div className="cp-field">
-                                                            <h5>Login</h5>
-                                                            <div className="cpp-fiel">
-                                                                <input type="text" ref={(input) => this.login = input} name="login" placeholder="Login" />                                                                
-                                                            </div>
-                                                        </div>
+                                                        </div>    
 
                                                         <div className="cp-field">
                                                             <h5>Email</h5>

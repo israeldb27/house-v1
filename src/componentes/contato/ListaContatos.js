@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../layout/Header';
-
-let id = 0;
-function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
-  id += 1;
-  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
-}
-
-const rows = [
-  createData(1, 'Lagoa Imoveis', 'Imobiliaria', '/img1.jpg' ),
-  createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg'),
-  createData(3, 'Pamela Alves', 'Corretor', '/img1.jpg'),
-  createData(4, 'Israel Barreto', 'Normal', '/img1.jpg'),
-  createData(5, 'Marli Barreto', 'Normal', '/img1.jpg')
-];
+import ContatoService from '../../services/ContatoService';
 
 class ListaContatos extends Component {
     
@@ -26,19 +13,21 @@ class ListaContatos extends Component {
         }
       } 
 
-    componentDidMount() {        
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaContatos;
-            list.push(rows[i]);
-            this.setState({listaContatos: list});            
-        }
+    componentDidMount() {
+        let idUsuario = 1;
+        ContatoService.listarContatosPorUsuario(idUsuario).then(listaContatos => {
+            this.setState({listaContatos: listaContatos});            
+        })
     }
 
     buscarContatos(event) {
         event.preventDefault();
         console.log('old  selecionado: ' + this.chaveBusca.value);
-        
+
+        let idUsuario = 1;
+        ContatoService.listarContatosPorUsuarioPorChave(idUsuario, this.chaveBusca.value).then(listaContatos => {
+            this.setState({listaContatos: listaContatos});            
+        })        
     }
 
     render() {

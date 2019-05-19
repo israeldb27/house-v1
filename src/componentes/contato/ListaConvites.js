@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import Header from '../layout/Header';
+import ContatoService from '../../services/ContatoService';
 
-let id = 0;
-function createData(id, nomeUsuario, perfilUsuario, urlFoto) {
-  id += 1;
-  return {id, nomeUsuario, perfilUsuario, urlFoto} ;
-}
-
-const rows = [
-  createData(1, 'Lagoa Imoveis', 'Imobiliaria', '/img1.jpg' ),
-  createData(5, 'Marli Barreto', 'Normal', '/img1.jpg')
-];
 
 
 class ListaConvites extends Component {
@@ -24,13 +15,12 @@ class ListaConvites extends Component {
         }
     } 
 
-    componentDidMount() {      
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaConvites;
-            list.push(rows[i]);
-            this.setState({listaConvites: list});            
-        }
+    componentDidMount() {     
+        let idUsuario = 1;
+        ContatoService.listarConvitesPorUsuario(idUsuario).then(listaConvites => {
+            this.setState({listaConvites: listaConvites});            
+        })
+        
     }
 
     aceitarConvite(e){

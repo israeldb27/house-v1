@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao3.jpg';
-
-let id = 0;
-function createData(id, titulo, tipoImovel, urlFoto) {
-  id += 1;
-  return {id, titulo, tipoImovel, urlFoto};
-}
-
-const rows = [
-  createData(1, 'Vintage Center', 'Prédio', '/img1.jpg'),
-  createData(2, 'Casinha da Sogra', 'Casa de Vila', '/img1.jpg'),
-  createData(3, 'Shopping Nova América', 'Edificio Comercial', '/img1.jpg'),
-];
+import OfertaService from '../../services/OfertaService';
 
 class ImoveisOfertasResumo extends Component {
 
@@ -26,12 +15,10 @@ class ImoveisOfertasResumo extends Component {
       }
 
     componentDidMount(){
-        for (let i = 0; i < rows.length; i++){
-            console.log(rows[i]);
-            let list = this.state.listaOfertasImoveis;
-            list.push(rows[i]);
-            this.setState({listaOfertasImoveis: list});
-        }
+        let idUsuario = 1;
+        OfertaService.listarOfertasPorUsuarioResumo(idUsuario).then(listaOfertas => {
+            this.setState({listaOfertasImoveis: listaOfertas});
+        })
     }
 
 

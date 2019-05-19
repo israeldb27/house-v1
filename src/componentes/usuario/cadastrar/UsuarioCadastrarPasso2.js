@@ -5,12 +5,19 @@ import history from '../../History';
 
 class UsuarioCadastrarPasso2 extends Component {
 
+    // utilizar o props para trafegar os campos informados no passo anterior
+
  cadastrarSegundoPasso(e){
         e.preventDefault();
         console.log('Password: ' + this.password.value);
         console.log('Confirm password: ' + this.confirmaPassword.value);     
         history.push('/usuarioCadastrarPasso3');
   }    
+
+  retornarPasso(){
+        console.log('chamou retornarPasso');
+        history.push('/usuarioCadastrar');
+  }
 
   
   render() {
@@ -51,7 +58,8 @@ class UsuarioCadastrarPasso2 extends Component {
 
                                                         <div className="save-stngs pd2">
                                                             <ul>
-                                                                <li><button type="submit">Avançar Cadastro</button></li>                                                                
+                                                                <li><button type="button" onClick={this.retornarPasso.bind(this)}>Retornar Cadastro</button></li>                                                                
+                                                                <li><button type="submit">Avançar Cadastro</button></li>                                                                                                                                
                                                             </ul>
                                                         </div>{/*save-stngs end*/}
                                                     </form>

@@ -11,6 +11,11 @@ class UsuarioCadastrarPasso3 extends Component {
         history.push('/usuarioCadastrarPasso3');
    }        
 
+   retornarPasso(){
+        console.log('chamou retornarPasso');
+        history.push('/usuarioCadastrarPasso2');
+    }
+
 
   render() {
     return (
@@ -43,6 +48,7 @@ class UsuarioCadastrarPasso3 extends Component {
 
                                                         <div className="save-stngs pd2">
                                                             <ul>
+                                                                <li><button type="button" onClick={this.retornarPasso.bind(this)}>Retornar Cadastro</button></li>        
                                                                 <li><button type="submit">Finalizar Cadastro</button></li>                                                                
                                                             </ul>
                                                         </div>{/*save-stngs end*/}

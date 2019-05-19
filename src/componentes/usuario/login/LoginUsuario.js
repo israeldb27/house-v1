@@ -1,6 +1,23 @@
 import React, { Component } from 'react'
+import history from '../../History';
+import UsuarioService from '../../../services/UsuarioService';
 
 class LoginUsuario extends Component {
+
+  submitLogin(e) {
+    e.preventDefault();
+    console.log('chamou login');
+    
+    UsuarioService.login(+ this.email.value, this.password.value);
+    history.push('/');
+  }  
+
+  goUsuarioCadastrar(e) {
+    e.preventDefault();
+    console.log('chamou goUsuarioCadastrar');
+    history.push('/usuarioCadastrar');
+  }
+
   render() {
     return (
         
@@ -13,7 +30,7 @@ class LoginUsuario extends Component {
                                 <div className="cmp-info">
                                     <div className="cm-logo">
                                         <img src="images/cm-logo.png" alt="" />
-                                        <p>Workwise,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+                                        <p>House Pass, a sua primeira rede social voltada para o mercado imobiliário</p>
                                     </div>{/*cm-logo end*/}
                                     <img src="images/cm-main-img.png" alt="" />
                                 </div>{/*cmp-info end*/}
@@ -26,176 +43,39 @@ class LoginUsuario extends Component {
                                     </ul>
                                     <div className="sign_in_sec current" id="tab-1">
 
-                                        <h3>Sign in</h3>
+                                        <h3>Login</h3>
                                         <form>
                                             <div className="row">
                                                 <div className="col-lg-12 no-pdd">
                                                     <div className="sn-field">
-                                                        <input type="text" name="username" placeholder="Username" />
+                                                        <input type="text" name="email" placeholder="Email" ref={(input) => this.email = input} />
                                                         <i className="la la-user"></i>
                                                     </div>{/*sn-field end*/}
                                                 </div>
                                                 <div className="col-lg-12 no-pdd">
                                                     <div className="sn-field">
-                                                        <input type="password" name="password" placeholder="Password" />
+                                                        <input type="password" name="password" ref={(input) => this.password = input} placeholder="Password" />
                                                         <i className="la la-lock"></i>
                                                     </div>
-                                                </div>
+                                                </div>                                            
                                                 <div className="col-lg-12 no-pdd">
-                                                    <div className="checky-sec">
-                                                        <div className="fgt-sec">
-                                                            <input type="checkbox" name="cc" id="c1" />
-                                                            <label for="c1">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Remember me</small>
-                                                        </div>{/*fgt-sec end*/}
-                                                        <a href="#" title="">Forgot Password?</a>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-12 no-pdd">
-                                                    <button type="submit" value="submit">Sign in</button>
+                                                    <button type="submit" value="submit" onClick={this.submitLogin.bind(this)}>Acessar</button>
+                                                    &nbsp; &nbsp; &nbsp;
+                                                    <button type="button" value="registrar"  onClick={this.goUsuarioCadastrar.bind(this)} >Registrar-se</button>
                                                 </div>
                                             </div>
                                         </form>
-                                        <div className="login-resources">
-                                            <h4>Login Via Social Account</h4>
-                                            <ul>
-                                                <li><a href="#" title="" className="fb"><i className="fa fa-facebook"></i>Login Via Facebook</a></li>
-                                                <li><a href="#" title="" className="tw"><i className="fa fa-twitter"></i>Login Via Twitter</a></li>
-                                            </ul>
-                                        </div>{/*login-resources end*/}
+
                                     </div>{/*sign_in_sec end*/}
-                                    <div className="sign_in_sec" id="tab-2">
-                                        <div className="signup-tab">
-                                            <i className="fa fa-long-arrow-left"></i>
-                                            <h2>johndoe@example.com</h2>
-                                            <ul>
-                                                <li data-tab="tab-3" className="current"><a href="#" title="">User</a></li>
-                                                <li data-tab="tab-4"><a href="#" title="">Company</a></li>
-                                            </ul>
-                                        </div>{/*signup-tab end*/}
-                                        <div className="dff-tab current" id="tab-3">
-                                            <form>
-                                                <div className="row">
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="text" name="name" placeholder="Full Name" />
-                                                            <i className="la la-user"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="text" name="country" placeholder="Country" />
-                                                            <i className="la la-globe"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <select>
-                                                                <option>Category</option>
-                                                            </select>
-                                                            <i className="la la-dropbox"></i>
-                                                            <span><i className="fa fa-ellipsis-h"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="password" name="password" placeholder="Password" />
-                                                            <i className="la la-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="password" name="repeat-password" placeholder="Repeat Password" />
-                                                            <i className="la la-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="checky-sec st2">
-                                                            <div className="fgt-sec">
-                                                                <input type="checkbox" name="cc" id="c2" />
-                                                                <label for="c2">
-                                                                    <span></span>
-                                                                </label>
-                                                                <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
-                                                            </div>{/*fgt-sec end*/}
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <button type="submit" value="submit">Get Started</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>{/*dff-tab end*/}
-                                        <div className="dff-tab" id="tab-4">
-                                            <form>
-                                                <div className="row">
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="text" name="company-name" placeholder="Company Name" />
-                                                            <i className="la la-building"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="text" name="country" placeholder="Country" />
-                                                            <i className="la la-globe"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="password" name="password" placeholder="Password" />
-                                                            <i className="la la-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="sn-field">
-                                                            <input type="password" name="repeat-password" placeholder="Repeat Password" />
-                                                            <i className="la la-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <div className="checky-sec st2">
-                                                            <div className="fgt-sec">
-                                                                <input type="checkbox" name="cc" id="c3" />
-                                                                <label for="c3">
-                                                                    <span></span>
-                                                                </label>
-                                                                <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
-                                                            </div>{/*fgt-sec end*/}
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-12 no-pdd">
-                                                        <button type="submit" value="submit">Get Started</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>{/*dff-tab end*/}
-                                    </div>
+                                    
                                 </div>{/*login-sec end*/}
                             </div>
                         </div>
                     </div>{/*signin-pop end*/}
                 </div>{/*signin-popup end*/}
-                <div className="footy-sec">
-                    <div className="container">
-                        <ul>
-                            <li><a href="#" title="">Help Center</a></li>
-                            <li><a href="#" title="">Privacy Policy</a></li>
-                            <li><a href="#" title="">Community Guidelines</a></li>
-                            <li><a href="#" title="">Cookies Policy</a></li>
-                            <li><a href="#" title="">Career</a></li>
-                            <li><a href="#" title="">Forum</a></li>
-                            <li><a href="#" title="">Language</a></li>
-                            <li><a href="#" title="">Copyright Policy</a></li>
-                        </ul>
-                        <p><img src="images/copy-icon.png" alt="" />Copyright 2018</p>
-                    </div>
-                </div>{/*footy-sec end*/}
+   
             </div>{/*sign-in-page end*/}
         </div>
-
     )
   }
 }
