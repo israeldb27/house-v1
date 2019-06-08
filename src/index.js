@@ -36,7 +36,6 @@ import UsuarioDetalhesFeed from './componentes/usuario/detalhes/UsuarioDetalhesF
 import OfertasRecebidas from './componentes/usuario/sessao/ofertas/OfertasRecebidas';
 import OfertasEnviadas from './componentes/usuario/sessao/ofertas/OfertasEnviadas';
 import VisualizacoesRecebidas from './componentes/usuario/sessao/visualizacoes/VisualizacoesRecebidas';
-import VisualizacoesEnviadas from './componentes/usuario/sessao/visualizacoes/VisualizacoesEnviadas';
 import ParceriasRecebidas from './componentes/usuario/sessao/parcerias/ParceriasRecebidas';
 import ParceriasEnviadas from './componentes/usuario/sessao/parcerias/ParceriasEnviadas';
 import ParceriasFechadas from './componentes/usuario/sessao/parcerias/ParceriasFechadas';
@@ -44,7 +43,7 @@ import IntermediacoesRecebidas from './componentes/usuario/sessao/intermediacoes
 import IntermediacoesEnviadas from './componentes/usuario/sessao/intermediacoes/IntermediacoesEnviadas';
 import IntermediacoesFechadas from './componentes/usuario/sessao/intermediacoes/IntermediacoesFechadas';
 import IndicacoesRecebidas from './componentes/usuario/sessao/indicacoes/IndicacoesRecebidas';
-import IndicacoesEnviadas from './componentes/usuario/sessao/indicacoes/IndicacoesEnviadas';
+
 import ImovelEditar from './componentes/imovel/editar/ImovelEditar';
 import ImovelEditarPasso2 from './componentes/imovel/editar/ImovelEditarPasso2';
 import ImovelEditarPasso3 from './componentes/imovel/editar/ImovelEditarPasso3';
@@ -103,8 +102,7 @@ ReactDOM.render(
                          <Route path="/ofertasRecebidas/:id"  component={OfertasRecebidas}/>
                          <Route path="/ofertasEnviadas/:id"  component={OfertasEnviadas}/>
 
-                         <Route path="/visualizacoesRecebidas/:id"  component={VisualizacoesRecebidas}/>
-                         <Route path="/visualizacoesEnviadas/:id"  component={VisualizacoesEnviadas}/>
+                         <Route path="/visualizacoesRecebidas/:id"  component={VisualizacoesRecebidas}/>                         
                          
                          <Route path="/parceriasRecebidas/:id"  component={ParceriasRecebidas}/>
                          <Route path="/parceriasEnviadas/:id"  component={ParceriasEnviadas}/>
@@ -114,8 +112,7 @@ ReactDOM.render(
                          <Route path="/intermediacoesEnviadas/:id"  component={IntermediacoesEnviadas}/>
                          <Route path="/intermediacoesFechadas/:id"  component={IntermediacoesFechadas}/>   
 
-                         <Route path="/indicacoesRecebidas/:id"  component={IndicacoesRecebidas}/>   
-                         <Route path="/indicacoesEnviadas/:id"  component={IndicacoesEnviadas}/>   
+                         <Route path="/indicacoesRecebidas/:id"  component={IndicacoesRecebidas}/>                            
                          {/*FIM - Links para o Menu Usuario    */}
 
                         {/*INICIO - Links para o editar imóvel    */}

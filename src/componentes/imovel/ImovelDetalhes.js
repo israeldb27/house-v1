@@ -8,7 +8,10 @@ import AnuncioImoveis from '../layout/AnuncioImoveis';
 import '../includes/css/line-awesome-font-awesome.css';
 import { Link } from 'react-router-dom';
 import Header from '../layout/Header';
-
+import ComentarioService from '../../services/ComentarioService';
+import OfertaService from '../../services/OfertaService';
+import ParceriaService from '../../services/ParceriaService';
+import IntermediacaoService from '../../services/IntermediacaoService';
 
 class ImovelDetalhes extends Component {
 
@@ -36,7 +39,8 @@ class ImovelDetalhes extends Component {
            totalOfertas: 20,
            totalInteressados: 12,
            listaComentarios: [] ,
-           listaUltimas: []
+           listaUltimas: [],
+           comentario: ''
         }
       } 
 
@@ -45,26 +49,11 @@ class ImovelDetalhes extends Component {
        this.carregarListaUltimaAtualizacoes();
      } 
 
-     carregarListaComentarios(){
-        let id = 0;
-        function createData(id, nomeUsuario, comentario, urlFoto, dataComentario) {
-          id += 1;
-          return {id, nomeUsuario, comentario, urlFoto, dataComentario} ;
-        }
-        
-        const rows = [
-          createData(1, 'Lagoa Imoveis', 'excelente imovel', '/img1.jpg', '01/01/2019' ),
-          createData(2, 'Zirtaeb', 'bem localizado', '/img1.jpg', '01/01/2019'),
-          createData(3, 'Pamela Alves', 'excelente preço', '/img1.jpg', '01/01/2019'),
-          createData(4, 'Israel Barreto', 'eu gostei', '/img1.jpg', '01/01/2019'),
-          createData(5, 'Marli Barreto', 'muito bom', '/img1.jpg', '01/01/2019')
-        ];
-
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaComentarios;
-            list.push(rows[i]);
-            this.setState({listaComentarios: list});            
-        }
+     carregarListaComentarios(){        
+        let idImovel = 1;
+        ComentarioService.listarComentariosPorImovel(idImovel).then(listaComentarios => {
+            this.setState({listaComentarios: listaComentarios})
+        })
      }
 
      carregarListaUltimaAtualizacoes() {
@@ -92,17 +81,51 @@ class ImovelDetalhes extends Component {
         event.preventDefault();
         console.log('valor oferta selecionado: ' + this.valorOferta.value);
         console.log('obs selecionado: ' + this.observacaoOferta.value);
+
+        let idUsuario = '5ce95a266b4e216264be787d';
+        let idImovel = '5ce9862257ece819786e7ae5';
+        OfertaService.cadastrarOferta(idUsuario, idImovel, this.valorOferta.value, this.observacaoOferta.value).then(response => {
+            console.log('Response enviarOferta: ' + response);
+            this.valorOferta.value = '';
+            this.observacaoOferta.value = '';
+        })
+
     }
 
     enviarSolicitacaoParceria(event){
         event.preventDefault();
         console.log('Descricao Sol. Parceria selecionado: ' + this.descSolParceria.value);
+        let idUsuario = '5ce95a266b4e216264be787d';
+        let idImovel = '5ce9862257ece819786e7ae5';
+        ParceriaService.cadastrarSolicitacaoParceria(idUsuario, idImovel, this.descSolParceria.value).then(response => {
+            console.log('Response - enviarSolicitacaoParceria:  ' + response);
+            this.descSolParceria.value = '';
+        })
     }
 
     enviarSolicitacaoIntermediacao(event){
         event.preventDefault();
         console.log('Descricao Sol. Intermediacao selecionada: ' + this.descSolIntermediacao.value);
+        let idUsuario = '5ce95a266b4e216264be787d';
+        let idImovel = '5ce9862257ece819786e7ae5';
+        IntermediacaoService.cadastrarSolicitacaoIntermediacao(idUsuario, idImovel, this.descSolIntermediacao.value).then(response => {
+            console.log('Response - enviarSolicitacaoIntermediacao:  ' + response);
+            this.descSolIntermediacao.value = '';
+        })
     }
+
+    enviarComentario(event){
+        event.preventDefault();
+        console.log('Comentario enviado: ' + this.comentario.value);
+        let idUsuario = '5ce95a266b4e216264be787d';
+        let idImovel = '5ce9862257ece819786e7ae5';
+        ComentarioService.cadastrarComentario(idImovel, idUsuario, this.comentario.value).then(response => {
+            console.log('Comentario - response - enviarComentario: ' + response);
+            this.carregarListaComentarios();
+            this.comentario.value = '';
+        })
+    }
+
 
     render() {
         return (
@@ -297,28 +320,38 @@ class ImovelDetalhes extends Component {
                                                                                 <img src={israel} alt="" />
                                                                             </div>
                                                                             <div className="notification-info">
-                                                                                <h3><a href="#" title="">{comment.nomeUsuario}</a></h3>
-                                                                                <p>
+                                                                                <h3><a href="#" title="">{comment.usuarioComentario.nome}</a></h3>
+                                                                                <h4 style={{fontSize: '13px', color: '#686868'}}>
                                                                                     {comment.comentario}
-                                                                                </p>
-                                                                                <span>  {comment.dataComentario}</span>
+                                                                                </h4>
+                                                                                
+                                                                                <span>  {new Intl.DateTimeFormat('pt-BR', { 
+                                                                                                                month: 'numeric', 
+                                                                                                                day: 'numeric',
+                                                                                                                year: 'numeric',    
+                                                                                                                hour: 'numeric',
+                                                                                                                minute: 'numeric',
+                                                                                                                second: 'numeric'                                                                
+                                                                                                            }).format(new Date(comment.createdAt))}  </span>
                                                                             </div>
                                                                         </div>
                                                                     )
                                                                 })
                                                             }
-                                                        </div>
 
+                                                        </div>
+                                                        
                                                         <div className="post-comment">
+                                                        <br /> <br />  
                                                             <div className="cm_img">
                                                                 <img src={israel} alt="" style={{ width: '40px', height: '40px' }} />
                                                             </div>
                                                             <div className="comment_box">
                                                                 <br />
                                                                 <form>
-                                                                    <input type="text" placeholder="Post a comment" style={{ backgroundColor: '#f8f9fa' }} />
-                                                                    <br /> <br />
-                                                                    <button type="submit">Send</button>
+                                                                    <input type="text" ref={(input) => this.comentario = input}  placeholder="Insira um comentário" style={{ backgroundColor: '#f8f9fa' }} />
+                                                                    <br /> <br />                                                                    
+                                                                    <button type="submit" onClick={this.enviarComentario.bind(this)}>Enviar</button>
                                                                 </form>
                                                             </div>
                                                         </div>

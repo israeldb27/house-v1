@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import imovel from '../fotos/imovel.jpg';
 import imovel2 from '../fotos/imovel2.jpg';
+import { setUsuarioStorage } from '../common/Utils';
+import TimelineService from '../../services/TimelineService';
 
 let id = 0;
 function createData(id, nomeUsuario, perfilUsuario, urlFoto, 
@@ -32,7 +34,6 @@ const rows = [
 
 class Timeline extends Component {
 
-
     constructor(props) {
         super(props)
       
@@ -52,7 +53,19 @@ class Timeline extends Component {
 
     inserirPost(event){
         event.preventDefault();
-        console.log('post usuario: ' + this.post.value)
+      /*  console.log('post usuario: ' + this.post.value) 
+        let usuario = {
+            'nome': 'Israel Barreto',
+            'perfil': 'Corretor',
+            'totalImovel': 30,
+            'dataCadastro': '10/11/2012'
+        };       
+        setUsuarioStorage(usuario);*/
+
+        let idUsuario = '5ce95a266b4e216264be787d'
+        TimelineService.cadastrarPostTexto(idUsuario, this.post.value).then(response =>{
+            console.log('Resposta: ' + response);
+        })
     }
 
     render() {

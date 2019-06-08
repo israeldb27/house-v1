@@ -2672,6 +2672,7 @@ footer {
 }
 .la-globe {
 	color: #51a5fb;
+	font-stretch: expanded
 }
 .fa-facebook-square {
 	color: #3b5998;
@@ -4427,6 +4428,35 @@ a:hover {
 .noty-user-img img {
 	width: 100%;
 }
+
+.noty-user-img-2 {
+	float: left;
+	width: 35px;
+}
+.noty-user-img-2 img {
+	width: 100%;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+}
+
+.messg-usr-img-2 {
+	position: absolute;
+	bottom: 25px;
+	left: 20px;
+	width: 50px;
+}
+.messg-usr-img-2 img {
+	width: 100%;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+}
+
 .notification-info {
 	float: left;
 	width: auto;
@@ -4871,7 +4901,7 @@ a:hover {
 .messages-line {
 	float: left;
 	width: 100%;
-	height: 604px;
+	height: 100%;
 }
 
 /* ============== message-send-area ============ */

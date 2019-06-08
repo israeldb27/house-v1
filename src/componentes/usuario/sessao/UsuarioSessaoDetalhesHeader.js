@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { getUsuarioStorage } from '../../common/Utils';
+
 
 class UsuarioSessaoDetalhesHeader extends Component {
     constructor(props) {
@@ -9,7 +11,8 @@ class UsuarioSessaoDetalhesHeader extends Component {
          perfil: '',
          dataCadastro: '',
          localizacao: '',
-         totalImoveis: 0
+         totalImoveis: 0,
+         usuarioSessao: ''
       }
     }
 
@@ -18,15 +21,17 @@ class UsuarioSessaoDetalhesHeader extends Component {
                        perfil: 'Corretor',
                        dataCadastro: '11/01/2019',
                        localizacao: 'Boa Viagem, Niteroi, RJ - Brasil',
-                       totalImoveis: 120})
-    }
-    
+                       totalImoveis: 120,
+                       usuarioSessao: getUsuarioStorage() })            
+
+        console.log('Usuario storage: ' + getUsuarioStorage())         ;
+    }    
 
 
   render() {
     return (
         <div className="user-tab-sec mb-3 p-3 bg-white">
-            <h3> {this.state.nome} </h3>
+            <h3> {this.state.nome} - {this.state.usuarioSessao.nome}</h3>
             <div className="row mb-2">
                 <div className="col-6 p-0 mb-1">
                     <span> {this.state.perfil} </span>
@@ -48,9 +53,9 @@ class UsuarioSessaoDetalhesHeader extends Component {
                 <div className="col-6 p-0 mb-1">
                     <span>{this.state.localizacao}</span>
                 </div>
-                <dvi className="col-6 p-0 mb-1">
+                <div className="col-6 p-0 mb-1">
                     <span>Total de Imóveis: {this.state.totalImoveis} </span>
-                </dvi>
+                </div>
             </div>
 
         </div> 	

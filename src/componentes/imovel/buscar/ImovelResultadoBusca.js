@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import imovel2 from '../../fotos/imovel2.jpg';
+import { getAcaoImovel, getPerfilUsuario, getTipoImovel } from '../../common/Utils';
 
 
 class ImovelResultadoBusca extends Component {
+
+
   render() {
     return (
         <div className="col-lg-6">
@@ -18,14 +21,14 @@ class ImovelResultadoBusca extends Component {
                                     <div className="suggestion-usd">
                                         <img src="http://via.placeholder.com/35x35" alt="" />
                                         <div className="sgt-text">
-                                            <h4>{imovel.nomeUsuario}</h4>
-                                            <span>{imovel.perfilUsuario}</span>
+                                            <h4>{imovel.usuario.nome}</h4>          
+                                            <span>{getPerfilUsuario(imovel.usuario.perfil)}</span>                                                                              
                                         </div>
                                     </div>
 
                                     <div className="post_topbar">
                                         <h3 style={{fontSize: '20px'}}>{imovel.titulo}</h3> <br />
-                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}` }}>
+                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel._id}` }}>
                                             <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
                                         </Link>
                                         <br />
@@ -42,33 +45,57 @@ class ImovelResultadoBusca extends Component {
                                     </div>
                                     <div className="job_descp">                                        
                                         <ul className="job-dt">
-                                            <li><a href="#" title="">{imovel.acao}</a></li>
-                                            <li><span>$ {imovel.valorImovel}</span></li>
+                                            <li><a href="#" title="">{getTipoImovel(imovel.tipoImovel)}</a></li>
+                                            <li><a href="#" title="">{getAcaoImovel(imovel.acao)}</a></li>
+                                            <li><span>$ {imovel.valor}</span></li>
                                         </ul>
                                         <ul className="job-dt" style={{ fontSize: '12px' }}>
-                                            <li><p>IPTU </p> $ {imovel.valorIptu} </li>
-                                            <li> </li>
-                                            <li><p>Condomínio </p> $ {imovel.valorCondominio} </li>
+                                            {
+                                               imovel.valorIptu > 0 &&  ( <li><p>IPTU </p> $ {imovel.valorIptu} </li>  ) 
+                                            }
+                                            <li></li>
+                                            {
+                                               imovel.valorCondominio > 0 &&  ( <li><p>Condomínio </p> $ {imovel.valorCondominio} </li>  ) 
+                                            }        
+                                            <li></li>                
+                                            {
+                                               imovel.outrasTaxas > 0 &&  ( <li><p>Outras Taxas </p> $ {imovel.outrasTaxas} </li>  ) 
+                                            }                        
                                         </ul>
-                                        <p>{imovel.descricao}}... <a href="#" title="">view more</a></p>
-                                        <ul className="skill-tags">
-                                            <li><a href="#" title="">{imovel.area} m²</a></li>
-                                            <li><a href="#" title="">{imovel.quartos} Quartos(s)</a></li>
-                                            <li><a href="#" title="">{imovel.banheiros} Banheiro(s)</a></li>
-                                            <li><a href="#" title="">{imovel.garagens} Vaga(s)</a></li>
-                                            <li><a href="#" title="">{imovel.suites} Suíte(s)</a></li>
+
+                                        {
+                                            imovel.descricao !== '' &&  ( <p>{imovel.descricao}... <a href="#" title="">view more</a></p>  ) 
+                                        }                
+                                        
+                                        <ul className="skill-tags">                                            
+                                            {
+                                               imovel.area > 0 &&  ( <li><a href="#" title="">{imovel.area} m²</a></li>  ) 
+                                            }
+                                            {
+                                               imovel.quantQuartos > 0 &&  ( <li><a href="#" title="">{imovel.quantQuartos} Quartos(s)</a></li>  ) 
+                                            }
+                                            {
+                                               imovel.quantBanheiros > 0 &&  ( <li><a href="#" title="">{imovel.quantBanheiros} Banheiro(s)</a></li>  ) 
+                                            }
+                                            {
+                                               imovel.quantVagas > 0 &&  ( <li><a href="#" title="">{imovel.quantVagas} Vaga(s)</a></li>  ) 
+                                            }                                            
+                                            {
+                                               imovel.quantSuites > 0 &&  ( <li><a href="#" title="">{imovel.quantSuites} Suíte(s)</a></li>  ) 
+                                            }                                            
+                                            
                                         </ul>
                                     </div>
                                     <div className="job-status-bar">
                                         <ul className="like-com">
                                             <li>
-                                                <a href="#"><i className="la la-heart"></i> Like</a>
+                                                <a href="#"><i className="la la-heart"></i> </a>
                                                 <img src="images/liked-img.png" alt="" />
-                                                <span>{imovel.likes}</span>
+                                                <span> {imovel.quantTotalFavoritos}</span>
                                             </li>
-                                            <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment {imovel.comments}</a></li>
+                                            <li><a href="#" title="" className="com"><img src="images/com.png" alt="" />{imovel.quantTotalComentarios} comentários </a></li>
                                         </ul>
-                                        <a><i className="la la-eye"></i>Views {imovel.views}</a>
+                                        <a><i className="la la-eye"></i>{imovel.quantTotalVisualizacoes} visualizações  </a>
                                     </div>
                                 </div>
                             )

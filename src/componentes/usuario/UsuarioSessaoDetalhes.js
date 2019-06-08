@@ -16,9 +16,7 @@ class UsuarioSessaoDetalhes extends Component {
 			<Header />			
 
 			<br /> <br />
-            <main>
-
-			
+            <main>		
 
             <br /> <br />  <br /> <br /> <br /> <br /> <br />  
 			<div className="main-section">
@@ -60,7 +58,7 @@ class UsuarioSessaoDetalhes extends Component {
 													</Link>
 												</li>
 												<li data-tab="my-bids">
-													<Link to="/" title="">
+													<Link to="/usuarioFavoritos/10" title="">
 														<img src="images/ic5.png" alt="" />
 														<span>Favoritos</span>
 													</Link>
@@ -87,8 +85,6 @@ class UsuarioSessaoDetalhes extends Component {
 
 								</div> 
 							</div>
-
-
 						</div>
 					</div> 
 				</div> 

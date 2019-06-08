@@ -90,14 +90,22 @@ class ListaSeguidores extends Component {
                     <div className="companies-list">
                             <div className="row">
                                 {
-                                    this.state.listaSeguidores.map(contato => {
+                                    this.state.listaSeguidores.map(seguidor => {
                                         return (
                                             <div className="col-lg-3 col-md-4 col-sm-6">
                                                 <div className="company_profile_info">
                                                     <div className="company-up-info">
-                                                        <img src="http://via.placeholder.com/90x90" alt="" />
-                                                        <h3>{contato.nomeUsuario}</h3>
-                                                        <h4>{contato.perfilUsuario}</h4>
+                                                        <img src="http://via.placeholder.com/90x90" alt="" />                                                        
+                                                        <h3>{seguidor.usuarioSeguidor.nome}</h3>
+                                                        {
+                                                            seguidor.usuarioSeguidor.perfil === 'C' &&  ( <h4>Corretor</h4>  ) 
+                                                        } 
+                                                        {
+                                                            seguidor.usuarioSeguidor.perfil === 'I' &&  ( <h4>Imobiliária</h4>  ) 
+                                                        } 
+                                                        {
+                                                            seguidor.usuarioSeguidor.perfil === 'N' &&  ( <h4>Normal</h4>  ) 
+                                                        } 
                                                         <ul>
                                                             <li><a href="#" title="" className="follow">Seguir</a></li>
                                                             <li><a href="#" title="" className="message-us"><i className="fa fa-envelope"></i></a></li>

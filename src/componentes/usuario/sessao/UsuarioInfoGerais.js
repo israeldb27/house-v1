@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import UsuarioService from '../../../services/UsuarioService';
 import RecomendacaoService from '../../../services/RecomendacaoService';
-
-
-
+import { getPerfilUsuario } from '../../common/Utils';
 
 class UsuarioInfoGerais extends Component {
    
@@ -65,8 +63,26 @@ class UsuarioInfoGerais extends Component {
                                 <div className="suggestion-usd">
                                     <img src="http://via.placeholder.com/35x35" alt="" />
                                     <div className="sgt-text">
-                                        <h4>{ultima.desc}</h4>
-                                        <span>{ultima.data}</span>
+                                        {
+                                            ultima.tipo === 'CO' &&  ( <div ><h4>Estabeleceu novo contato com: </h4> {ultima.usuarioContato.nome} &nbsp; &nbsp; </div> ) 
+                                        }                                          
+                                        {
+                                            ultima.tipo === 'CI' &&  ( <div ><h4>Cadastrou novo imóvel: </h4> {ultima.imovel.titulo} &nbsp; &nbsp; </div> ) 
+                                        }     
+                                        {
+                                            ultima.tipo === 'AI' &&  ( <div ><h4>Foram atualizadas informações do imóvel: </h4> {ultima.imovel.titulo} &nbsp; &nbsp; </div> ) 
+                                        }                                          
+                                        {
+                                            ultima.tipo === 'AP' &&  ( <div ><h4>Foram atualizadas informações pessoais do usuário: </h4>  &nbsp; &nbsp; </div> ) 
+                                        }                                          
+                                        <span>{new Intl.DateTimeFormat('pt-BR', { 
+                                                                        month: 'numeric', 
+                                                                        day: 'numeric',
+                                                                        year: 'numeric',    
+                                                                        hour: 'numeric',
+                                                                        minute: 'numeric',
+                                                                        second: 'numeric'                                                                
+                                                                    }).format(new Date(ultima.updatedAt))}</span>
                                     </div>                  
                                 </div>
                             );
@@ -88,7 +104,15 @@ class UsuarioInfoGerais extends Component {
                                     <img src="http://via.placeholder.com/35x35" alt="" />
                                     <div className="sgt-text">
                                         <h4>{trabalho.tituloImovel}</h4>
-                                        <span>{trabalho.acaoImovel}</span>
+                                        {
+                                            trabalho.tipo === 'V' &&  ( <div ><h4>Conseguiu vender imóvel: </h4> {trabalho.imovel.titulo} &nbsp; &nbsp; </div> ) 
+                                        }                                          
+                                        {
+                                            trabalho.tipo === 'A' &&  ( <div ><h4>Conseguiu alugar imóvel: </h4> {trabalho.imovel.titulo} &nbsp; &nbsp; </div> ) 
+                                        }     
+                                        {
+                                            trabalho.tipo === 'T' &&  ( <div ><h4>Conseguiu alugar por temporada o imóvel: </h4> {trabalho.imovel.titulo} &nbsp; &nbsp; </div> ) 
+                                        }  
                                     </div>                  
                                 </div>  
                             );
@@ -107,14 +131,16 @@ class UsuarioInfoGerais extends Component {
                                 <div className="suggestion-usd">
                                     <img src="http://via.placeholder.com/35x35" alt="" />
                                     <div className="sgt-text">
-                                        <h4>{recomendacao.usuario}</h4>
-                                        <span>{recomendacao.perfil}</span>
+                                        <h4>{recomendacao.usuario.nome}</h4>
+                                        <span>{getPerfilUsuario(recomendacao.usuario.perfil)}</span>
                                     </div>
                                     <span>
-                                        <i className="la la-plus"></i>
+                                        <br />                                        
                                         <p>{recomendacao.descricao} </p>
+                                        <br /> <br />                                       
                                     </span>
-                                </div>  
+                                    
+                                </div>                                 
                             );
                         })
                     }

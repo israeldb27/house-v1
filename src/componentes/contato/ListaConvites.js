@@ -85,8 +85,16 @@ class ListaConvites extends Component {
                                             <div className="company_profile_info">
                                                 <div className="company-up-info">
                                                     <img src="http://via.placeholder.com/90x90" alt="" />
-                                                    <h3>{convite.nomeUsuario}</h3>
-                                                    <h4>{convite.perfilUsuario}</h4>
+                                                    <h3>{convite.usuarioHost.nome}</h3>                                                    
+                                                    {
+                                                        convite.usuarioHost.perfil === 'C' &&  ( <h4>Corretor</h4>  ) 
+                                                    } 
+                                                    {
+                                                        convite.usuarioHost.perfil === 'I' &&  ( <h4>Imobiliária</h4>  ) 
+                                                    } 
+                                                    {
+                                                        convite.usuarioHost.perfil === 'N' &&  ( <h4>Normal</h4>  ) 
+                                                    } 
                                                     <ul>
                                                         <li><a href="#" title="" onClick={this.aceitarConvite.bind(this)} className="follow">Aceitar</a></li>
                                                         <li><a href="#" title="" onClick={this.recusarConvite.bind(this)} className="message-us">Recusar</a></li>

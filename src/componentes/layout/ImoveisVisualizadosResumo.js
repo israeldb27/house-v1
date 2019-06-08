@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao2.jpg';
 import VisualizacaoService from '../../services/VisualizacaoService';
+import { getTipoImovel } from '../common/Utils';
 
 
 
@@ -22,7 +23,6 @@ class ImoveisVisualizadosResumo extends Component {
         })
     }
 
-
     render() {
         return (
             <div className="widget widget-jobs">
@@ -33,19 +33,19 @@ class ImoveisVisualizadosResumo extends Component {
 
                 <div className="suggestions-list">                  
                      {
-                        this.state.listaVisualizadosImoveis.map(imovel => {
+                        this.state.listaVisualizadosImoveis.map(visualizacao => {
                             return (
                                 <div className="suggestion-usd">
-                                     <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
+                                     <Link to={{ pathname: `/visualizarImovelDetalhes/${visualizacao._id}`}}>
                                         <img src={mansao} alt="" style={{ width: '60px', height: '60px;' }} />
                                     </Link>  
                                     
                                     <div className="sgt-text">
-                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
-                                            <h4>{imovel.titulo}</h4>
+                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${visualizacao._id}`}}>
+                                            <h4>{visualizacao.imovel.titulo}</h4>
                                         </Link> 
                                         
-                                        <span>{imovel.tipoImovel}</span>
+                                        <span>{getTipoImovel(visualizacao.imovel.tipoImovel)}</span>
                                     </div>
                                     <span><i className="la la-plus"></i></span>
                                 </div>

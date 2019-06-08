@@ -28,12 +28,6 @@ class Sugestoes extends Component {
     }
     
     componentDidMount(){
-       for (let i = 0; i < rows.length; i++){
-           console.log(rows[i]);
-           let list = this.state.listaSugestoesContatos;
-           list.push(rows[i]);
-           this.setState({listaSugestoesContatos: list});
-       }
 
        let idUsuario = 1;
        ContatoService.listaSugestoesContatos(idUsuario).then(listaContatos => {
@@ -50,35 +44,28 @@ class Sugestoes extends Component {
                 </div>{/*--sd-title end*/}
                 <div className="suggestions-list">
 
-                    <div className="suggestion-usd">
-                        <Link to="/usuarioDetalhes/10">
-                            <img src={marli} alt="" style={{width: '35px', height: '35px;'}} />
-                        </Link>                        
-                        <div className="sgt-text">
-                            <h4>
-                                <Link to="/usuarioDetalhes/10">
-                                    Marli Barreto
-                                </Link> 
-                            </h4>
-                            <span>Corretor</span>
-                        </div>
-                        <span><i className="la la-plus"></i></span>
-                    </div>
-
                     {
-                        this.state.listaSugestoesContatos.map(usuario =>{
+                        this.state.listaSugestoesContatos.map(contato =>{
                             return (
                                 <div className="suggestion-usd">
-                                    <Link to={{ pathname: `/usuarioDetalhes/${usuario.id}`}}>
+                                    <Link to={{ pathname: `/usuarioDetalhes/${contato._id}`}}>
                                         <img src={marli} alt="" style={{width: '35px', height: '35px;'}} />
                                     </Link>                        
                                     <div className="sgt-text">
                                         <h4>
-                                            <Link to={{ pathname: `/usuarioDetalhes/${usuario.id}`}}>
-                                                {usuario.nome}
+                                            <Link to={{ pathname: `/usuarioDetalhes/${contato._id}`}}>
+                                                {contato.usuarioHost.nome}
                                             </Link> 
                                         </h4>
-                                        <span>{usuario.perfil}</span>
+                                        {
+                                            contato.usuarioHost.perfil === 'C' &&  ( <h4>Corretor</h4>  ) 
+                                        } 
+                                        {
+                                            contato.usuarioHost.perfil === 'I' &&  ( <h4>Imobiliária</h4>  ) 
+                                        } 
+                                        {
+                                            contato.usuarioHost.perfil === 'N' &&  ( <h4>Normal</h4>  ) 
+                                        } 
                                     </div>
                                     <span><i className="la la-plus"></i></span>
                                 </div>

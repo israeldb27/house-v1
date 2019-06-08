@@ -9,7 +9,7 @@ import UsuarioSessaoDetalhesHeader from './UsuarioSessaoDetalhesHeader';
 import imovel2 from '../../fotos/imovel2.jpg';
 import Header from '../../layout/Header';
 import FavoritoService from '../../../services/FavoritoService';
-
+import { getAcaoImovel, getPerfilUsuario, getTipoImovel } from '../../common/Utils';
 
 class UsuarioFavoritos extends Component {
     constructor(props) {
@@ -26,8 +26,6 @@ class UsuarioFavoritos extends Component {
                 this.setState({listaImoveis: listaImoveisFavoritos});              
             })    
       }
-
-
 
   render() {
     return (
@@ -83,68 +81,91 @@ class UsuarioFavoritos extends Component {
                                         </div> {/* tab-feed end */}
 
                                         {
-                                            this.state.listaImoveis.map(imovel => {
+                                            this.state.listaImoveis.map(favorito => {
                                                 return (
-
-                                                    <div className="post-bar">
+                                                    <div className="post-bar" key={favorito._id}>
 
                                                         <div className="suggestion-usd">
                                                             <img src="http://via.placeholder.com/35x35" alt="" />
                                                             <div className="sgt-text">
-                                                                <h4>{imovel.nomeUsuario}</h4>
-                                                                <span>{imovel.perfilUsuario}</span>
+                                                                <h4>{favorito.usuarioFavorito.nome}</h4>          
+                                                                <span>{getPerfilUsuario(favorito.usuarioFavorito.perfil)}</span>                                                                              
                                                             </div>
                                                         </div>
 
                                                         <div className="post_topbar">
-                                                            <h3 style={{ fontSize: '20px' }}><strong>{imovel.titulo} </strong></h3> <br />
-                                                            <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}` }}>
+                                                            <h3 style={{fontSize: '20px'}}>{favorito.imovel.titulo}</h3> <br />
+                                                            <Link to={{ pathname: `/visualizarImovelDetalhes/${favorito._id}` }}>
                                                                 <img src={imovel2} alt="" style={{ position: 'relative', float: 'center', width: '100%' }} />
                                                             </Link>
                                                             <br />
                                                         </div>
-
                                                         <div className="epi-sec">
+
                                                             <ul className="descp">
-                                                                <li><img src="images/icon8.png" alt="" /><span>{imovel.localizacao}</span></li>
+                                                                <li><img src="images/icon8.png" alt="" /><span>{favorito.imovel.localizacao}</span></li>
                                                             </ul>
                                                             <ul className="bk-links">
                                                                 <li><a href="#" title=""><i className="la la-bookmark"></i></a></li>
                                                                 <li><a href="#" title=""><i className="la la-envelope"></i></a></li>
                                                             </ul>
                                                         </div>
-                                                        <div className="job_descp">
+                                                        <div className="job_descp">                                        
                                                             <ul className="job-dt">
-                                                                <li><a href="#" title="">{imovel.acao}</a></li>
-                                                                <li><span>$ {imovel.valorImovel}</span></li>
+                                                                <li><a href="#" title="">{getTipoImovel(favorito.imovel.tipoImovel)}</a></li>
+                                                                <li><a href="#" title="">{getAcaoImovel(favorito.imovel.acao)}</a></li>
+                                                                <li><span>$ {favorito.imovel.valor}</span></li>
                                                             </ul>
                                                             <ul className="job-dt" style={{ fontSize: '12px' }}>
-                                                                <li><p>IPTU </p> $ {imovel.valorIptu} </li>
-                                                                <li> </li>
-                                                                <li><p>Condomínio </p> $ {imovel.valorCondominio} </li>
+                                                                {
+                                                                  favorito.imovel.valorIptu > 0 &&  ( <li><p>IPTU </p> $ {favorito.imovel.valorIptu} </li>  ) 
+                                                                }
+                                                                <li></li>
+                                                                {
+                                                                    favorito.imovel.valorCondominio > 0 &&  ( <li><p>Condomínio </p> $ {favorito.imovel.valorCondominio} </li>  ) 
+                                                                }        
+                                                                <li></li>                
+                                                                {
+                                                                    favorito.imovel.outrasTaxas > 0 &&  ( <li><p>Outras Taxas </p> $ {favorito.imovel.outrasTaxas} </li>  ) 
+                                                                }                        
                                                             </ul>
-                                                            <p>{imovel.descricao}... <a href="#" title="">view more</a></p>
-                                                            <ul className="skill-tags">
-                                                                <li><a href="#" title="">{imovel.area} m²</a></li>
-                                                                <li><a href="#" title="">{imovel.quantQuartos} Quarto(s)</a></li>
-                                                                <li><a href="#" title="">{imovel.quantBanheiros} Banheiro(s)</a></li>
-                                                                <li><a href="#" title="">{imovel.quantVagas} Vaga(s)</a></li>
-                                                                <li><a href="#" title="">{imovel.quantSuites} Suíte(s)</a></li>
+
+                                                            {
+                                                                favorito.imovel.descricao !== '' &&  ( <p>{favorito.imovel.descricao}... <a href="#" title="">view more</a></p>  ) 
+                                                            }                
+                                                            
+                                                            <ul className="skill-tags">                                            
+                                                                {
+                                                                    favorito.imovel.area > 0 &&  ( <li><a href="#" title="">{favorito.imovel.area} m²</a></li>  ) 
+                                                                }
+                                                                {
+                                                                     favorito.imovel.quantQuartos > 0 &&  ( <li><a href="#" title="">{favorito.imovel.quantQuartos} Quartos(s)</a></li>  ) 
+                                                                }
+                                                                {
+                                                                     favorito.imovel.quantBanheiros > 0 &&  ( <li><a href="#" title="">{favorito.imovel.quantBanheiros} Banheiro(s)</a></li>  ) 
+                                                                }
+                                                                {
+                                                                    favorito.imovel.quantVagas > 0 &&  ( <li><a href="#" title="">{favorito.imovel.quantVagas} Vaga(s)</a></li>  ) 
+                                                                }                                            
+                                                                {
+                                                                   favorito.imovel.quantSuites > 0 &&  ( <li><a href="#" title="">{favorito.imovel.quantSuites} Suíte(s)</a></li>  ) 
+                                                                }                                            
+                                                                
                                                             </ul>
                                                         </div>
                                                         <div className="job-status-bar">
                                                             <ul className="like-com">
                                                                 <li>
-                                                                    <a href="#"><i className="la la-heart"></i> &nbsp;&nbsp;</a>
+                                                                    <a href="#"><i className="la la-heart"></i> </a>
                                                                     <img src="images/liked-img.png" alt="" />
-                                                                    <span>{imovel.quantLikes}</span>
+                                                                    <span> {favorito.imovel.quantTotalFavoritos}</span>
                                                                 </li>
-                                                                <li><a href="#" title="" className="com"><img src="images/com.png" alt="" /> Comment {imovel.quantComments}</a></li>
+                                                                <li><a href="#" title="" className="com"><img src="images/com.png" alt="" />{favorito.imovel.quantTotalComentarios} comentários </a></li>
                                                             </ul>
-                                                            <a><i className="la la-eye"></i>Views {imovel.quantViews}</a>
+                                                            <a><i className="la la-eye"></i>{favorito.imovel.quantTotalVisualizacoes} visualizações  </a>
                                                         </div>
                                                     </div>
-                                                );
+                                                )
                                             })
                                         }
 

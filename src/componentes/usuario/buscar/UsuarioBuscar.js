@@ -4,7 +4,6 @@ import UsuarioResultadoBuscar from './UsuarioResultadoBuscar';
 import Header from '../../layout/Header';
 import UsuarioService from '../../../services/UsuarioService'
 
-
 class UsuarioBuscar extends Component {
     constructor() {
         super()  

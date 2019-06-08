@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao3.jpg';
 import OfertaService from '../../services/OfertaService';
+import { getTipoImovel } from '../common/Utils';
 
 class ImoveisOfertasResumo extends Component {
 
@@ -9,8 +10,7 @@ class ImoveisOfertasResumo extends Component {
         super(props)
       
         this.state = {
-          listaOfertasImoveis : [] 
-  
+          listaOfertasImoveis : []   
         }
       }
 
@@ -31,19 +31,19 @@ class ImoveisOfertasResumo extends Component {
                 </div>
                 <div className="suggestions-list">                  
                        {
-                            this.state.listaOfertasImoveis.map(imovel => {
+                            this.state.listaOfertasImoveis.map(oferta => {
                                 return (
                                     <div className="suggestion-usd">
-                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
+                                        <Link to={{ pathname: `/visualizarImovelDetalhes/${oferta._id}`}}>
                                             <img src={mansao} alt="" style={{ width: '60px', height: '60px;' }} />
                                         </Link>  
                                         
                                         <div className="sgt-text">
-                                            <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
-                                                <h4>{imovel.titulo}</h4>
+                                            <Link to={{ pathname: `/visualizarImovelDetalhes/${oferta._id}`}}>
+                                                <h4>{oferta.imovel.titulo}</h4>
                                             </Link> 
                                             
-                                            <span>{imovel.tipoImovel}</span>
+                                            <span>{getTipoImovel(oferta.imovel.tipoImovel)}</span>
                                         </div>
                                         <span><i className="la la-plus"></i></span>
                                     </div>

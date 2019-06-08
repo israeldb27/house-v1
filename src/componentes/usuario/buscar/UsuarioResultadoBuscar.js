@@ -14,8 +14,16 @@ class UsuarioResultadoBuscar extends Component {
                                     <div className="company_profile_info">
                                         <div className="company-up-info">
                                             <img src="http://via.placeholder.com/90x90" alt=""  />
-                                            <h3>{usuario.nomeUsuario}</h3>
-                                            <h4>{usuario.perfilUsuario}</h4>
+                                            <h3>{usuario.nome}</h3>                                            
+                                            {
+                                                usuario.perfil === 'C' &&  ( <h4>Corretor</h4>  ) 
+                                            } 
+                                            {
+                                                usuario.perfil === 'I' &&  ( <h4>Imobiliária</h4>  ) 
+                                            } 
+                                            {
+                                                usuario.perfil === 'N' &&  ( <h4>Normal</h4>  ) 
+                                            } 
                                             <ul>
                                                 <li><a href="#" title="" className="follow">Seguir</a></li>
                                                 <li><a href="#" title="" className="message-us">Convite</a></li>

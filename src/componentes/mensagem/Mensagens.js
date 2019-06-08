@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
 import ItensMensagem from './ItensMensagem';
 import Header from '../layout/Header';
+import MensagemService from '../../services/MensagemService';
 
-let id = 0;
-function createData(id, nomeUsuario, descricao, urlFoto, dataMensagem, quantNovasMensagens) {
-  id += 1;
-  return {id, nomeUsuario, descricao, urlFoto, dataMensagem, quantNovasMensagens} ;
-}
-
-const rows = [
-  createData(1, 'Lagoa Imoveis', 'novas informações para você', '/img1.jpg', '11/12/2018 11:15:00', 2 ),
-  createData(2, 'Cristiana Souza', 'iniciou nova conexão', '/img1.jpg', '22/12/2018 10:15:00', 2 ),
-  createData(3, 'Pamela Alves', 'enviou convite para nova conexão', '/img1.jpg' , '15/12/2018 11:15:00', 3 ),
-  createData(4, 'Israel Barreto', 'enviou uma nova oferta ', '/img1.jpg', '18/12/2018 11:15:00', 1 ),
-  createData(5, 'Marli Barreto', 'aceitou parceria sobre imovel', '/img1.jpg', '16/12/2018 11:15:00', 2 ),
-];
 
 class Mensagens extends Component {
 
@@ -22,16 +10,22 @@ class Mensagens extends Component {
         super()  
      
         this.state = {
-           listaMensagens: [] 
+           listaMensagens: [],
+           idMensagem: '' 
         }
       } 
 
-     componentDidMount() {
-        for (let i = 0; i < rows.length; i++){
-            let list = this.state.listaMensagens;
-            list.push(rows[i]);
-            this.setState({listaMensagens: list});            
-        }
+    componentDidMount() {
+        let idUsuarioSessao = 1;
+        MensagemService.listaMensagensPorUsuario(idUsuarioSessao).then(listaMensagens => {
+            console.log('Lista mensagens: ' + listaMensagens);
+            this.setState({listaMensagens: listaMensagens});            
+        })
+    }
+
+    selecionarMensagem(id) {
+        console.log('Id mensagem selecionada')
+        this.setState({idMensagem: id});            
     }
 
     render() {
@@ -41,53 +35,63 @@ class Mensagens extends Component {
                 <Header />
                 <br />
 
-                <section class="messages-page">
-                    <div class="container">
-                        <div class="messages-sec">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 no-pdd">
-                                    <div class="msgs-list">
-                                        <div class="msg-title">
+                <section className="messages-page">
+                    <div className="container">
+                        <div className="messages-sec">
+                            <div className="row">
+                                <div className="col-lg-4 col-md-12 no-pdd">
+                                    <div className="msgs-list">
+                                        <div className="msg-title">
                                             <h3>Mensagens</h3>
                                             <ul>
-                                                <li><a href="#" title=""><i class="fa fa-cog"></i></a></li>
-                                                <li><a href="#" title=""><i class="fa fa-ellipsis-v"></i></a></li>
+                                                <li><a href="#" title=""><i className="fa fa-cog"></i></a></li>
+                                                <li><a href="#" title=""><i className="fa fa-ellipsis-v"></i></a></li>
                                             </ul>
                                         </div>{/*msg-title end*/}
-                                        <div class="messages-list">
+                                        <div className="messages-list">
                                             <ul>
                                                 {
                                                     this.state.listaMensagens.map(mensagem => {
                                                         return (
                                                             <li >
-                                                                <div class="usr-msg-details">
-                                                                    <div class="usr-ms-img">
+                                                                <div className="usr-msg-details">
+                                                                    <div className="usr-ms-img">
                                                                         <img src="http://via.placeholder.com/50x50" alt="" />
-                                                                        <span class="msg-status"></span>
+                                                                        <span className="msg-status"></span>
                                                                     </div>
-                                                                    <div class="usr-mg-info">
-                                                                        <h3> {mensagem.nomeUsuario} </h3>
-                                                                        <p> {mensagem.descricao} <img src="images/smley.png" alt="" /></p>
+                                                                    <div className="usr-mg-info">
+                                                                        <h3> {mensagem.usuarioPara.nome} </h3>
+                                                                        <p> {mensagem.descricaoUltimaMensagem} <img src="images/smley.png" alt="" /></p>
                                                                     </div>
-                                                                    <span class="posted_time">{mensagem.dataMensagem}</span>
-                                                                    <span class="msg-notifc"> {mensagem.quantNovasMensagens} </span>
+                                                                    <span className="posted_time">{new Intl.DateTimeFormat('pt-BR', { 
+                                                                                            month: 'numeric', 
+                                                                                            day: 'numeric',
+                                                                                            year: 'numeric',    
+                                                                                            hour: 'numeric',
+                                                                                            minute: 'numeric',
+                                                                                            second: 'numeric'                                                                
+                                                                                        }).format(new Date(mensagem.updatedAt))}</span>
+
+                                                                    
+
+                                                                    <span className="msg-notifc" style={{width: '45px'}}> novo </span>
                                                                 </div>
                                                             </li>
                                                         );
                                                     })
                                                 }
-                                                <li class="active">
-                                                    <div class="usr-msg-details">
-                                                        <div class="usr-ms-img">
+                                                <li className="active">
+                                                    <div className="usr-msg-details">
+                                                        <div className="usr-ms-img">
                                                             <img src="http://via.placeholder.com/50x50" alt="" />
-                                                            <span class="msg-status"></span>
+                                                            <span className="msg-status"></span>
                                                         </div>
-                                                        <div class="usr-mg-info">
+                                                        <div className="usr-mg-info">
                                                             <h3>John Doe</h3>
                                                             <p>Lorem ipsum dolor <img src="images/smley.png" alt="" /></p>
                                                         </div>{/*usr-mg-info end*/}
-                                                        <span class="posted_time">1:55 PM</span>
-                                                        <span class="msg-notifc">1</span>
+                                                        <span className="posted_time">1:55 PM</span>
+                                                        <span className="msg-notifc">1</span>
                                                     </div>{/*usr-msg-details end*/}
                                                 </li>
 
@@ -96,7 +100,7 @@ class Mensagens extends Component {
                                     </div>{/*msgs-list end*/}
                                 </div>
 
-                                <ItensMensagem />
+                                <ItensMensagem idMensagemSelecionada={this.state.idMensagem} />
 
                             </div>
                         </div>{/*messages-sec end*/}

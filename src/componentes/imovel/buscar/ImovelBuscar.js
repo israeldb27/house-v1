@@ -47,6 +47,7 @@ class ImovelBuscar extends Component {
         console.log('invocou metodo buscarImovel');             
 
         ImovelService.buscarImoveis(this.acaoImovel.value, this.tipoImovel.value, this.localizacao.value, this.statusImovel.value).then(listaImoveis => {
+            console.log('Resultado lista imoveis: ' + JSON.stringify(listaImoveis));
             this.setState({listaImoveis: listaImoveis});   
         })
     }
@@ -71,8 +72,9 @@ class ImovelBuscar extends Component {
                     <div className="main-section">
                         <div className="container">
                             <div className="main-section-data">
-                                <div className="row">
+                                <div className="row">                                    
                                     <div className="col-lg-3">
+
                                         <div className="filter-secs">
                                             <div className="filter-heading">
                                                 <h3>Filtros</h3>
@@ -166,6 +168,7 @@ class ImovelBuscar extends Component {
 
                                             </div>
                                         </div>{/*filter-secs end*/}
+                                        
                                     </div>
 
                                    <ImovelResultadoBusca listaImoveis={this.state.listaImoveis}/>

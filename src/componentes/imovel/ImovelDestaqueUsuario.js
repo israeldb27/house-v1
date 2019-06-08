@@ -4,7 +4,7 @@ import casa from '../fotos/casa.jpg';
 class ImovelDestaqueUsuario extends Component {
     render() {
         return (
-            <div class="widget widget-about">
+            <div className="widget widget-about">
              <div className="sd-title">
                     <h3>Anuncios</h3>
             </div>
