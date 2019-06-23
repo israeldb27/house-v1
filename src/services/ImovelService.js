@@ -1,30 +1,78 @@
 import React, { Component } from 'react'
-import { URL_API, MOCK, HEADER_REQ_API } from '../componentes/common/environment';
+import { URL_API, MOCK, HEADER_REQ_API, HEADER_REQ_API_LOCATION, objToQueryString } from '../componentes/common/environment';
 
-const resource = 'imovels';
+const resource = 'imovels/';
+
+const resourceLocation = 'https://maps.googleapis.com/maps/api/geocode/json';
 
 function api(url_api, r, info) {
     return new Promise(resolve => {
         let url;
-        url = url_api + r;
-        console.log('chamada API: ' + url);
+        url = url_api + r;        
         fetch(url, info)
           .then(response => response.json())
-          .then(res => {
-              console.log('valores recuperados: ' + res);   
+          .then(res => {              
               resolve(res)            
           })
-          .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?" ))          
+          .catch(error => console.log("Mensage error: " + error ))          
+    })    
+}
+
+function apiLocation(r, info) {
+    return new Promise(resolve => {
+        let url;
+        url =  r;        
+        fetch(url, info)
+          .then(response => response.json())
+          .then(res => {              
+              resolve(res)            
+          })
+          .catch(error => console.log("Mensage error: " + error ))          
     })    
 }
 
 class ImovelService extends Component {
 
+    static buscarImovePorId(idImovel){        
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API)                     
+        }
+        return api(URL_API, resource + idImovel, requestInfo );
+    }
+
+    static buscarMeusImoveis(idUsuario, acaoImovel, tipoImovel, localizacao, statusImovel){         
+
+        //Obs.: Acrescentar aqui ainda os outros parametros de busca
+        const queryString = objToQueryString({         
+            usuario: idUsuario            
+        });
+
+        const resourceImovelPorUsuario = 'imovels/usuario/?'+queryString        
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API),
+            query: JSON.stringify({
+                usuario: idUsuario
+            })                
+        }
+        return api(URL_API, resourceImovelPorUsuario, requestInfo );                 
+    }
+
+    static recuperarCoordenadasPorEndereco(address){
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API_LOCATION),
+            body: JSON.stringify({
+                address: address,
+                key: 'AIzaSyC852goNaD7SPItXt0szjYerGvEDFagC34'
+            })    
+        }
+        return apiLocation( resourceLocation, requestInfo );
+
+    }
+
     static cadastrarImovel(idUsuario, imovel){
-       console.log('Usuario informado: ' + idUsuario);
-       console.log('Imovel - titulo: ' + imovel.titulo);
-       console.log('Imovel - acao: ' + imovel.acao);
-       console.log('Imovel - tipo: ' + imovel.tipo);
        const requestInfo = {
             method: 'POST',                
             headers: new Headers(HEADER_REQ_API),
@@ -53,36 +101,19 @@ class ImovelService extends Component {
 
     static listarImoveisPorUsuario(idUsuario){
 
-        if (!MOCK) {
-            const requestInfo = {
-                method: 'GET',                
-                headers: new Headers(HEADER_REQ_API)
-                // inserir o(s) parametro(s) aqui
-            }
-            return api(URL_API, resource, requestInfo );
+        const queryString = objToQueryString({         
+            usuario: idUsuario            
+        });
+
+        const resourceImovelPorUsuario = 'imovels/usuario/?'+queryString
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API),
+            query: JSON.stringify({
+                usuario: idUsuario
+            })                
         }
-        else {
-            let id = 0;
-            function createData(id, localizacao, titulo, valorImovel, acao, valorIptu, valorCondominio, 
-                                descricao, area, quantQuartos, quantBanheiros, quantVagas, quantSuites,
-                                quantLikes, quantComments, quantViews, nomeUsuario, perfilUsuario) {
-                id += 1;
-                return {id, localizacao, titulo, valorImovel, acao, valorIptu, valorCondominio, 
-                    descricao, area, quantQuartos, quantBanheiros, quantVagas, quantSuites,
-                    quantLikes, quantComments, quantViews, nomeUsuario, perfilUsuario} ;
-            }
-
-            const rows = [
-                createData(1, 'Rua Miguel de Frias, 45, Niteroi, RJ - Brasil', 'Luxo Palace Residence', 120000, 'Venda', 250, 100, 
-                            'Excelente espaço, bem localizado e ambiente tranquilo', 90, 3, 2, 1, 1,
-                            15, 23, 300, 'Arya Stark', 'Corretor' ) 
-            ];
-
-            return new Promise(resolve => {
-                resolve(rows)
-            })
-        }
-
+        return api(URL_API, resourceImovelPorUsuario, requestInfo );
         
     }
 
@@ -92,54 +123,7 @@ class ImovelService extends Component {
             const requestInfo = {
                 method: 'GET',                
                 headers: new Headers(HEADER_REQ_API)
-                // inserir o(s) parametro(s) aqui
-            }
-            return api(URL_API, resource, requestInfo );
-        }
-        else {
-            let id = 0;
-            function createData(id, nomeUsuario, perfilUsuario, urlFoto, 
-                                localizacao, titulo, acao, valorImovel, 
-                                valorIptu, valorCondominio, descricao, 
-                                area, quartos, banheiros, garagens, suites, likes, comments, views) {
-            id += 1;
-            return {id, nomeUsuario, perfilUsuario, urlFoto, 
-                    localizacao, titulo, acao, valorImovel, 
-                    valorIptu, valorCondominio, descricao, 
-                    area, quartos, banheiros, garagens, suites, likes, comments, views} ;
-            }
-
-            const rows = [
-            createData(1, 'Gisele Kremer', 'Corretor', '/img1.jpg',
-                        'Boa Viagem, Niteroi - RJ', 'Luxo Place', 'Aluguel', '1320',
-                        550, 1560, 'Excelente espaço e bem localizado',
-                        210, 2, 2, 1, 1, 15, 12, 20),
-
-            createData(2, 'Zirtaeb', 'Imobiliaria', '/img1.jpg',
-                        'Centro, Niteroi - RJ', 'Flat Centro', 'Venda', '700',
-                        211, 800, 'Localizado no centro da cidade',
-                        80, 1, 0, 0, 0, 22, 12, 33)
-            ];
-
-            return new Promise(resolve => {
-                resolve(rows)
-            })
-        }
-        
-    }
-
-    static buscarMeusImoveis(idUsuario, acaoImovel, tipoImovel, localizacao, statusImovel){
-
-        console.log('IdUsuario selecionado: ' + idUsuario);
-        console.log('acao imovel selecionado: ' + acaoImovel);
-        console.log('tipoImovel selecionado: ' + tipoImovel);
-        console.log('localizacao selecionado: ' + localizacao);
-        console.log('status selecionado: ' + statusImovel);   
-
-        if (!MOCK) {
-            const requestInfo = {
-                method: 'GET',                
-                headers: new Headers(HEADER_REQ_API)
+                
                 // inserir o(s) parametro(s) aqui
             }
             return api(URL_API, resource, requestInfo );

@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { URL_API, MOCK, HEADER_REQ_API } from '../componentes/common/environment';
 
-const resource = 'usuarios';
+const resource = 'usuarios/';
 const resourceUltAtualizacoesUsuario = 'ultimasatualizacoesusuarios'
 const resourceTrabalhosRealizados = 'trabalhorealizados';
+const resourceAuth ='usuarios/authenticate'
 
 
 function api(url_api, r, info) {
     return new Promise(resolve => {
         let url;
-        url = url_api + r;
-        console.log('chamada API: ' + url);
+        url = url_api + r;        
         fetch(url, info)
           .then(response => response.json())
-          .then(res => {
-              console.log('valores recuperados: ' + res);   
+          .then(res => {              
               resolve(res)            
           })
           .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?" ))          
@@ -29,6 +28,57 @@ class UsuarioService extends Component {
         this.state = {             
         }
     }    
+
+    static buscarUsuarioPorId(id) {
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API)           
+        }  
+        return api(URL_API, resource + id, requestInfo );  
+    }
+
+    static login(email, password){
+
+        if (!MOCK){
+            const requestInfo = {
+                method: 'POST',                
+                headers: new Headers(HEADER_REQ_API),
+                body: JSON.stringify({
+                    email: email,
+                    password: password    
+                })
+            }  
+            return api(URL_API, resourceAuth, requestInfo );
+        }
+        else {
+            const usuario = ['Israel', 'Normal'];
+            console.log('email: ' + email);
+            console.log('password: ' + password);
+
+            return new Promise(resolve => {                        
+                resolve(usuario);
+            })  
+        }        
+    }
+
+    static cadastrarUsuario(usuario){
+        const requestInfo = {
+            method: 'POST',                
+            headers: new Headers(HEADER_REQ_API),
+            body: JSON.stringify({
+                nome: usuario.nome,
+                email: usuario.email,
+                password: usuario.password,
+                perfil: usuario.perfil,
+                cpf: usuario.cpf,
+                cnpj: usuario.cnpj,
+                creci: usuario.creci,
+                localizacao: usuario.localizacao,
+                descricao: usuario.descricao
+            })
+        }  
+        return api(URL_API, resource, requestInfo );    
+    }
     
     static buscarUsuario(localizacao, perfil) {
 
@@ -90,30 +140,9 @@ class UsuarioService extends Component {
             return new Promise(resolve => {            
                 resolve(rows);
             })   
-        }
-            
+        }            
     }
-
-    static login(email, password){
-
-        if (!MOCK){
-            const requestInfo = {
-                method: 'GET',                
-                headers: new Headers(HEADER_REQ_API)
-                // passar os parametros ainda aqui
-            }  
-            return api(URL_API, resource, requestInfo );
-        }
-        else {
-            const usuario = ['Israel', 'Normal'];
-            console.log('email: ' + email);
-            console.log('password: ' + password);
-
-            return new Promise(resolve => {                        
-                resolve(usuario);
-            })  
-        }        
-    }
+  
 
     static listarUltimasUsuario(idUsuario){
 

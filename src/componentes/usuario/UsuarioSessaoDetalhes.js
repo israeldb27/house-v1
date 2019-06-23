@@ -2,13 +2,29 @@ import React, { Component } from 'react';
 import UsuarioResumoDetalhes from './UsuarioResumoDetalhes';
 import UsuarioResumoContatos from './UsuarioResumoContatos';
 import ImovelDestaqueUsuario from '../imovel/ImovelDestaqueUsuario';
-import UsuarioInfoGerais from './sessao/UsuarioInfoGerais';
+import UsuarioInfoGerais from './sessao/infoGerais/UsuarioInfoGerais';
 import { Link } from 'react-router-dom';
 import UsuarioSessaoMenuFuncionalidades from './UsuarioSessaoMenuFuncionalidades';
 import UsuarioSessaoDetalhesHeader from './sessao/UsuarioSessaoDetalhesHeader';
 import Header from '../layout/Header';
+import { getUsuarioStorage, getIdUsuarioStorage, setUsuarioStorage } from '../common/Utils';
+import UsuarioService from '../../services/UsuarioService';
 
 class UsuarioSessaoDetalhes extends Component {
+
+	constructor(props) {
+        super(props)  
+        this.state = {
+			usuario: getUsuarioStorage()
+		}        
+	}
+	
+	componentDidMount() {		
+		let user = getUsuarioStorage();  
+		console.log('Usuario detalhes: ' + JSON.stringify(user) );
+		this.setState({usuario: user})  
+	}
+
     render() {
         return (
 			
@@ -26,7 +42,7 @@ class UsuarioSessaoDetalhes extends Component {
 							<div className="col-lg-3">
 								<div className="main-left-sidebar">
 
-                                    <UsuarioResumoDetalhes />
+                                    <UsuarioResumoDetalhes usuarioSessao={this.state.usuario}/>
 									
 									<UsuarioResumoContatos /> 
 								</div> {/*main-left-sidebar end */}
@@ -34,7 +50,7 @@ class UsuarioSessaoDetalhes extends Component {
 							<div className="col-lg-6">
 								<div className="main-ws-sec">
 																
-									<UsuarioSessaoDetalhesHeader />
+									<UsuarioSessaoDetalhesHeader usuarioSessao={this.state.usuario}/>
 									
 									<div className="tab-feed st2">
 											<ul>
@@ -66,7 +82,7 @@ class UsuarioSessaoDetalhes extends Component {
 											</ul>
 									</div>                                 
                                   
-									<UsuarioInfoGerais />								
+									<UsuarioInfoGerais usuarioSessao={this.state.usuario} />								
 									
 								</div> {/*main-ws-sec end */}
 							</div>

@@ -45,9 +45,7 @@ class ImovelAdicionarPasso4  extends Component {
 
                                                         <div className="cp-field">
 
-
                                                         </div>
-
 
                                                         <div className="save-stngs pd2">
                                                             <ul>

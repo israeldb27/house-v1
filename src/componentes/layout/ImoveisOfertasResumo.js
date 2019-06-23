@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import mansao from '../fotos/mansao3.jpg';
 import OfertaService from '../../services/OfertaService';
-import { getTipoImovel } from '../common/Utils';
+import { getTipoImovel, getIdUsuarioStorage } from '../common/Utils';
 
 class ImoveisOfertasResumo extends Component {
 
@@ -15,9 +15,12 @@ class ImoveisOfertasResumo extends Component {
       }
 
     componentDidMount(){
-        let idUsuario = 1;
+        let idUsuario = getIdUsuarioStorage();
         OfertaService.listarOfertasPorUsuarioResumo(idUsuario).then(listaOfertas => {
-            this.setState({listaOfertasImoveis: listaOfertas});
+            console.log('Ofertas: ' + JSON.stringify(listaOfertas))
+           // listaOfertas.map(item => this.setState({listaOfertasImoveis: item}))            
+            //listaResultado.map(item => this.setState({listaComentarios: item}))
+            //this.setState({listaOfertasImoveis: listaOfertas});
         })
     }
 

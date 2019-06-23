@@ -4,8 +4,26 @@ import { Link } from 'react-router-dom';
 import Header from '../../layout/Header';
 import history from '../../History';
 import ImovelService from '../../../services/ImovelService';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { getIdUsuarioStorage } from '../../common/Utils';
+
+
+const styleMap = {
+    height: '40%',
+    width: '85%'
+}
+
+const API_KEY = 'AIzaSyC852goNaD7SPItXt0szjYerGvEDFagC34';
 
 class ImovelAdicionarPasso3  extends Component {
+
+    static defaultProps = {
+        center: {
+          lat: 50.95,
+          lng: 30.33
+        },
+        zoom: 11
+      };
 
     constructor(props) {        
         super(props); 
@@ -26,6 +44,9 @@ class ImovelAdicionarPasso3  extends Component {
             valorCondominio: 0,
             outrasTaxas: 0,     
             localizacaoError: '',            
+            place: null,
+            lat: 0,
+            lng: 0
         }     
     }
     
@@ -79,7 +100,7 @@ class ImovelAdicionarPasso3  extends Component {
                 Neste metodo os dados do imovel serao inseridos no BD. 
                 E o sistema irá para a tela seguinte onde nesta tela o usuário irá inserir a foto principal do imóvel e as fotos da galeria do imóvel
             */
-           let idUsuario = '5ce95bb16b4e216264be787e';
+           let idUsuario = getIdUsuarioStorage();
            const imovel = {
                 titulo: this.state.titulo,
                 acao: this.state.acao,
@@ -127,7 +148,14 @@ class ImovelAdicionarPasso3  extends Component {
         this.setState({ valorCondominio: this.props.location.state.valorCondominio });
         this.setState({ outrasTaxas: this.props.location.state.outrasTaxas });
      }
-    
+
+
+     carregarMapa = () => {
+        let address = this.state.localizacao;
+        ImovelService.recuperarCoordenadasPorEndereco(address).then(resp => {
+            console.log('Resposta API: ' + resp)
+        } )
+     }
 
     render() {
         return (
@@ -180,9 +208,12 @@ class ImovelAdicionarPasso3  extends Component {
                                                             <div className="cpp-fiel">
                                                                 <input type="text" name="localizacao" value={this.state.localizacao} onChange={this.handleChange} placeholder="Informe a localização do imóvel" />
                                                             </div>
-                                                        </div>
+                                                          
+                                                        </div>    
 
-                                                        {/*--devera ser inserido aqui a tela do Google Maps*/}
+                                                        <div className="cp-field" style={{height: '400px'}}>                                                            
+                                                                                                              
+                                                        </div> 
 
                                                         <div className="save-stngs pd2">
                                                             <ul>
@@ -208,4 +239,8 @@ class ImovelAdicionarPasso3  extends Component {
     }
 }
 
-export default ImovelAdicionarPasso3;
+//export default ImovelAdicionarPasso3;
+
+export default GoogleApiWrapper({
+    apiKey: (API_KEY)
+  })(ImovelAdicionarPasso3)

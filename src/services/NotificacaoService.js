@@ -6,12 +6,10 @@ const resource = 'notificacaos';
 function api(url_api, r, info) {
     return new Promise(resolve => {
         let url;
-        url = url_api + r;
-        console.log('chamada API: ' + url);
+        url = url_api + r;        
         fetch(url, info)
           .then(response => response.json())
-          .then(res => {
-              console.log('valores recuperados: ' + res);   
+          .then(res => {               
               resolve(res)            
           })
           .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?" ))          

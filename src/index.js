@@ -26,10 +26,10 @@ import ImovelAdicionarPasso2 from './componentes/imovel/adicionar/ImovelAdiciona
 import ImovelAdicionarPasso3 from './componentes/imovel/adicionar/ImovelAdicionarPasso3';
 import ImovelAdicionarPasso4 from './componentes/imovel/adicionar/ImovelAdicionarPasso4';
 import UsuarioFotoPrincipal from './componentes/usuario/conta/UsuarioFotoPrincipal';
-import UsuarioFeed from './componentes/usuario/sessao/UsuarioFeed';
-import UsuarioInfoGerais from './componentes/usuario/sessao/UsuarioInfoGerais';
-import UsuarioImoveis from './componentes/usuario/sessao/UsuarioImoveis';
-import UsuarioFavoritos from './componentes/usuario/sessao/UsuarioFavoritos';
+import UsuarioFeed from './componentes/usuario/sessao/feed/UsuarioFeed';
+import UsuarioInfoGerais from './componentes/usuario/sessao/infoGerais/UsuarioInfoGerais';
+import UsuarioImoveis from './componentes/usuario/sessao/usuarioImoveis/UsuarioImoveis';
+import UsuarioFavoritos from './componentes/usuario/sessao/usuarioFavoritos/UsuarioFavoritos';
 import UsuarioDetalhes from './componentes/usuario/detalhes/UsuarioDetalhes';
 import UsuarioDetalhesImoveis from './componentes/usuario/detalhes/UsuarioDetalhesImoveis';
 import UsuarioDetalhesFeed from './componentes/usuario/detalhes/UsuarioDetalhesFeed';
@@ -61,9 +61,11 @@ ReactDOM.render(
                 <div className="wrapper"> 
                         
                     <Switch>                                                               
-                        <Route path="/" exact={true} component={App}/> 
+                    {/*     <Route path="/" exact={true} component={App}/>  */}
+                        <Route path="/home" exact={true} component={App}/> 
+                        <Route path="/" exact={true} component={LoginUsuario}/>
                         <Route path="/loginUsuario"  component={LoginUsuario}/> 
-                        <Route path="/usuarioSessaoDetalhes/:id"  component={UsuarioSessaoDetalhes}/> 
+                        <Route path="/usuarioSessaoDetalhes"  component={UsuarioSessaoDetalhes}/> 
                         <Route path="/visualizarImovelDetalhes/:id"  component={ImovelDetalhes}/> 
                         <Route path="/listaContatosUsuario/:id"  component={ListaContatos}/> 
                         <Route path="/imovelBuscar" component={ImovelBuscar}/>                

@@ -5,8 +5,8 @@ import SeguidoresService from '../../services/SeguidoresService';
 
 class UsuarioResumoDetalhes extends Component {
 
-    constructor() {
-        super()  
+    constructor(props) {
+        super(props)  
      
         this.state = {
            quantContatos: 0,
@@ -14,8 +14,9 @@ class UsuarioResumoDetalhes extends Component {
         }
     } 
 
-    componentDidMount(){
-        this.setState({quantContatos: 120, quantSeguidores: 45})
+    componentDidMount(){               
+        console.log('Usuario props: ' + JSON.stringify(this.props)) ;
+        this.setState({quantContatos: this.props.usuarioSessao.quantTotalContatos, quantSeguidores: this.props.usuarioSessao.quantTotalSeguidores})  
     }
 
     enviarConvite(event){

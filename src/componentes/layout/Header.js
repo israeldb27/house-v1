@@ -15,7 +15,7 @@ class Header extends Component {
 				<div className="container">
 					<div className="header-data">
 						<div className="logo">
-							<Link to="/" title=""><img src={logo} alt="" /></Link>
+							<Link to="/home" title=""><img src={logo} alt="" /></Link>
 						</div>
 						<div className="search-bar">
 							<form>

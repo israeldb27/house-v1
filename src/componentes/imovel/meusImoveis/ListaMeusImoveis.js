@@ -10,6 +10,7 @@ import TipoImovelEnum from '../../common/TipoImovelEnum';
 import AcaoImovelEnum from '../../common/AcaoImovelEnum';
 import StatusImovelEnum from '../../common/StatusImovelEnum';
 import ImovelService from '../../../services/ImovelService';
+import { getIdUsuarioStorage } from '../../common/Utils';
 
 class ListaMeusImoveis extends Component {
     constructor() {
@@ -20,7 +21,7 @@ class ListaMeusImoveis extends Component {
            acaoImovel: [],
            statusImovel: [],
            listaImoveis: [] 
-        }
+        }    
     }  
 
     componentDidMount() {
@@ -28,18 +29,21 @@ class ListaMeusImoveis extends Component {
         this.setState({ tipoImovel: TipoImovelEnum.enumValues });
         this.setState({ acaoImovel: AcaoImovelEnum.enumValues });
         this.setState({ statusImovel: StatusImovelEnum.enumValues });
-        let idUsuario = 1;
-        ImovelService.buscarMeusImoveis(idUsuario, this.acaoImovel.value, this.tipoImovel.value, this.localizacao.value, this.statusImovel.value).then(listaImoveis => {
-            this.setState({listaImoveis: listaImoveis});   
+       
+        let idUsuario = getIdUsuarioStorage();
+        ImovelService.buscarMeusImoveis(idUsuario, '', '', '', '').then(lista => {            
+            this.setState({listaImoveis: lista});   
         })
 
+        console.log('Lista meus imoveis: ' + JSON.stringify(this.state.listaImoveis.length)); 
+ 
     }
 
     buscarMeusImoveis(event){
         event.preventDefault();
         console.log('invocou metodo buscarImovel');             
 
-        let idUsuario = 1;
+        let idUsuario = getIdUsuarioStorage();
         ImovelService.buscarMeusImoveis(idUsuario, this.acaoImovel.value, this.tipoImovel.value, this.localizacao.value, this.statusImovel.value).then(listaImoveis => {
             this.setState({listaImoveis: listaImoveis});   
         })
@@ -162,8 +166,10 @@ class ListaMeusImoveis extends Component {
                                         </div>{/*--main-left-sidebar end*/}
                                     </div>
 
-                                    <div className="col-lg-6 col-md-8 no-pd">
-                                        <ItemMeuImovel listaImoveis={this.state.listaImoveis} />
+                                    <div className="col-lg-6 col-md-8 no-pd"> 
+                                        {
+                                            this.state.listaImoveis.map(imovel => <ItemMeuImovel item={imovel} /> )                                          
+                                        }
                                     </div>
 
                                     <div className="col-lg-3 pd-right-none no-pd">

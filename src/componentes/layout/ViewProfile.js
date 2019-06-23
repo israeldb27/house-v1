@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import israel from '../fotos/israel.jpg'
+import { getUsuarioStorage, getPerfilUsuario } from '../common/Utils';
 
 let id = 0;
 function createData(id, nome, perfilUsuario, totalImoveis, totalContatos, totalSeguidores, urlFoto) {
@@ -16,13 +17,10 @@ class ViewProfile extends Component {
         super(props)
       
         this.state = {
-          usuario  : '' 
+          usuario  : getUsuarioStorage()
         }
     }
 
-    componentDidMount(){
-        this.setState({usuario: row});
-    }
 
     render() {
         return (
@@ -30,44 +28,44 @@ class ViewProfile extends Component {
                 <div className="user-profile">
                     <div className="username-dt">
                         <div className="usr-pic">
-                            <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario.id}`}}>
+                            <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario._id}`}}>
                                 <img src={israel} alt="" style={{width: '100px', height:'100px'}}/>
                             </Link>
                         </div>
                     </div>{/*--username-dt end*/}
                     <div className="user-specs">
                         <h3>
-                            <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario.id}`}}>
+                            <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario._id}`}}>
                                 {
                                     this.state.usuario.nome
                                 }
                             </Link>    
                         </h3>
-                        <span>{ this.state.usuario.perfilUsuario}</span>
+                        <span>{getPerfilUsuario(this.state.usuario.perfil)}</span>
                     </div>
                 </div>{/*--user-profile end*/}
                 <ul className="user-fw-status">
                     <li>
                         <h4>           
-                            <Link to={{ pathname: `/listaMeusImoveis/${this.state.usuario.id}`}}>
+                            <Link to={{ pathname: `/listaMeusImoveis/${this.state.usuario._id}`}}>
                                 Total Imóveis
                             </Link>
                         </h4>
                         <span> 
                             {
-                                this.state.usuario.totalImoveis
+                                this.state.usuario.quantTotalImoveis
                             }
                         </span>
                     </li>
                     <li>
                         <h4>
-                            <Link to={{ pathname: `/listaContatosUsuario/${this.state.usuario.id}`}}>
+                            <Link to={{ pathname: `/listaContatosUsuario/${this.state.usuario._id}`}}>
                                 Contatos
                             </Link>
                         </h4>
                         <span> 
                             {
-                                this.state.usuario.totalContatos
+                                this.state.usuario.quantTotalContatos
                             }
                         </span>
                     </li>
@@ -79,12 +77,12 @@ class ViewProfile extends Component {
                         </h4>
                         <span> 
                             {
-                                this.state.usuario.totalSeguidores
+                                this.state.usuario.quantTotalSeguidores
                             }
                         </span>
                     </li>
                     <li>
-                        <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario.id}`}}>
+                        <Link to={{ pathname: `/usuarioSessaoDetalhes/${this.state.usuario._id}`}}>
                             View Profile 
                         </Link>                        
                     </li>

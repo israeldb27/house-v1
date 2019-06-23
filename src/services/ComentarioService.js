@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { URL_API, MOCK, HEADER_REQ_API } from '../componentes/common/environment';
+import { URL_API, MOCK, HEADER_REQ_API, objToQueryString } from '../componentes/common/environment';
 
-const resource = 'comentarios';
+const resource = 'comentarios/';
 
 function api(url_api, r, info) {
     return new Promise(resolve => {
@@ -12,7 +12,6 @@ function api(url_api, r, info) {
         fetch(url, info)
           .then(response => response.json())
           .then(res => {
-              console.log('valores recuperados: ' + res);   
               resolve(res)            
           })
           .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?" ))          
@@ -22,7 +21,6 @@ function api(url_api, r, info) {
 class ComentarioService extends Component {
 
     static cadastrarComentario(idImovel, idUsuario, comentario) {
-
         const requestInfo = {
             method: 'POST',                
             headers: new Headers(HEADER_REQ_API),
@@ -30,39 +28,24 @@ class ComentarioService extends Component {
                 usuarioComentario: idUsuario,
                 imovel: idImovel,
                 comentario: comentario
-            })
-            // inserir o(s) parametro(s) aqui
+            })    
         }
         return api(URL_API, resource, requestInfo );
 
     }
 
-    static listarComentariosPorImovel(idImovel){
+    static listarComentariosPorImovel(idImovel){    
+        
+        const queryString = objToQueryString({         
+            imovel: idImovel            
+        });
 
-        if (!MOCK) {
-            const requestInfo = {
-                method: 'GET',                
-                headers: new Headers(HEADER_REQ_API)
-                // inserir o(s) parametro(s) aqui
-            }
-            return api(URL_API, resource, requestInfo );
+        const resourceComentarioPorImovel =  resource + 'imovel/?'+queryString
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API)              
         }
-        else {
-            let id = 0;
-            function createData(id, nomeUsuario, comentario, urlFoto, dataComentario) {
-              id += 1;
-              return {id, nomeUsuario, comentario, urlFoto, dataComentario} ;
-            }
-            
-            const rows = [
-              createData(1, 'Lagoa Imoveis', 'excelente imovel', '/img1.jpg', '01/01/2019' ),
-              createData(2, 'Zirtaeb', 'bem localizado', '/img1.jpg', '01/01/2019'),
-              createData(3, 'Pamela Alves', 'excelente preço', '/img1.jpg', '01/01/2019'),
-              createData(4, 'Israel Barreto', 'eu gostei', '/img1.jpg', '01/01/2019'),
-              createData(5, 'Marli Barreto', 'muito bom', '/img1.jpg', '01/01/2019')
-            ];
-            
-        }        
+        return api(URL_API, resourceComentarioPorImovel, requestInfo );
     }
 
 }

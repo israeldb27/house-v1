@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UsuarioResumoDetalhes from '../UsuarioResumoDetalhes';
 import UsuarioResumoContatos from '../UsuarioResumoContatos';
 import ImovelDestaqueUsuario from '../../imovel/ImovelDestaqueUsuario';
-import UsuarioInfoGerais from '../sessao/UsuarioInfoGerais';
+import UsuarioInfoGerais from '../sessao/infoGerais/UsuarioInfoGerais';
 import { Link } from 'react-router-dom';
 import UsuarioSessaoMenuFuncionalidades from '../UsuarioSessaoMenuFuncionalidades';
 import Header from '../../layout/Header';

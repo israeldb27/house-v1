@@ -11,9 +11,9 @@ PerfilUsuarioEnum.initEnum({
         description: 'Imobiliária',
         id: 'I',
     },
-    COMUM: {
-        description: 'Comum',
-        id: 'O',
+    NORMAL: {
+        description: 'Normal',
+        id: 'N',
     }
 });
 

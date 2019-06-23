@@ -30,7 +30,7 @@ class Sugestoes extends Component {
     componentDidMount(){
 
        let idUsuario = 1;
-       ContatoService.listaSugestoesContatos(idUsuario).then(listaContatos => {
+       ContatoService.listaSugestoesContatos(idUsuario).then(listaContatos => {            
             this.setState({listaSugestoesContatos: listaContatos});
         })
     }

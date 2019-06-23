@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import imovel from '../../fotos/imovel.jpg';
+
 import imovel2 from '../../fotos/imovel2.jpg';
 import { getAcaoImovel, getPerfilUsuario, getTipoImovel } from '../../common/Utils';
 
 
 class ItemMeuImovel extends Component {
 
+    constructor(props){
+        super(props);        
+
+        this.state = {
+            listaMeusImoveis : []
+        }
+    }
+
+    componentDidMount() {        
+        this.setState({listaMeusImoveis: this.props.item }) 
+    }
+
+    
     render() {
         return (
             <div className="main-ws-sec">
@@ -19,17 +32,27 @@ class ItemMeuImovel extends Component {
                     </div>{/*--post-st end*/}
                 </div>{/*--post-topbar end*/}
                 <div className="posts-section">
+                {
+                    this.state.listaMeusImoveis.length === 0 &&  ( 
+                    
+                        <div className="post-topbar">                            
+                                <ul>
+                                    <li align="center"><center>Você não tem imóveis cadastrados</center></li>
+                                </ul>                            
+                        </div> 
+                    ) 
+                } 
 
                 {
-                        this.props.listaImoveis.map(imovel => {
+                        this.state.listaMeusImoveis.map(imovel => {
                             return (
-                                <div className="post-bar">
+                                <div key={imovel._id} className="post-bar">
 
                                     <div className="suggestion-usd">
                                         <img src="http://via.placeholder.com/35x35" alt="" />
                                         <div className="sgt-text">
                                             <h4>{imovel.usuario.nome}</h4>          
-                                            <span>{getPerfilUsuario(imovel.usuario.perfil)}</span>                                                                              
+                                            <span>{getPerfilUsuario(imovel.usuario.perfil)}</span>                                                                                   
                                         </div>
                                     </div>
 
@@ -109,14 +132,19 @@ class ItemMeuImovel extends Component {
                         })
                     }
 
-                    <div className="process-comm">
-                        <div className="spinner">
-                            <div className="bounce1"></div>
-                            <div className="bounce2"></div>
-                            <div className="bounce3"></div>
+                {
+                    this.state.listaMeusImoveis.length > 0 &&  ( 
+                        <div className="process-comm">
+                            <div className="spinner">
+                                <div className="bounce1"></div>
+                                <div className="bounce2"></div>
+                                <div className="bounce3"></div>
+                            </div>
                         </div>
-                    </div>{/*--process-comm end*/}
-                </div>{/*--posts-section end*/}
+                     ) 
+                } 
+                    
+                </div>
             </div>
         );
     }

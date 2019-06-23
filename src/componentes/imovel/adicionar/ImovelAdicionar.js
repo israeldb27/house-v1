@@ -108,7 +108,7 @@ class ImovelAdicionar extends Component {
         else {
             this.setState({descricaoError: ''})
         }
-        return isValido;
+        return true;
       }
 
       avancarPasso2 = event => {

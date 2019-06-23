@@ -4,17 +4,17 @@ import israel from '../fotos/israel.jpg'
 class ImovelUsuarioResponsavel extends Component {
     render() {
         return (
-            <div class="user_profile">
-                <div class="user-pro-img">
+            <div className="user_profile">
+                <div className="user-pro-img">
                     <img src={israel} style={{ width: '170px', height: '170px' }} alt="" />
-                    <a href="#" title=""><i class="fa fa-camera"></i></a>
+                    <a href="#" title=""><i className="fa fa-camera"></i></a>
                 </div> {/*user-pro-img end */}
-                <div class="user_pro_status">
-                    <ul class="flw-hr">
-                        <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Seguir</a></li>
-                        <li><a href="#" title="" class="hre">Convite</a></li>                        
+                <div className="user_pro_status">
+                    <ul className="flw-hr">
+                        <li><a href="#" title="" className="flww"><i className="la la-plus"></i> Seguir</a></li>
+                        <li><a href="#" title="" className="hre">Convite</a></li>                        
                     </ul>
-                    <ul class="flw-status">
+                    <ul className="flw-status">
                         <li>
                             <span>Following</span>
                             <b>34</b>

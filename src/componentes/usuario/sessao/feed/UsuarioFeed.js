@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import UsuarioResumoDetalhes from '../UsuarioResumoDetalhes';
-import UsuarioResumoContatos from '../UsuarioResumoContatos';
-import ImovelDestaqueUsuario from '../../imovel/ImovelDestaqueUsuario';
+import UsuarioResumoDetalhes from '../../UsuarioResumoDetalhes';
+import UsuarioResumoContatos from '../../UsuarioResumoContatos';
+import ImovelDestaqueUsuario from '../../../imovel/ImovelDestaqueUsuario';
 import { Link } from 'react-router-dom';
-import UsuarioSessaoMenuFuncionalidades from '../UsuarioSessaoMenuFuncionalidades';
-import UsuarioSessaoDetalhesHeader from './UsuarioSessaoDetalhesHeader';
-import imgImovel from '../../fotos/imovel.jpg';
-import imovel2 from '../../fotos/imovel2.jpg';
-import Header from '../../layout/Header';
+import UsuarioSessaoMenuFuncionalidades from '../../UsuarioSessaoMenuFuncionalidades';
+import UsuarioSessaoDetalhesHeader from '../UsuarioSessaoDetalhesHeader';
+import imovel2 from '../../../fotos/imovel2.jpg';
+import Header from '../../../layout/Header'
 
 class UsuarioFeed extends Component {
 

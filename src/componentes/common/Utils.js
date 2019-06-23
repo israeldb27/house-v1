@@ -1,13 +1,45 @@
 import ls from 'local-storage';
 
+const USUARIO_STORAGE = 'usuario-storage-session';
+const ID_USUARIO_STORAGE = 'usuario-id-storage-session';
+
 export function getUsuarioStorage(){
-    return ls.get('usuario-storage-session')    
+    return ls.get(USUARIO_STORAGE)    
 }
 
 export function setUsuarioStorage(usuario){
     console.log('Setando usuario storage: ' + usuario);
-    ls.set('usuario-storage-session', usuario)    
+    ls.set(USUARIO_STORAGE, usuario)        
 }
+
+export function setIdUsuarioStorage(id){
+    return ls.set(ID_USUARIO_STORAGE, id)    
+}
+
+export function getIdUsuarioStorage(){
+    return ls.get(ID_USUARIO_STORAGE)    
+}
+
+export function isEmpty(obj) {
+    for ( var prop in obj ) { 
+      return false; 
+    } 
+    return true; 
+  }
+
+export function formataDataHora(dataHora){    
+
+        return (new Intl.DateTimeFormat('pt-BR', { 
+            month: 'numeric', 
+            day: 'numeric',
+            year: 'numeric',    
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric'                                                                
+        }).format(new Date(dataHora)))
+    
+}
+
 
 export function getAcaoImovel(acao){
     if ( acao === 'V') {

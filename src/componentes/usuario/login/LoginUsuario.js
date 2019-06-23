@@ -1,22 +1,92 @@
 import React, { Component } from 'react'
 import history from '../../History';
 import UsuarioService from '../../../services/UsuarioService';
+import { setUsuarioStorage, getUsuarioStorage, setIdUsuarioStorage } from '../../common/Utils'
 
 class LoginUsuario extends Component {
 
-  submitLogin(e) {
-    e.preventDefault();
-    console.log('chamou login');
-    
-    UsuarioService.login(+ this.email.value, this.password.value);
-    history.push('/');
-  }  
+    constructor(props) {
+        super(props)  
+        this.state = {
+          email: '',
+          password: '',
+          emailError: '',
+          passwordError: '' 
+        }
+        
+    }
+    validate = () =>{
+        let isValido = true;
+        
+        if (this.state.email === '' || this.state.email === undefined)  {                        
+            this.setState({emailError: 'Campo Obrigatorio'})                
+            isValido = false;
+        }
+        else {
+            this.setState({emailError: ''})                
+        }
 
-  goUsuarioCadastrar(e) {
-    e.preventDefault();
-    console.log('chamou goUsuarioCadastrar');
-    history.push('/usuarioCadastrar');
-  }
+        if (this.state.password === '' || this.state.password === undefined)  {                        
+            this.setState({passwordError: 'Campo Obrigatorio'})                
+            isValido = false;
+        }
+        else {
+            this.setState({passwordError: ''})                
+        }
+
+        return isValido;
+    }
+
+    submitLogin = e => {
+        e.preventDefault();
+        console.log('chamou login');        
+        const isValido = this.validate();
+        if ( isValido ){
+            UsuarioService.login(this.state.email, this.state.password).then(response => {
+                const {nome, email, perfil, _id, accessToken, createdAt, localizacao} = response
+                if ( accessToken !== undefined ){
+                    console.log('Gerou token');
+                    UsuarioService.buscarUsuarioPorId(_id).then(user => {
+                        const usuario = {
+                            nome: user.nome, 
+                            email: user.email,
+                            perfil: user.perfil, 
+                            createdAt: user.createdAt,    
+                            localizacao: user.localizacao,               
+                            _id: user._id,
+                            accessToken: accessToken,
+                            quantTotalSeguidores: user.quantTotalSeguidores,
+                            quantTotalContatos: user.quantTotalContatos,
+                            quantTotalImoveis: user.quantTotalImoveis,
+                            descricao: user.descricao
+                        }
+                        setUsuarioStorage(usuario);
+                        setIdUsuarioStorage(_id);
+                        console.log('usuario sessao: ' + JSON.stringify(usuario));
+                        history.push('/home');    
+                    })
+                }
+                else {
+                    console.log(' nao conseguiu Gerou token')
+                    this.setState({passwordError: 'Email ou senha invalida'})   
+                }          
+            })            
+        }
+        
+    }  
+
+    goUsuarioCadastrar(e) {
+        e.preventDefault();
+        console.log('chamou goUsuarioCadastrar');
+        history.push('/usuarioCadastrar');
+    }
+
+    handleChange = event => {
+        event.preventDefault();    
+        this.setState({              
+            [event.target.name]: event.target.value                  
+        });
+  };   
 
   render() {
     return (
@@ -48,14 +118,17 @@ class LoginUsuario extends Component {
                                             <div className="row">
                                                 <div className="col-lg-12 no-pdd">
                                                     <div className="sn-field">
-                                                        <input type="text" name="email" placeholder="Email" ref={(input) => this.email = input} />
+                                                        <input type="text" name="email" placeholder="Informa o seu email"  value={this.state.email} onChange={this.handleChange}  />
                                                         <i className="la la-user"></i>
                                                     </div>{/*sn-field end*/}
                                                 </div>
                                                 <div className="col-lg-12 no-pdd">
                                                     <div className="sn-field">
-                                                        <input type="password" name="password" ref={(input) => this.password = input} placeholder="Password" />
+                                                        <input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Informe o seu password" />
                                                         <i className="la la-lock"></i>
+                                                    </div>
+                                                    <div style={{fontSize: 12, color: 'red'}}>
+                                                        {this.state.passwordError} 
                                                     </div>
                                                 </div>                                            
                                                 <div className="col-lg-12 no-pdd">

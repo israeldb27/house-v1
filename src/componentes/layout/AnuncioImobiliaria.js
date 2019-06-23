@@ -7,7 +7,7 @@ class AnuncioImobiliaria extends Component {
         return (
            <div> 
          <div>
-            <div class="widget widget-about">
+            <div className="widget widget-about">
             <div className="sd-title">
                    <h3>Anuncios</h3>
            </div>
@@ -16,7 +16,7 @@ class AnuncioImobiliaria extends Component {
         </div>
 
 <div>
-<div class="widget widget-about">
+<div className="widget widget-about">
 <div className="sd-title">
        <h3>Anuncios</h3>
 </div>

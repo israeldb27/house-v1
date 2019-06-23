@@ -1,24 +1,56 @@
 import React, { Component } from 'react'
-import { URL_API, MOCK, HEADER_REQ_API } from '../componentes/common/environment';
+import { URL_API, MOCK, HEADER_REQ_API, objToQueryString } from '../componentes/common/environment';
 
-const resource = 'parcerias';
+const resource = 'parcerias/';
 
 function api(url_api, r, info) {
     return new Promise(resolve => {
         let url;
-        url = url_api + r;
-        console.log('chamada API: ' + url);
+        url = url_api + r;        
         fetch(url, info)
           .then(response => response.json())
-          .then(res => {
-              console.log('valores recuperados: ' + res);   
+          .then(res => {              
               resolve(res)            
           })
-          .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?" ))          
+          .catch((err) => console.log("Erro na requisicao: " + err ))          
     })    
 }
 
 class ParceriaService extends Component {
+
+    static cancelarSolicitacaoParceria(idImovel, idUsuario) {     
+        
+            // testar ainda
+            const queryString = objToQueryString({         
+                imovel: idImovel,
+                usuario: idUsuario            
+            });   
+
+            const requestInfo = {
+                method: 'DELETE',                
+                headers: new Headers(HEADER_REQ_API)                     
+            }
+            return api(URL_API, resource + idImovel, requestInfo );
+    }
+
+    static buscarSolicitacaoParceriaPorImovel(idImovel, idUsuario) {
+
+        const queryString = objToQueryString({         
+            imovel: idImovel,
+            usuario: idUsuario            
+        });        
+
+        const resourceImovelPorUsuario = resource + 'imovelusuario/?'+queryString ; 
+        const requestInfo = {
+            method: 'GET',                
+            headers: new Headers(HEADER_REQ_API),
+            query: JSON.stringify({
+                imovel: idImovel,
+                usuario: idUsuario
+            })            
+        }
+        return api(URL_API, resourceImovelPorUsuario, requestInfo );
+    }
 
     static cadastrarSolicitacaoParceria(idUsuario, idImovel, obs){
         const requestInfo = {

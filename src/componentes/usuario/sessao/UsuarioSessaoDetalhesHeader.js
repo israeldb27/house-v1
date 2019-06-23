@@ -1,40 +1,30 @@
 import React, { Component } from 'react'
-import { getUsuarioStorage } from '../../common/Utils';
+import { getUsuarioStorage, getPerfilUsuario, formataDataHora, getIdUsuarioStorage, setUsuarioStorage, setIdUsuarioStorage } from '../../common/Utils';
+import Moment from 'react-moment';
+import UsuarioService from '../../../services/UsuarioService';
 
 
 class UsuarioSessaoDetalhesHeader extends Component {
     constructor(props) {
       super(props)
     
-      this.state = {
-         nome: '',
-         perfil: '',
-         dataCadastro: '',
-         localizacao: '',
-         totalImoveis: 0,
-         usuarioSessao: ''
+      this.state = { 
+         usuarioSessao: ''    
       }
     }
 
-    componentDidMount(){
-        this.setState({nome: 'Israel D. Barreto', 
-                       perfil: 'Corretor',
-                       dataCadastro: '11/01/2019',
-                       localizacao: 'Boa Viagem, Niteroi, RJ - Brasil',
-                       totalImoveis: 120,
-                       usuarioSessao: getUsuarioStorage() })            
-
-        console.log('Usuario storage: ' + getUsuarioStorage())         ;
-    }    
+    componentDidMount(){         
+        this.setState({usuarioSessao: this.props.usuarioSessao }) 
+    }      
 
 
   render() {
     return (
         <div className="user-tab-sec mb-3 p-3 bg-white">
-            <h3> {this.state.nome} - {this.state.usuarioSessao.nome}</h3>
+            <h3> {this.state.usuarioSessao.nome}</h3>
             <div className="row mb-2">
                 <div className="col-6 p-0 mb-1">
-                    <span> {this.state.perfil} </span>
+                    <span> {getPerfilUsuario(this.state.usuarioSessao.perfil)} </span>
                 </div>
                 <div className="col-6 p-0 mb-1">
                     <div className="star-descp m-0 d-inline-block float-none">
@@ -48,13 +38,17 @@ class UsuarioSessaoDetalhesHeader extends Component {
                     </div> {/*star-descp end */}
                 </div>
                 <div className="col-6 p-0 mb-1">
-                    <span>Membro desde: {this.state.dataCadastro} </span>
+                    <span>
+                        Membro desde:  <Moment format="DD/MM/YYYY">
+                                            {this.state.usuarioSessao.createdAt}
+                                        </Moment>
+                     </span>
                 </div>
                 <div className="col-6 p-0 mb-1">
-                    <span>{this.state.localizacao}</span>
+                    <span>{this.state.usuarioSessao.localizacao}</span>
                 </div>
                 <div className="col-6 p-0 mb-1">
-                    <span>Total de Imóveis: {this.state.totalImoveis} </span>
+                    <span>Total de Imóveis: {this.state.usuarioSessao.quantTotalImoveis} </span>
                 </div>
             </div>
 

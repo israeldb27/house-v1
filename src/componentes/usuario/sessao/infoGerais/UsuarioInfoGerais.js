@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import UsuarioService from '../../../services/UsuarioService';
-import RecomendacaoService from '../../../services/RecomendacaoService';
-import { getPerfilUsuario } from '../../common/Utils';
+import UsuarioService from '../../../../services/UsuarioService';
+import RecomendacaoService from '../../../../services/RecomendacaoService';
+import { getPerfilUsuario, getUsuarioStorage } from '../../../common/Utils';
 
 class UsuarioInfoGerais extends Component {
    
@@ -9,15 +9,15 @@ class UsuarioInfoGerais extends Component {
         super(props)
       
         this.state = {
-           descricaoUsuario: '',
+           usuarioSessao: this.props.usuarioSessao,
            listaUltimasUsuario: [],
            listaTrabalhosRealizados: [],
            listaRecomendacoes: []        
         }
     }
 
-    componentDidMount(){
-        this.setState({descricaoUsuario: '10 anos de experiência no mercado imobiliário, muita confiabilidade e muitos clientes satisfeitos com o meu trabalho'});
+    componentDidMount(){   
+        this.setState({usuarioSessao: this.props.usuarioSessao }) 
         this.carregaListaUltimasUsuario();
         this.carregaListaTrabalhosRealizados();
         this.carregarListaRecomendacoes();      
@@ -49,7 +49,7 @@ class UsuarioInfoGerais extends Component {
         <div className="product-feed-tab current" id="info-dd">
             <div className="user-profile-ov">
                 <h3><a href="#" title="" className="overview-open">Descrição  </a> <a href="#" title="" className="overview-open"> </a></h3>
-                <p> {this.state.descricaoUsuario} </p>
+                <p> {this.state.usuarioSessao.descricao} </p>
             </div>       
 
             <div className="user-profile-ov">

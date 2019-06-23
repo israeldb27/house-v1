@@ -23,18 +23,19 @@ class OutrosImoveisUsuario extends Component {
 
     render() {
         return (
-            <div class="suggestions full-width">
-                <div class="sd-title">
+            <div>
+            <div className="suggestions full-width">
+                <div className="sd-title">
                     <h3>Outros Imóveis do Usuário</h3>
-                    <i class="la la-ellipsis-v"></i>
+                    <i className="la la-ellipsis-v"></i>
                 </div> {/*sd-title end */}
-                <div class="suggestions-list">
+                <div className="suggestions-list">
                     {
                         this.state.listaImoveis.map (imovel => {
                             return (
-                                <div className="suggestion-usd">
+                                <div key={imovel._id} className="suggestion-usd">
                                     <Link to={{ pathname: `/visualizarImovelDetalhes/${imovel.id}`}}>
-                                        <img src={mansao} alt="" style={{ width: '60px', height: '60px;' }} />
+                                        <img src={mansao} alt="" style={{ width: '60px', height: '60px' }} />
                                     </Link>  
                                     
                                     <div className="sgt-text">
@@ -50,11 +51,13 @@ class OutrosImoveisUsuario extends Component {
                         })   
                     }
 
-                    <div class="view-more">
+                    <div className="view-more">
                         <a href="#" title="">Ver Todos</a>
                     </div>
                 </div> {/*suggestions-list end */}
             </div> 
+
+        </div>
         );
     }
 }
